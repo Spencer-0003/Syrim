@@ -1,17 +1,30 @@
 {
   "global": {
     "ERROR": "Error",
-    "NONE": "None"
+    "NONE": "None",
+    "SUCCESS": "Success"
   },
 
   "categories": {
+    "ECONOMY": "Economy",
     "GENERAL": "General",
     "NSFW": "NSFW"
   },
 
   "category_descriptions": {
     "GENERAL": "General commands",
+    "ECONOMY": "Economy commands",
     "NSFW": "Ooooh 😳"
+  },
+
+  "economy": {
+    "GENDER": "Gender",
+    "FEMALE": "Female",
+    "MALE": "Male",
+    "SET_GENDER": "Set Gender",
+    "SET_GENDER_DESCRIPTION": "Use the buttons below to set your gender.",
+    "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
+    "UNDISCLOSED": "Undisclosed"
   },
 
   "general": {

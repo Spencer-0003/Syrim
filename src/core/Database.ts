@@ -19,18 +19,26 @@ export class Database {
 
   // Functions
   public async getUser(id: string): Promise<User> {
-    let user = await this.prisma.user.findUnique({ where: { discordId: id } });
-    user ??= await this.prisma.user.create({ data: { discordId: id } });
+    let user = await this.prisma.user.findUnique({ where: { id } });
+    user ??= await this.prisma.user.create({ data: { id } });
 
     this.prisma.$disconnect();
     return user;
   }
 
+  public async updateUser(id: string, data: Partial<User>): Promise<void> {
+    await this.prisma.user.update({ where: { id }, data });
+  }
+
   public async getGuild(id: string): Promise<Guild> {
-    let guild = await this.prisma.guild.findUnique({ where: { guildId: id } });
-    guild ??= await this.prisma.guild.create({ data: { guildId: id } });
+    let guild = await this.prisma.guild.findUnique({ where: { id } });
+    guild ??= await this.prisma.guild.create({ data: { id } });
 
     this.prisma.$disconnect();
     return guild;
+  }
+
+  public async updateGuild(id: string, data: Partial<Guild>): Promise<void> {
+    await this.prisma.guild.update({ where: { id }, data });
   }
 }
