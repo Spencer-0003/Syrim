@@ -12,7 +12,7 @@ import { Event } from '@core/Event';
 import { COLORS } from '@utilities/Constants';
 
 // Export class
-export class HelpComponentEvent extends Event {
+export class SetGenderComponentEvent extends Event {
   async run(interaction: ComponentInteraction, id: string, data: Data): Promise<void> {
     const chosenGender = id.split('-')[1]?.split('.')[0];
 
