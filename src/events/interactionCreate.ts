@@ -9,7 +9,7 @@ import type { CommandInteraction, ComponentInteraction, Message, TextChannel, In
 import type { Guild } from '@prisma/client';
 import type { Data } from '@typings/command';
 import { Constants } from 'eris';
-import { COLORS, PERMISSIONS } from '@utilities/Constants';
+import { COLORS } from '@utilities/Constants';
 import { Event } from '@core/Event';
 
 // Export event
@@ -67,8 +67,8 @@ export class InteractionCreate extends Event {
           });
 
         const permissions = channel.permissionsOf(this.client.user.id);
-        const missingClientPerms = cmd.clientPermissions.filter(permission => !permissions?.has(permission as PERMISSIONS));
-        const missingUserPerms = cmd.userPermissions.filter(permission => !permissions?.has(permission as PERMISSIONS));
+        const missingClientPerms = cmd.clientPermissions.filter(permission => !permissions?.has(permission));
+        const missingUserPerms = cmd.userPermissions.filter(permission => !permissions?.has(permission));
         if ((cmd.clientPermissions || cmd.userPermissions) && (missingClientPerms.length || missingUserPerms.length))
           return interaction.createFollowup({
             embeds: [
