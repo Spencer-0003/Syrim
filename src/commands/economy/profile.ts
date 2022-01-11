@@ -38,7 +38,11 @@ export class Profile extends Command {
           title: user.username,
           description: profile.bio,
           color: COLORS[profile.color],
-          fields: [{ name: this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true }]
+          thumbnail: { url: user.avatarURL },
+          fields: [
+            { name: this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
+            { name: this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true }
+          ]
         }
       ],
       components:

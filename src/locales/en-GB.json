@@ -20,9 +20,11 @@
   "economy": {
     "GENDER": "Gender",
     "FEMALE": "Female",
+    "LOVER": "Lover",
     "MALE": "Male",
     "SET_GENDER": "Set Gender",
     "SET_GENDER_DESCRIPTION": "Use the buttons below to set your gender.",
+    "SINGLE": "Single",
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
     "UNDISCLOSED": "Undisclosed"
   },
