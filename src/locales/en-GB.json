@@ -1,0 +1,38 @@
+{
+  "global": {
+    "ERROR": "Error",
+    "NONE": "None"
+  },
+
+  "categories": {
+    "GENERAL": "General",
+    "NSFW": "NSFW"
+  },
+
+  "category_descriptions": {
+    "GENERAL": "General commands",
+    "NSFW": "Ooooh 😳"
+  },
+
+  "general": {
+    "HELP": "Help",
+    "HELP_DESCRIPTION": "If you'd like to support the development of Syrim or the developer, you can donate. All donations are appreciated.\n\n[Donate with Cryptocurrency](COINBASE_LINK)\n[Donate with PayPal](KOFI_LINK)",
+    "HELP_PERMISSIONS_YOU_NEED": "Permissions You Need",
+    "HELP_PERMISSIONS_I_NEED": "Permissions I Need",
+    "USAGE": "Usage"
+  },
+
+  "misc": {
+    "CATEGORY_DISABLED": "This server has disabled this category.",
+    "CHANNEL_NOT_NSFW": "This channel is not NSFW.",
+    "COMMAND_NOT_FOUND": "This command has been removed and is awaiting a cache update.",
+    "COMMAND_GUILD_ONLY": "This command can only be ran in a server.",
+    "COMMAND_OWNER_ONLY": "This command can only be ran by the owner.",
+    "COMMAND_NSFW_ONLY": "This command can only be ran in an NSFW channel.",
+    "LINKS": "**Links**",
+    "LINKS_DESCRIPTION": "[Invite me](INVITE_LINK) | [My server](SERVER_LINK)",
+    "MISSING_PERMISSIONS": "Missing Permissions",
+    "NOT_YOUR_BUTTON": "This is not your button to click.",
+    "USER_REQUIRED_PERMISSIONS": "You require the following permissions:"
+  }
+}
