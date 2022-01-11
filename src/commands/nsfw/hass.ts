@@ -11,7 +11,7 @@ import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 
 // Export class
-export class Boobs extends Command {
+export class HAss extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'hass',
