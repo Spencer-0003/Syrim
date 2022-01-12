@@ -56,6 +56,12 @@ export class Profile extends Command {
                     style: 1,
                     custom_id: `set_gender.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_GENDER`)
+                  },
+                  {
+                    type: Constants.ComponentTypes.BUTTON,
+                    style: 1,
+                    custom_id: `set_color.${user.id}`,
+                    label: this.client.locale.translate(data.locale, `economy.SET_COLOR`)
                   }
                 ]
               }

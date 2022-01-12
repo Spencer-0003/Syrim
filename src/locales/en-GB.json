@@ -22,9 +22,12 @@
     "FEMALE": "Female",
     "LOVER": "Lover",
     "MALE": "Male",
+    "SET_COLOR": "Set Color",
     "SET_GENDER": "Set Gender",
+    "SET_COLOR_DESCRIPTION": "Use the buttons below to set your color.",
     "SET_GENDER_DESCRIPTION": "Use the buttons below to set your gender.",
     "SINGLE": "Single",
+    "SUCCESSFULLY_SET_COLOR": "You've successfully set your color.",
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
     "UNDISCLOSED": "Undisclosed"
   },
