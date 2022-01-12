@@ -84,10 +84,10 @@ export class InteractionCreate extends Event {
       cmd.run(interaction, args, data);
     } else if (interaction.type === Constants.InteractionTypes.MESSAGE_COMPONENT) {
       const customId = interaction.data.custom_id;
-      const user = interaction.data.custom_id.split('.').slice(-1)[0];
+      const user = customId.split('.').slice(-1)[0];
       const locale = guildData ? guildData.locale : profile.locale;
 
-      if (interaction.member && user !== interaction.member.id) return interaction.createFollowup({ content: this.client.locale.translate(locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
+      if (user !== interaction.member?.id) return interaction.createFollowup({ content: this.client.locale.translate(locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
       this.client.componentCallbacks[Object.keys(this.client.componentCallbacks).filter(id => customId === id || customId.startsWith(id))[0]](interaction, customId, data);
     }
   }
