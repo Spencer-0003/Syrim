@@ -16,9 +16,8 @@ import { Event } from '@core/Event';
 export class InteractionCreate extends Event {
   async run(interaction: CommandInteraction | ComponentInteraction): Promise<Message | void> {
     const author = (interaction.user ?? interaction.member)!;
-    const authorId = author.id;
     const guildId = interaction.guildID;
-    const profile = await this.client.database.getUser(authorId);
+    const profile = await this.client.database.getUser(author.id);
     const guildData = guildId && (await this.client.database.getGuild(guildId));
 
     const data = {} as Data;
@@ -32,7 +31,7 @@ export class InteractionCreate extends Event {
       const channel = interaction.channel as TextChannel;
       const cmd = this.client.commands.find(cmd => cmd.name === interaction.data.name);
       if (!cmd) return interaction.createFollowup({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
-      else if (cmd.ownerOnly && authorId !== '806037166701674511') return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
+      else if (cmd.ownerOnly && author.id !== '806037166701674511') return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && guildId && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
 
