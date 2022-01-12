@@ -26,6 +26,8 @@ export class InteractionCreate extends Event {
     data.guild = guildData as Guild;
     data.locale = data.guild ? data.guild.locale : data.profile.locale;
 
+    await interaction.acknowledge((interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND && interaction.data.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
+
     if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND) {
       const channel = interaction.channel as TextChannel;
       const cmd = this.client.commands.find(cmd => cmd.name === interaction.data.name);
@@ -51,8 +53,6 @@ export class InteractionCreate extends Event {
             break;
         }
       });
-
-      await interaction.acknowledge((cmd.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
 
       if (data.guild) {
         if (data.guild.disabledCategories.indexOf(cmd.category) > -1)
@@ -87,7 +87,6 @@ export class InteractionCreate extends Event {
       const user = interaction.data.custom_id.split('.').slice(-1)[0];
       const locale = guildData ? guildData.locale : profile.locale;
 
-      await interaction.acknowledge();
       if (interaction.member && user !== interaction.member.id) return interaction.createFollowup({ content: this.client.locale.translate(locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
       this.client.componentCallbacks[Object.keys(this.client.componentCallbacks).filter(id => customId === id || customId.startsWith(id))[0]](interaction, customId, data);
     }

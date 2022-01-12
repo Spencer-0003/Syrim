@@ -22,6 +22,7 @@ export class HelpComponentEvent extends Event {
       components[0].components.push({
         type: Constants.ComponentTypes.BUTTON,
         style: 1,
+        disabled: chosenCategory === category,
         custom_id: `help-${category}.${(interaction.user ?? interaction.member)!.id}`,
         label: this.client.locale.translate(data.locale, `categories.${category.toUpperCase()}`)
       })

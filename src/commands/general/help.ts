@@ -38,6 +38,7 @@ export class Help extends Command {
       components[0].components.push({
         type: Constants.ComponentTypes.BUTTON,
         style: 1,
+        disabled: isCategory === category,
         custom_id: `help-${category}.${(interaction.user ?? interaction.member)!.id}`,
         label: this.client.locale.translate(data.locale, `categories.${category.toUpperCase()}`)
       })
