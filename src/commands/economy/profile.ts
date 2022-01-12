@@ -30,6 +30,18 @@ export class Profile extends Command {
 
   async run(interaction: CommandInteraction, args: Record<string, User>, data: Data) {
     const user = args.user ?? (interaction.member ?? interaction.user)!;
+
+    if (user.bot)
+      return interaction.createFollowup({
+        embeds: [
+          {
+            title: this.client.locale.translate(data.locale, 'global.ERROR'),
+            description: this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED'),
+            color: COLORS.RED
+          }
+        ]
+      });
+
     const profile = await this.client.database.getUser(user.id);
 
     return interaction.createFollowup({

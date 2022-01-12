@@ -18,6 +18,7 @@
   },
 
   "economy": {
+    "BOTS_NOT_ALLOWED": "Bots can't have profiles.",
     "GENDER": "Gender",
     "FEMALE": "Female",
     "LOVER": "Lover",
