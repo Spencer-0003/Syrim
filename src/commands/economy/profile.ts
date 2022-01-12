@@ -43,7 +43,6 @@ export class Profile extends Command {
       });
 
     const profile = await this.client.database.getUser(user.id);
-
     return interaction.createFollowup({
       embeds: [
         {
