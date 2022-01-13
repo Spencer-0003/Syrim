@@ -12,7 +12,7 @@ import { Event } from '@core/Event';
 import { COLORS } from '@utilities/Constants';
 
 // Export class
-export class SetColorComponentEvent extends Event {
+export class DeleteProfileComponentEvent extends Event {
   async run(interaction: ComponentInteraction, id: string, data: Data): Promise<void> {
     const confirmed = id.split('-')[1]?.split('.')[0];
 
