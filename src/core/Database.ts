@@ -30,6 +30,10 @@ export class Database {
     await this.prisma.user.update({ where: { id }, data });
   }
 
+  public async deleteUser(id: string): Promise<void> {
+    await this.prisma.user.delete({ where: { id } });
+  }
+
   public async getGuild(id: string): Promise<Guild> {
     let guild = await this.prisma.guild.findUnique({ where: { id } });
     guild ??= await this.prisma.guild.create({ data: { id } });

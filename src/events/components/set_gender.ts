@@ -44,19 +44,19 @@ export class SetGenderComponentEvent extends Event {
           components: [
             {
               type: Constants.ComponentTypes.BUTTON,
-              style: 1,
+              style: Constants.ButtonStyles.PRIMARY,
               custom_id: `set_gender-male.${(interaction.member ?? interaction.user)!.id}`,
               label: this.client.locale.translate(data.locale, `economy.MALE`)
             },
             {
               type: Constants.ComponentTypes.BUTTON,
-              style: 1,
+              style: Constants.ButtonStyles.PRIMARY,
               custom_id: `set_gender-female.${(interaction.member ?? interaction.user)!.id}`,
               label: this.client.locale.translate(data.locale, `economy.FEMALE`)
             },
             {
               type: Constants.ComponentTypes.BUTTON,
-              style: 1,
+              style: Constants.ButtonStyles.PRIMARY,
               custom_id: `set_gender-undisclosed.${(interaction.member ?? interaction.user)!.id}`,
               label: this.client.locale.translate(data.locale, `economy.UNDISCLOSED`)
             }

@@ -64,19 +64,19 @@ export class Profile extends Command {
                 components: [
                   {
                     type: Constants.ComponentTypes.BUTTON,
-                    style: 1,
+                    style: Constants.ButtonStyles.PRIMARY,
                     custom_id: `set_gender.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_GENDER`)
                   },
                   {
                     type: Constants.ComponentTypes.BUTTON,
-                    style: 1,
+                    style: Constants.ButtonStyles.PRIMARY,
                     custom_id: `set_color.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_COLOR`)
                   },
                   {
                     type: Constants.ComponentTypes.BUTTON,
-                    style: 4,
+                    style: Constants.ButtonStyles.DANGER,
                     custom_id: `delete_profile.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.DELETE_PROFILE`)
                   }

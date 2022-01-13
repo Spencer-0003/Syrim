@@ -11,7 +11,7 @@ import { Event } from '@core/Event';
 const { NODE_ENV, DEVELOPMENT_GUILD } = process.env;
 
 // Export class
-export class ReadyEvent extends Event {
+export class Ready extends Event {
   async run(): Promise<void> {
     this.client.editStatus('dnd', { name: 'Starting...', type: Constants.ActivityTypes.WATCHING });
 
