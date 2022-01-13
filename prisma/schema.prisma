@@ -13,7 +13,6 @@ datasource db {
 model Guild {
   id                 String   @id
   disabledCategories String[]
-  locale             String   @default("en-GB")
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 }
@@ -23,7 +22,6 @@ model User {
   bio       String   @default("No bio set.")
   color     String   @default("GREEN")
   gender    String   @default("Undisclosed")
-  locale    String   @default("en-GB")
   lover     String   @default("")
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())

@@ -20,10 +20,11 @@ export class InteractionCreate extends Event {
     const profile = await this.client.database.getUser(author.id);
     const guildData = guildId && (await this.client.database.getGuild(guildId));
 
-    const data = {} as Data;
-    data.profile = profile;
-    data.guild = guildData as Guild;
-    data.locale = data.guild ? data.guild.locale : data.profile.locale;
+    const data: Data = {
+      profile,
+      guild: guildData as Guild,
+      locale: interaction.guildLocale ?? interaction.locale
+    };
 
     await interaction.acknowledge((interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND && interaction.data.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
 
@@ -84,9 +85,8 @@ export class InteractionCreate extends Event {
     } else if (interaction.type === Constants.InteractionTypes.MESSAGE_COMPONENT) {
       const customId = interaction.data.custom_id;
       const user = customId.split('.').slice(-1)[0];
-      const locale = guildData ? guildData.locale : profile.locale;
 
-      if (user !== interaction.member?.id) return interaction.createFollowup({ content: this.client.locale.translate(locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
+      if (user !== interaction.member?.id) return interaction.createFollowup({ content: this.client.locale.translate(data.locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
       this.client.componentCallbacks[Object.keys(this.client.componentCallbacks).filter(id => customId === id || customId.startsWith(id))[0]](interaction, customId, data);
     }
   }
