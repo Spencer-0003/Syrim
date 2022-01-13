@@ -73,6 +73,12 @@ export class Profile extends Command {
                     style: 1,
                     custom_id: `set_color.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_COLOR`)
+                  },
+                  {
+                    type: Constants.ComponentTypes.BUTTON,
+                    style: 4,
+                    custom_id: `delete_profile.${user.id}`,
+                    label: this.client.locale.translate(data.locale, `economy.DELETE_PROFILE`)
                   }
                 ]
               }

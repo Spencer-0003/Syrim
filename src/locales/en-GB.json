@@ -19,6 +19,7 @@
 
   "economy": {
     "BOTS_NOT_ALLOWED": "Bots can't have profiles.",
+    "DELETE_PROFILE": "Delete Profile",
     "GENDER": "Gender",
     "FEMALE": "Female",
     "LOVER": "Lover",
