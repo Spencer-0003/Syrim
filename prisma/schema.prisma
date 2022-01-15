@@ -22,6 +22,7 @@ model User {
   bio        String   @default("No bio set.")
   color      String   @default("GREEN")
   gender     String   @default("Undisclosed")
+  level      Int      @default(0)
   lover      String   @default("")
   reputation String   @default("User")
   createdAt  DateTime @default(now())
