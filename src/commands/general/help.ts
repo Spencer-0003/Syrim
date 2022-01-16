@@ -32,7 +32,7 @@ export class Help extends Command {
   run(interaction: CommandInteraction, args: Record<string, string>, data: Data): Promise<Message> {
     const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd?.name === args.command_or_category.toLowerCase());
     const isCategory = args.command_or_category && !isCommand && this.client.categories.find(cat => cat === args.command_or_category.toLowerCase());
-    const components = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }] as ActionRow[];
+    const components: ActionRow[] = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }];
     const fields: EmbedField[] = [];
 
     this.client.categories.forEach(category =>
