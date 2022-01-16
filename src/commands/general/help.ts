@@ -33,6 +33,7 @@ export class Help extends Command {
     const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd?.name === args.command_or_category.toLowerCase());
     const isCategory = args.command_or_category && !isCommand && this.client.categories.find(cat => cat === args.command_or_category.toLowerCase());
     const components = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }] as ActionRow[];
+    const fields: EmbedField[] = [];
 
     this.client.categories.forEach(category =>
       components[0].components.push({
@@ -45,16 +46,15 @@ export class Help extends Command {
     );
 
     if (isCategory) {
-      const fields: EmbedField[] = [];
-
       this.client.commands
         .filter(cmd => cmd.category === isCategory)
-        .forEach(cmd => {
+        .forEach(cmd =>
           fields.push({
             name: cmd.name.charAt(0).toUpperCase() + cmd.name.slice(1),
-            value: cmd.description
-          });
-        });
+            value: cmd.description,
+            inline: true
+          })
+        );
 
       if (data.guild?.disabledCategories.indexOf(isCategory) !== -1)
         return interaction.createFollowup({
@@ -102,13 +102,45 @@ export class Help extends Command {
       });
     }
 
+    components.push({
+      type: Constants.ComponentTypes.ACTION_ROW,
+      components: [
+        {
+          type: Constants.ComponentTypes.BUTTON,
+          style: Constants.ButtonStyles.LINK,
+          label: 'Join the Discord Server',
+          url: 'https://discord.gg/86qE66qKX'
+        },
+        {
+          type: Constants.ComponentTypes.BUTTON,
+          style: Constants.ButtonStyles.LINK,
+          label: 'Become a Donator',
+          url: 'https://github.com/Spencer-0003/Syrim/blob/master/README.md#donations'
+        },
+        {
+          type: Constants.ComponentTypes.BUTTON,
+          style: Constants.ButtonStyles.LINK,
+          label: 'Invite me to your server',
+          url: 'https://discord.com/api/oauth2/authorize?client_id=862765256929706035&permissions=8560045566&scope=bot%20applications.commands'
+        }
+      ]
+    });
+
+    this.client.categories.forEach(category =>
+      fields.push({
+        name: this.client.locale.translate(data.locale, `categories.${category.toUpperCase()}`),
+        value: this.client.locale.translate(data.locale, `category_descriptions.${category.toUpperCase()}`),
+        inline: true
+      })
+    );
+
     return interaction.createFollowup({
       embeds: [
         {
           title: this.client.locale.translate(data.locale, 'general.HELP'),
           description: this.client.locale.translate(data.locale, 'general.HELP_DESCRIPTION'),
           color: COLORS.GREEN,
-          fields: [{ name: this.client.locale.translate(data.locale, 'misc.LINKS'), value: this.client.locale.translate(data.locale, 'misc.LINKS_DESCRIPTION').replace('INVITE_LINK', 'https://discord.com/api/oauth2/authorize?client_id=862765256929706035&permissions=8560045566&scope=bot%20applications.commands').replace('SERVER_LINK', 'https://discord.gg/86qE66qKXt'), inline: true }],
+          fields,
           thumbnail: { url: this.client.user.avatarURL },
           footer: { text: `${this.client.commands.length} commands loaded` }
         }

@@ -43,7 +43,7 @@
 
   "general": {
     "HELP": "Help",
-    "HELP_DESCRIPTION": "If you'd like to support the development of Syrim or the developer, you can donate. All donations are appreciated.\n\n[Donate](https://github.com/Spencer-0003/Syrim/blob/master/README.md#donations)",
+    "HELP_DESCRIPTION": "Click on one of the buttons below to select a category!",
     "HELP_PERMISSIONS_YOU_NEED": "Permissions You Need",
     "HELP_PERMISSIONS_I_NEED": "Permissions I Need",
     "USAGE": "Usage"

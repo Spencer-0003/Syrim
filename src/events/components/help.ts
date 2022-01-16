@@ -34,7 +34,7 @@ export class HelpComponentEvent extends Event {
         fields.push({
           name: cmd.name.charAt(0).toUpperCase() + cmd.name.slice(1),
           value: cmd.description,
-          inline: false
+          inline: true
         });
       });
 
