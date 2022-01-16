@@ -25,7 +25,8 @@ export class FourK extends Command {
       embeds: [
         {
           color: COLORS.GREEN,
-          image: { url: await this.client.nekoBot.get('4k') }
+          image: { url: await this.client.nekoBot.get('4k') },
+          footer: { icon_url: 'https://nekobot.xyz/favicon.ico', text: 'Powered by nekobot.xyz' }
         }
       ]
     });

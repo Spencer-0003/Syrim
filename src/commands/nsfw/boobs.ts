@@ -25,7 +25,8 @@ export class Boobs extends Command {
       embeds: [
         {
           color: COLORS.GREEN,
-          image: { url: await this.client.nekoBot.get('boobs') }
+          image: { url: await this.client.nekoBot.get('boobs') },
+          footer: { icon_url: 'https://nekobot.xyz/favicon.ico', text: 'Powered by nekobot.xyz' }
         }
       ]
     });
