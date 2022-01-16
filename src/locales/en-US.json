@@ -60,6 +60,7 @@
     "LINKS_DESCRIPTION": "[Invite me](INVITE_LINK) | [My server](SERVER_LINK)",
     "MISSING_PERMISSIONS": "Missing Permissions",
     "NOT_YOUR_BUTTON": "This is not your button to click.",
+    "POWERED_BY_NEKOBOT": "Powered by nekobot.xyz",
     "USER_REQUIRED_PERMISSIONS": "You require the following permissions:"
   }
 }
