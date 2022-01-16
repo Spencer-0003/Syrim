@@ -24,6 +24,7 @@ model User {
   gender     String   @default("Undisclosed")
   level      Int      @default(0)
   lover      String   @default("")
+  money      Int      @default(0)
   reputation String   @default("User")
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())

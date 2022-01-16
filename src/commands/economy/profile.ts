@@ -53,6 +53,7 @@ export class Profile extends Command {
           fields: [
             { name: '📛 ' + this.client.locale.translate(data.locale, 'economy.REPUTATION'), value: profile.reputation, inline: true },
             { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: profile.level.toString(), inline: true },
+            { name: '💰 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_MONEY'), value: profile.money.toString(), inline: true },
             { name: '💖 ' + this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
             { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true }
           ]
