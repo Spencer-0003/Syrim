@@ -11,7 +11,8 @@ import { execSync } from 'child_process';
 // Discord Constants
 export const COLORS: { [key: string]: number } = {
   RED: 0xff0000,
-  GREEN: 0x00ff00
+  GREEN: 0x00ff00,
+  LIGHT_BLUE: 0x00ffff
 };
 
 export type PERMISSIONS = Exclude<keyof typeof Constants['Permissions'], ['viewAuditLogs', 'stream', 'readMessages', 'externalEmojis', 'manageEmojis', 'useSlashCommands']>;

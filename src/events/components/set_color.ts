@@ -30,14 +30,14 @@ export class SetColorComponentEvent extends Event {
       });
     }
 
-    const components = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }] as ActionRow[];
+    const components: ActionRow[] = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }];
     Object.keys(COLORS).forEach(color => {
       components[0].components.push({
         type: Constants.ComponentTypes.BUTTON,
         style: Constants.ButtonStyles.PRIMARY,
         disabled: data.profile.color === color,
         custom_id: `set_color-${color}.${(interaction.member ?? interaction.user)!.id}`,
-        label: color.charAt(0) + color.slice(1).toLowerCase()
+        label: color.charAt(0) + color.slice(1).toLowerCase().replace('_', ' ')
       });
     });
 
