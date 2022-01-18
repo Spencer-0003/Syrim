@@ -17,6 +17,9 @@ Due to Syrim being so early into development, there is no live version at the mo
 - [`PostgreSQL`]: To store data.
 - [`NekoBot-API-Key`]: To use NSFW commands.
 
+### Optional Requirements
+- [`Sentry`]: To log errors.
+
 ## Support Syrim
 
 ### Starring/forking
@@ -39,3 +42,4 @@ To delete your guild data, you need to make a data deletion request in the [serv
 [`nekobot-api-key`]: https://www.nekobot.xyz/
 [`node.js`]: https://nodejs.org/en/download/current/
 [`postgresql`]: https://www.postgresql.org/download/
+[`sentry`]: https://sentry.io
