@@ -55,7 +55,7 @@ export class Anime extends Command {
       embeds: [
         {
           title: animeData.Media.title.romaji,
-          description: animeData.Media.description.replace(/<(.|\n)*?>/g, ''),
+          description: animeData.Media.description.replace(/<br>/g, ''),
           thumbnail: { url: animeData.Media.coverImage.large },
           fields: [
             { name: this.client.locale.translate(data.locale, 'anime.EPISODES'), value: animeData.Media.episodes, inline: true },
