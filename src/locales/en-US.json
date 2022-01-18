@@ -27,6 +27,7 @@
     "GLOBAL_LEVEL": "Global Level",
     "GLOBAL_MONEY": "Global Money",
     "FEMALE": "Female",
+    "INVALID_BIRTHDAY": "You've entered an invalid birthday.",
     "LOVER": "Lover",
     "MALE": "Male",
     "REPUTATION": "Reputation",
@@ -37,6 +38,7 @@
     "SINGLE": "Single",
     "SUCCESSFULLY_DELETED_PROFILE": "You've successfully delete your profile.",
     "SUCCESSFULLY_SET_BIO": "You've successfully set your bio.",
+    "SUCCESSFULLY_SET_BIRTHDAY": "You've successfully set your birthday.",
     "SUCCESSFULLY_SET_COLOR": "You've successfully set your color.",
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
     "UNDISCLOSED": "Undisclosed"
