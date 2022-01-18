@@ -6,6 +6,12 @@
     "SUCCESS": "Success"
   },
 
+  "anime": {
+    "AVERAGE_RATING": "Average Rating",
+    "EPISODES": "Episodes",
+    "STATUS": "Status"
+  },
+
   "categories": {
     "ECONOMY": "Economy",
     "GENERAL": "General",
@@ -63,6 +69,7 @@
     "LINKS_DESCRIPTION": "[Invite me](INVITE_LINK) | [My server](SERVER_LINK)",
     "MISSING_PERMISSIONS": "Missing Permissions",
     "NOT_YOUR_BUTTON": "This is not your button to click.",
+    "POWERED_BY_ANILIST": "Powered by anilist.co",
     "POWERED_BY_NEKOBOT": "Powered by nekobot.xyz",
     "USER_REQUIRED_PERMISSIONS": "You require the following permissions:"
   }
