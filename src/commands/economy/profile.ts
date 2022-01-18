@@ -12,6 +12,15 @@ import { Constants } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 
+const getAge = (birthday: Date): number => {
+  const today = new Date();
+  const month = today.getMonth() - birthday.getMonth();
+  let age = today.getFullYear() - birthday.getFullYear();
+  if (month < 0 || (month === 0 && today.getDate() < birthday.getDate())) age--;
+
+  return age;
+};
+
 export class Profile extends Command {
   constructor(client: SyrimClient) {
     super(client, {
@@ -43,6 +52,7 @@ export class Profile extends Command {
       });
 
     const profile = await this.client.database.getUser(user.id);
+    const xpNeeded = profile.level ** 2 + 25 * profile.level;
     return interaction.createFollowup({
       embeds: [
         {
@@ -52,10 +62,11 @@ export class Profile extends Command {
           thumbnail: { url: user.avatarURL },
           fields: [
             { name: '📛 ' + this.client.locale.translate(data.locale, 'economy.REPUTATION'), value: profile.reputation, inline: true },
-            { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: profile.level.toString(), inline: true },
+            { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: `${profile.level}\n(${profile.xp.toLocaleString('en-US')}/${xpNeeded.toLocaleString('en-US')})`, inline: true },
             { name: '💰 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_MONEY'), value: profile.money.toString(), inline: true },
             { name: '💖 ' + this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
-            { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true }
+            { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true },
+            { name: '🎂 ' + this.client.locale.translate(data.locale, 'economy.BIRTHDAY'), value: profile.birthday ? `${profile.birthday.toLocaleDateString(data.locale)} (${getAge(profile.birthday)})` : this.client.locale.translate(data.locale, 'economy.UNDISCLOSED'), inline: true }
           ]
         }
       ],
