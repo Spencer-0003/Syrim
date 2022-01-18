@@ -42,6 +42,7 @@ export class Locale {
 
   public translate(locale: string, field: string): string {
     const category = field.indexOf('.') > -1 && field.split('.')[0];
+    if (!this.locales[locale]) locale = 'en-US';
     if (!category) return (this.locales[locale][field] as unknown as string) ?? 'TRANSLATION_NOT_FOUND';
     return this.locales[locale][category][field.split('.')[1]] ?? 'TRANSLATION_NOT_FOUND';
   }
