@@ -56,6 +56,10 @@
     "HELP_DESCRIPTION": "Click on one of the buttons below to select a category!",
     "HELP_PERMISSIONS_YOU_NEED": "Permissions You Need",
     "HELP_PERMISSIONS_I_NEED": "Permissions I Need",
+    "HOST": "Host",
+    "SERVERS": "Servers",
+    "SHARDS": "Shards",
+    "STATS": "Stats",
     "USAGE": "Usage"
   },
 
