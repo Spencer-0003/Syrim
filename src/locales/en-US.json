@@ -25,6 +25,7 @@
   },
 
   "economy": {
+    "ACCEPT_PROPOSAL": "Accept proposal",
     "BIRTHDAY": "Birthday",
     "BOTS_NOT_ALLOWED": "Bots can't have profiles.",
     "DELETE_PROFILE": "Delete Profile",
@@ -36,6 +37,8 @@
     "INVALID_BIRTHDAY": "You've entered an invalid birthday.",
     "LOVER": "Lover",
     "MALE": "Male",
+    "MARRIAGE": "Marriage",
+    "NEW_PROPOSAL": "USER, you have a new proposal from PROPOSER. Press the button below to accept their proposal.",
     "PROFILE_DOESNT_EXIST": "This user doesn't have a profile, you should tell them to make one!",
     "REPUTATION": "Reputation",
     "SET_COLOR": "Set Color",
@@ -43,12 +46,14 @@
     "SET_COLOR_DESCRIPTION": "Use the buttons below to set your color.",
     "SET_GENDER_DESCRIPTION": "Use the buttons below to set your gender.",
     "SINGLE": "Single",
+    "SPOUSE_ALREADY_MARRIED": "This person is already married.",
     "SUCCESSFULLY_DELETED_PROFILE": "You've successfully delete your profile.",
     "SUCCESSFULLY_SET_BIO": "You've successfully set your bio.",
     "SUCCESSFULLY_SET_BIRTHDAY": "You've successfully set your birthday.",
     "SUCCESSFULLY_SET_COLOR": "You've successfully set your color.",
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
-    "UNDISCLOSED": "Undisclosed"
+    "UNDISCLOSED": "Undisclosed",
+    "YOURE_ALREADY_MARRIED": "You're already married."
   },
 
   "general": {
