@@ -5,12 +5,10 @@ services:
     container_name: postgres
     image: postgres:14.1-alpine3.15
     restart: always
-    networks:
-      - syrim
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: ${DATABASE_URL}
+      POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
 
@@ -19,12 +17,5 @@ services:
     build: .
     depends_on:
       - postgres
-    networks:
-      - syrim
-    volumes:
-      - .:/syrim
-      - /syrim/node_modules
-
-networks:
-  syrim:
-    internal: true
+    env_file:
+      - .env
