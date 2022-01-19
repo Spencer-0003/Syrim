@@ -1,0 +1,16 @@
+dist/
+node_modules/
+
+.deepsource.toml
+.eslintignore
+.eslintrc
+.gitattributes
+.gitignore
+.prettierrc
+
+LICENSE
+README.md
+
+renovate.json
+tsconfig.tsbuildinfo
+yarn.lock
