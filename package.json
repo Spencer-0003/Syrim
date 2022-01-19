@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "prettier --config .prettierrc ./src/**/*.ts --write && eslint . --ext .ts",
     "build": "tsc",
+    "docker:start": "prisma migrate deploy; yarn run start",
     "start": "node dist/index"
   },
   "dependencies": {
