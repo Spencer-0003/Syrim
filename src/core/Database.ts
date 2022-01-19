@@ -18,6 +18,10 @@ export class Database {
   }
 
   // Functions
+  public async getUserIfExists(id: string): Promise<User | null> {
+    return await this.prisma.user.findUnique({ where: { id } });
+  }
+
   public async getUser(id: string): Promise<User> {
     let user = await this.prisma.user.findUnique({ where: { id } });
     user ??= await this.prisma.user.create({ data: { id } });

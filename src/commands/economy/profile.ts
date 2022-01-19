@@ -5,7 +5,7 @@
  */
 
 // Import classes, types & constants
-import type { CommandInteraction, User } from 'eris';
+import type { CommandInteraction, Message, User } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { Data } from '@typings/command';
 import { Constants } from 'eris';
@@ -37,7 +37,7 @@ export class Profile extends Command {
     });
   }
 
-  async run(interaction: CommandInteraction, args: Record<string, User>, data: Data) {
+  async run(interaction: CommandInteraction, args: Record<string, User>, data: Data): Promise<Message> {
     const user = args.user ?? (interaction.member ?? interaction.user)!;
 
     if (user.bot)
@@ -51,7 +51,18 @@ export class Profile extends Command {
         ]
       });
 
-    const profile = await this.client.database.getUser(user.id);
+    const profile = await this.client.database.getUserIfExists(user.id);
+    if (!profile)
+      return interaction.createFollowup({
+        embeds: [
+          {
+            title: this.client.locale.translate(data.locale, 'global.ERROR'),
+            description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
+            color: COLORS.RED
+          }
+        ]
+      });
+
     const xpNeeded = profile.level ** 2 + 25 * profile.level;
     return interaction.createFollowup({
       embeds: [

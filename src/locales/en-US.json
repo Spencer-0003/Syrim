@@ -36,6 +36,7 @@
     "INVALID_BIRTHDAY": "You've entered an invalid birthday.",
     "LOVER": "Lover",
     "MALE": "Male",
+    "PROFILE_DOESNT_EXIST": "This user doesn't have a profile, you should tell them to make one!",
     "REPUTATION": "Reputation",
     "SET_COLOR": "Set Color",
     "SET_GENDER": "Set Gender",
