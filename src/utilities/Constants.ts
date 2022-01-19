@@ -18,6 +18,4 @@ export const COLORS: { [key: string]: number } = {
 export type PERMISSIONS = Exclude<keyof typeof Constants['Permissions'], ['viewAuditLogs', 'stream', 'readMessages', 'externalEmojis', 'manageEmojis', 'useSlashCommands']>;
 
 // Git Constants
-export const commitHash = (() => {
-  return execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim().slice(0, 8);
-})();
+export const commitHash = execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim().slice(0, 8);
