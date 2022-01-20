@@ -68,7 +68,7 @@ export class Marry extends Command {
         ]
       });
 
-    await this.client.redis.set(`marriage_request:${args.user.id}`, interaction.member!.id);
+    await this.client.redis.set(`marriage_request:${args.user.id}`, interaction.member!.id, 'EX', 120);
     return interaction.createFollowup({
       content: `<@${args.user.id}>`,
       embeds: [
