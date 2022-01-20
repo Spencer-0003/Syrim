@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 
 services:
   postgres:
@@ -11,11 +11,19 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+  
+  redis:
+    container_name: redis
+    image: redis:alpine3.15
+    restart: always
+    ports:
+      - 6379:6379
 
   syrim:
     container_name: bot
     build: .
     depends_on:
       - postgres
+      - redis
     env_file:
       - .env

@@ -14,6 +14,7 @@ import { Client } from 'eris';
 import { NekoBot } from 'nekobot-api';
 import { Database } from '@core/Database';
 import { Locale } from '@core/Locale';
+import Redis from 'ioredis';
 
 // Export client
 export class SyrimClient extends Client {
@@ -24,6 +25,7 @@ export class SyrimClient extends Client {
   database: Database;
   locale: Locale;
   nekoBot: NekoBot;
+  redis: Redis.Redis;
 
   // Constructor
   constructor(token: string) {
@@ -43,6 +45,7 @@ export class SyrimClient extends Client {
     this.database = new Database();
     this.locale = new Locale(join(__dirname, '../locales'));
     this.nekoBot = new NekoBot(process.env.NEKOBOT_API_KEY);
+    this.redis = new Redis(process.env.REDIS_URL);
   }
 
   // Getters

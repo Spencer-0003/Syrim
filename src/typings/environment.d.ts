@@ -12,7 +12,7 @@ declare namespace NodeJS {
     NODE_ENV: string;
     NEKOBOT_API_KEY: string;
     npm_package_version: string;
+    REDIS_URL: string;
     SENTRY_DSN: string;
-    STATCORD_API_KEY: string;
   }
 }
