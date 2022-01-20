@@ -1,4 +1,4 @@
-FROM node:17.3.1-alpine3.15
+FROM node:17.4.0-alpine3.15
 LABEL MAINTAINER="Spencer-0003"
 
 RUN apk add git
