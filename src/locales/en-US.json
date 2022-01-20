@@ -47,12 +47,14 @@
     "SET_GENDER_DESCRIPTION": "Use the buttons below to set your gender.",
     "SINGLE": "Single",
     "SPOUSE_ALREADY_MARRIED": "This person is already married.",
+    "SPOUSE_ALREADY_REQUESTED": "<@SPOUSE> has already got a marriage request from <@SENDER>",
     "SUCCESSFULLY_DELETED_PROFILE": "You've successfully delete your profile.",
     "SUCCESSFULLY_SET_BIO": "You've successfully set your bio.",
     "SUCCESSFULLY_SET_BIRTHDAY": "You've successfully set your birthday.",
     "SUCCESSFULLY_SET_COLOR": "You've successfully set your color.",
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
     "UNDISCLOSED": "Undisclosed",
+    "USER_ALREADY_REQUESTED": "You already have a marriage request from <@SENDER>",
     "YOURE_ALREADY_MARRIED": "You're already married."
   },
 
