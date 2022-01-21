@@ -15,6 +15,7 @@ Due to Syrim being so early into development, there is no live version at the mo
 ### Requirements
 - [`Node.js`]: To run Syrim.
 - [`PostgreSQL`]: To store data.
+- [`Redis`]: To store temporary data and cache.
 - [`NekoBot-API-Key`]: To use NSFW commands.
 
 ### Optional Requirements
@@ -42,4 +43,5 @@ To delete your guild data, you need to make a data deletion request in the [serv
 [`nekobot-api-key`]: https://www.nekobot.xyz/
 [`node.js`]: https://nodejs.org/en/download/current/
 [`postgresql`]: https://www.postgresql.org/download/
+[`redis`]: https://redis.io/download
 [`sentry`]: https://sentry.io
