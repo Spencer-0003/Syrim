@@ -16,7 +16,7 @@ export class Marry extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'marry',
-      description: 'View your economy profile.',
+      description: 'Marry a person.',
       category: 'economy',
       guildOnly: true,
       options: [
@@ -33,6 +33,17 @@ export class Marry extends Command {
   async run(interaction: CommandInteraction, args: Record<string, User>, data: Data): Promise<Message> {
     const userData = await this.client.database.getUser(interaction.member!.id);
     const spouseData = await this.client.database.getUserIfExists(args.user.id);
+
+    if (interaction.member!.id === args.user.id)
+      return interaction.createFollowup({
+        embeds: [
+          {
+            title: this.client.locale.translate(data.locale, 'global.ERROR'),
+            description: this.client.locale.translate(data.locale, 'economy.YOU_CANT_MARRY_YOURSELF'),
+            color: COLORS.RED
+          }
+        ]
+      });
 
     if (!spouseData)
       return interaction.createFollowup({
@@ -55,14 +66,17 @@ export class Marry extends Command {
         ]
       });
 
-    const pendingUserProposal = await this.client.redis.get(`marriage_request:${interaction.member!.id}`) as string;
-    const pendingSpouseProposal = await this.client.redis.get(`marriage_request:${args.user.id}`) as string;
+    const pendingUserProposal = (await this.client.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
+    const pendingSpouseProposal = (await this.client.redis.get(`marriage_request:${args.user.id}`)) as string;
     if (pendingUserProposal || pendingSpouseProposal)
       return interaction.createFollowup({
         embeds: [
           {
             title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, `economy.${pendingUserProposal ? 'USER' : 'SPOUSE'}_ALREADY_REQUESTED`).replace('SPOUSE', pendingSpouseProposal).replace('SENDER', pendingUserProposal),
+            description: this.client.locale
+              .translate(data.locale, `economy.${pendingUserProposal ? 'USER' : 'SPOUSE'}_ALREADY_REQUESTED`)
+              .replace('SPOUSE', pendingSpouseProposal)
+              .replace('SENDER', pendingUserProposal),
             color: COLORS.RED
           }
         ]
