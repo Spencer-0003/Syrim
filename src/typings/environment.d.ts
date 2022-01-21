@@ -14,5 +14,6 @@ declare namespace NodeJS {
     npm_package_version: string;
     REDIS_URL: string;
     SENTRY_DSN: string;
+    STATCORD_API_KEY: string;
   }
 }

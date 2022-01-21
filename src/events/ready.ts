@@ -35,6 +35,8 @@ export class Ready extends Event {
       name: `${this.client.guilds.size} guilds | v${this.client.version}`,
       type: Constants.ActivityTypes.WATCHING
     });
+
+    if (process.env.NODE_ENV === 'production' && process.env.STATCORD_API_KEY) this.client.statcord.autopost();
     console.log("[Syrim]: I'm online.");
   }
 }

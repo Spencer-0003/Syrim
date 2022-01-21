@@ -22,7 +22,8 @@
     "graphql-request": "^3.7.0",
     "ioredis": "^4.28.3",
     "module-alias": "2.2.2",
-    "nekobot-api": "2.1.0"
+    "nekobot-api": "2.1.0",
+    "statcord-eris": "^1.1.4"
   },
   "devDependencies": {
     "@types/ioredis": "4.28.7",

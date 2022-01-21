@@ -12,6 +12,7 @@ import { readdirSync } from 'fs';
 import { join } from 'path';
 import { Client } from 'eris';
 import { NekoBot } from 'nekobot-api';
+import { Client as StatcordClient } from 'statcord-eris';
 import { Database } from '@core/Database';
 import { Locale } from '@core/Locale';
 import Redis from 'ioredis';
@@ -26,6 +27,7 @@ export class SyrimClient extends Client {
   locale: Locale;
   nekoBot: NekoBot;
   redis: Redis.Redis;
+  statcord: StatcordClient;
 
   // Constructor
   constructor(token: string) {
@@ -46,6 +48,7 @@ export class SyrimClient extends Client {
     this.locale = new Locale(join(__dirname, '../locales'));
     this.nekoBot = new NekoBot(process.env.NEKOBOT_API_KEY);
     this.redis = new Redis(process.env.REDIS_URL);
+    this.statcord = new StatcordClient({ client: this, key: process.env.STATCORD_API_KEY });
   }
 
   // Getters

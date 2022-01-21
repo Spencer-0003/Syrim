@@ -20,6 +20,7 @@ Due to Syrim being so early into development, there is no live version at the mo
 
 ### Optional Requirements
 - [`Sentry`]: To log errors.
+- [`Statcord`]: To log interactions.
 
 ## Support Syrim
 
@@ -43,5 +44,6 @@ To delete your guild data, you need to make a data deletion request in the [serv
 [`nekobot-api-key`]: https://www.nekobot.xyz/
 [`node.js`]: https://nodejs.org/en/download/current/
 [`postgresql`]: https://www.postgresql.org/download/
-[`redis`]: https://redis.io/download
-[`sentry`]: https://sentry.io
+[`redis`]: https://redis.io/download/
+[`sentry`]: https://sentry.io/
+[`statcord`]: https://statcord.com/
