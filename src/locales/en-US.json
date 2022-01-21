@@ -65,12 +65,15 @@
   },
 
   "general": {
+    "BECOME_A_DONATOR": "Become a Donator",
     "DISCORD": "Discord",
     "HELP": "Help",
     "HELP_DESCRIPTION": "Click on one of the buttons below to select a category!",
     "HELP_PERMISSIONS_YOU_NEED": "Permissions You Need",
     "HELP_PERMISSIONS_I_NEED": "Permissions I Need",
     "HOST": "Host",
+    "INVITE_ME": "Invite me to your server",
+    "JOIN_THE_DISCORD": "Join the Discord Server",
     "SERVERS": "Server(s)",
     "SHARDS": "Shard(s)",
     "SOFTWARE": "Software",

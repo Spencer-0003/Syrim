@@ -108,19 +108,19 @@ export class Help extends Command {
         {
           type: Constants.ComponentTypes.BUTTON,
           style: Constants.ButtonStyles.LINK,
-          label: 'Join the Discord Server',
+          label: this.client.locale.translate(data.locale, 'general.JOIN_THE_DISCORD'),
           url: 'https://discord.gg/86qE66qKX'
         },
         {
           type: Constants.ComponentTypes.BUTTON,
           style: Constants.ButtonStyles.LINK,
-          label: 'Become a Donator',
+          label: this.client.locale.translate(data.locale, 'general.BECOME_A_DONATOR'),
           url: 'https://github.com/Spencer-0003/Syrim/blob/master/README.md#donations'
         },
         {
           type: Constants.ComponentTypes.BUTTON,
           style: Constants.ButtonStyles.LINK,
-          label: 'Invite me to your server',
+          label: this.client.locale.translate(data.locale, 'general.INVITE_ME'),
           url: 'https://discord.com/api/oauth2/authorize?client_id=862765256929706035&permissions=8560045566&scope=bot%20applications.commands'
         }
       ]
