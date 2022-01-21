@@ -96,7 +96,7 @@ export class SyrimClient extends Client {
     });
 
     if (!webhook.token) {
-      this.deleteWebhook(webhook.id);
+      await this.deleteWebhook(webhook.id);
       webhook = await this.createChannelWebhook(channelId, {
         name: this.user.username,
         avatar: this.user.avatarURL

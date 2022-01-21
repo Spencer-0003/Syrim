@@ -9,7 +9,7 @@ Due to Syrim being so early into development, there is no live version at the mo
 ## Self-hosting
 <div align="center">
     <h1>Disclaimer</h1>
-    You are not allowed to re-upload Syrim to bot lists such as top.gg and self hosting support will not be provided.
+    You are not allowed to re-upload Syrim to bot lists such as top.gg and self-hosting support will not be provided.
 </div>
 
 ### Requirements
