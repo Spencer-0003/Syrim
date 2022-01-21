@@ -34,12 +34,12 @@ export class Marry extends Command {
     const userData = await this.client.database.getUser(interaction.member!.id);
     const spouseData = await this.client.database.getUserIfExists(args.user.id);
 
-    if (interaction.member!.id === args.user.id)
+    if (interaction.member!.id === args.user.id || args.user.bot)
       return interaction.createFollowup({
         embeds: [
           {
             title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, 'economy.YOU_CANT_MARRY_YOURSELF'),
+            description: this.client.locale.translate(data.locale, interaction.member!.id === args.user.id ? 'economy.YOU_CANT_MARRY_YOURSELF' : 'economy.YOU_CANT_MARRY_BOTS'),
             color: COLORS.RED
           }
         ]

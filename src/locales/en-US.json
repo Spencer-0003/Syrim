@@ -60,6 +60,7 @@
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
     "UNDISCLOSED": "Undisclosed",
     "USER_ALREADY_REQUESTED": "You already have a marriage request from <@SENDER>",
+    "YOU_CANT_MARRY_BOTS": "You can't marry bots.",
     "YOU_CANT_MARRY_YOURSELF": "You can't marry yourself.",
     "YOURE_ALREADY_MARRIED": "You're already married."
   },
