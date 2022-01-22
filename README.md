@@ -38,7 +38,7 @@ Using the bot is free but providing the bot is not. Syrim will never lock comman
 
 ## Legal
 Syrim complies with the GDPR, to delete your profile use the `profile` command and press the 'Delete Profile' button.
-To delete your guild data, you need to make a data deletion request in the [server](https://discord.gg/support_server_coming_soon)
+To delete your guild data, you need to make a data deletion request in the [server](https://discord.gg/P5T7MQvPEG)
 
 <!----------------- LINKS --------------->
 [`nekobot-api-key`]: https://www.nekobot.xyz/

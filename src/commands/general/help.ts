@@ -109,7 +109,7 @@ export class Help extends Command {
           type: Constants.ComponentTypes.BUTTON,
           style: Constants.ButtonStyles.LINK,
           label: this.client.locale.translate(data.locale, 'general.JOIN_THE_DISCORD'),
-          url: 'https://discord.gg/86qE66qKX'
+          url: 'https://discord.gg/P5T7MQvPEG'
         },
         {
           type: Constants.ComponentTypes.BUTTON,
