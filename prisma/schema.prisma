@@ -10,6 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum BlacklistType {
+  GUILD
+  USER
+}
+
+model Blacklist {
+  id        String        @id
+  type      BlacklistType
+  moderator String
+  reason    String
+}
+
 model Guild {
   id                 String   @id
   disabledCategories String[]

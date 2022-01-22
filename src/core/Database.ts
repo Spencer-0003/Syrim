@@ -5,7 +5,7 @@
  */
 
 // Import classes & types
-import type { Guild, User } from '@prisma/client';
+import type { Blacklist, Guild, User } from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
 
 export class Database {
@@ -48,5 +48,13 @@ export class Database {
 
   public async updateGuild(id: string, data: Partial<Guild>): Promise<void> {
     await this.prisma.guild.update({ where: { id }, data });
+  }
+
+  public async createBlacklist(id: string, moderator: string, blacklistType: 'GUILD' | 'USER', reason: string): Promise<void> {
+    await this.prisma.blacklist.create({ data: { id, moderator, type: blacklistType, reason } });
+  }
+
+  public async getBlacklist(id: string): Promise<Blacklist | null> {
+    return await this.prisma.blacklist.findUnique({ where: { id } });
   }
 }
