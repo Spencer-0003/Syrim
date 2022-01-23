@@ -67,13 +67,14 @@ export class Help extends Command {
           ]
         });
 
+      const isNsfw = isCategory === 'nsfw';
       return interaction.createFollowup({
         embeds: [
           {
-            title: isCategory === 'nsfw' ? 'NSFW' : isCategory.charAt(0).toUpperCase() + isCategory.slice(1),
-            description: isCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
-            color: isCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? COLORS.RED : COLORS.GREEN,
-            fields: isCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? [] : fields
+            title: isNsfw ? 'NSFW' : isCategory.charAt(0).toUpperCase() + isCategory.slice(1),
+            description: isNsfw && !(interaction.channel as TextChannel).nsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
+            color: isNsfw && !(interaction.channel as TextChannel).nsfw ? COLORS.RED : COLORS.GREEN,
+            fields: isNsfw && !(interaction.channel as TextChannel).nsfw ? [] : fields
           }
         ],
         components
