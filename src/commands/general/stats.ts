@@ -13,20 +13,21 @@ import { arch, platform, release } from 'os';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 
-const formatHost = (platform: string, release: string, arch: string): string => {
-  switch (platform) {
+const formatHost = (): string => {
+  let platformStr = platform() as string;
+  switch (platform()) {
     case 'darwin':
-      platform = 'macOS';
+      platformStr = 'macOS';
       break;
     case 'linux':
-      platform = 'Linux';
+      platformStr = 'Linux';
       break;
     case 'win32':
-      platform = 'Windows';
+      platformStr = 'Windows';
       break;
   }
 
-  return `${platform} ${release} ${arch}`;
+  return `${platformStr} ${release()} ${arch()}`;
 };
 
 // Export class
@@ -47,8 +48,12 @@ export class Stats extends Command {
           color: COLORS.GREEN,
           fields: [
             { name: this.client.locale.translate(data.locale, 'general.SOFTWARE'), value: `Syrim v${this.client.version}\nEris v${VERSION}`, inline: true },
-            { name: this.client.locale.translate(data.locale, 'general.DISCORD'), value: `${this.client.guilds.size.toLocaleString(data.locale)} ${this.client.locale.translate(data.locale, 'general.SERVERS')}\n${this.client.users.size} ${this.client.locale.translate(data.locale, 'general.USERS')}\n${this.client.shards.size} ${this.client.locale.translate(data.locale, 'general.SHARDS')}`, inline: true },
-            { name: this.client.locale.translate(data.locale, 'general.HOST'), value: formatHost(platform(), release(), arch()), inline: false }
+            {
+              name: this.client.locale.translate(data.locale, 'general.DISCORD'),
+              value: `${this.client.guilds.size.toLocaleString(data.locale)} ${this.client.locale.translate(data.locale, 'general.SERVERS')}\n${this.client.users.size} ${this.client.locale.translate(data.locale, 'general.USERS')}\n${this.client.shards.size} ${this.client.locale.translate(data.locale, 'general.SHARDS')}\n${interaction.guildID ? this.client.guilds.get(interaction.guildID)?.shard.latency : this.client.shards.get(0)!.latency}ms ${this.client.locale.translate(data.locale, 'general.PING')}`,
+              inline: true
+            },
+            { name: this.client.locale.translate(data.locale, 'general.HOST'), value: formatHost(), inline: false }
           ]
         }
       ]
