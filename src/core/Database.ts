@@ -18,7 +18,7 @@ export class Database {
   }
 
   // Functions
-  public async getUserIfExists(id: string): Promise<User | null> {
+  public getUserIfExists(id: string): Promise<User | null> {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
@@ -54,7 +54,7 @@ export class Database {
     await this.prisma.blacklist.create({ data: { id, moderator, type: blacklistType, reason } });
   }
 
-  public async getBlacklist(id: string): Promise<Blacklist | null> {
+  public getBlacklist(id: string): Promise<Blacklist | null> {
     return this.prisma.blacklist.findUnique({ where: { id } });
   }
 }
