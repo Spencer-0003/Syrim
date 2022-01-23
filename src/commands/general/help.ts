@@ -5,10 +5,10 @@
  */
 
 // Import classes, types & constants
-import type { ActionRow, CommandInteraction, EmbedField, Message, TextChannel } from 'eris';
+import type { ActionRow, CommandInteraction, EmbedField, Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { Data } from '@typings/command';
-import { Constants } from 'eris';
+import { Constants, GuildChannel } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 
@@ -67,13 +67,14 @@ export class Help extends Command {
           ]
         });
 
+      const channelIsNsfw = (interaction.channel instanceof GuildChannel && interaction.channel.nsfw);
       return interaction.createFollowup({
         embeds: [
           {
             title: isCategory === 'nsfw' ? 'NSFW' : isCategory.charAt(0).toUpperCase() + isCategory.slice(1),
-            description: isCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
-            color: isCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? COLORS.RED : COLORS.GREEN,
-            fields: isCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? [] : fields
+            description: isCategory === 'nsfw' && !channelIsNsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
+            color: isCategory === 'nsfw' && !channelIsNsfw ? COLORS.RED : COLORS.GREEN,
+            fields: isCategory === 'nsfw' && !channelIsNsfw ? [] : fields
           }
         ],
         components

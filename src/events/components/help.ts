@@ -5,9 +5,9 @@
  */
 
 // Import classes, constants & types
-import type { ActionRow, ComponentInteraction, EmbedField, TextChannel } from 'eris';
+import type { ActionRow, ComponentInteraction, EmbedField } from 'eris';
 import type { Data } from '@typings/command';
-import { Constants } from 'eris';
+import { Constants, GuildChannel } from 'eris';
 import { Event } from '@core/Event';
 import { COLORS } from '@utilities/Constants';
 
@@ -38,13 +38,14 @@ export class HelpComponentEvent extends Event {
         });
       });
 
+    const channelIsNsfw = (interaction.channel instanceof GuildChannel && interaction.channel.nsfw);
     return interaction.editParent({
       embeds: [
         {
           title: chosenCategory === 'nsfw' ? 'NSFW' : chosenCategory.charAt(0).toUpperCase() + chosenCategory.slice(1),
-          description: chosenCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${chosenCategory.toUpperCase()}`),
-          color: chosenCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? COLORS.RED : COLORS.GREEN,
-          fields: chosenCategory === 'nsfw' && !(interaction.channel as TextChannel).nsfw ? [] : fields
+          description: chosenCategory === 'nsfw' && !channelIsNsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${chosenCategory.toUpperCase()}`),
+          color: chosenCategory === 'nsfw' && !channelIsNsfw ? COLORS.RED : COLORS.GREEN,
+          fields: chosenCategory === 'nsfw' && !channelIsNsfw ? [] : fields
         }
       ],
       components
