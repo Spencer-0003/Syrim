@@ -19,7 +19,7 @@ export class Database {
 
   // Functions
   public async getUserIfExists(id: string): Promise<User | null> {
-    return await this.prisma.user.findUnique({ where: { id } });
+    return this.prisma.user.findUnique({ where: { id } });
   }
 
   public async getUser(id: string): Promise<User> {
@@ -55,6 +55,6 @@ export class Database {
   }
 
   public async getBlacklist(id: string): Promise<Blacklist | null> {
-    return await this.prisma.blacklist.findUnique({ where: { id } });
+    return this.prisma.blacklist.findUnique({ where: { id } });
   }
 }
