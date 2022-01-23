@@ -30,7 +30,7 @@ export class InteractionCreate extends Event {
 
     if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND) {
       const channel = interaction.channel as TextChannel;
-      const cmd = this.client.commands.find(cmd => cmd.name === interaction.data.name);
+      const cmd = this.client.commands.find(c => c.name === interaction.data.name);
       if (!cmd) return interaction.createFollowup({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
       else if (cmd.ownerOnly && author.id !== '806037166701674511') return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
