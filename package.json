@@ -17,11 +17,12 @@
     "@prisma/client": "3.8.1",
     "@sentry/node": "^6.16.1",
     "dotenv": "14.2.0",
-    "eris": "DonovanDMC/eris#everything",
+    "eris": "Spencer-0003/eris#everything",
     "graphql": "^16.2.0",
     "graphql-request": "^3.7.0",
     "ioredis": "^4.28.3",
     "module-alias": "2.2.2",
+    "moment": "^2.29.1",
     "nekobot-api": "2.1.0",
     "statcord-eris": "^1.1.4"
   },

@@ -22,7 +22,7 @@ export class SyrimClient extends Client {
   // Properties
   categories: string[];
   commands: Command[];
-  componentCallbacks: { [key: string]: Callback };
+  componentCallbacks: { id: string; callback: Callback }[];
   database: Database;
   locale: Locale;
   nekoBot: NekoBot;
@@ -42,7 +42,7 @@ export class SyrimClient extends Client {
 
     this.categories = [];
     this.commands = [];
-    this.componentCallbacks = {};
+    this.componentCallbacks = [];
 
     this.database = new Database();
     this.locale = new Locale(join(__dirname, '../locales'));
@@ -82,7 +82,7 @@ export class SyrimClient extends Client {
         const loadedEvent = new eventClass(this);
         const fileName = file.name.split('.').slice(0, -1).join('.');
 
-        if (isComponent) this.componentCallbacks[fileName] = loadedEvent.run.bind(loadedEvent);
+        if (isComponent) this.componentCallbacks.push({ id: fileName, callback: loadedEvent.run.bind(loadedEvent) });
         else this[fileName === 'ready' ? 'once' : 'on'](fileName, loadedEvent.run.bind(loadedEvent));
       } catch {
         throw new Error(`Failed to load ${isComponent ? 'component' : 'event'}: '${file.name}'`);

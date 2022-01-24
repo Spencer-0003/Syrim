@@ -15,12 +15,14 @@
   "categories": {
     "ECONOMY": "Economy",
     "GENERAL": "General",
+    "MISC": "Misc",
     "NSFW": "NSFW"
   },
 
   "category_descriptions": {
     "GENERAL": "General commands",
     "ECONOMY": "Economy commands",
+    "MISC": "Miscellaneous commands",
     "NSFW": "Ooooh 😳"
   },
 
@@ -58,8 +60,10 @@
     "SUCCESSFULLY_SET_BIRTHDAY": "You've successfully set your birthday.",
     "SUCCESSFULLY_SET_COLOR": "You've successfully set your color.",
     "SUCCESSFULLY_SET_GENDER": "You've successfully set your gender.",
+    "SUCCESSFULLY_WORKED": "You made £MONEY by working.",
     "UNDISCLOSED": "Undisclosed",
     "USER_ALREADY_REQUESTED": "You already have a marriage request from <@SENDER>",
+    "WORK_COOLDOWN": "You can't work for another TIME",
     "YOU_CANT_MARRY_BOTS": "You can't marry bots.",
     "YOU_CANT_MARRY_YOURSELF": "You can't marry yourself.",
     "YOURE_ALREADY_MARRIED": "You're already married."

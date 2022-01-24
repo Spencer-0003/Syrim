@@ -38,7 +38,7 @@ export class HelpComponentEvent extends Event {
         });
       });
 
-    const channelIsNsfw = (interaction.channel instanceof GuildChannel && interaction.channel.nsfw);
+    const channelIsNsfw = interaction.channel instanceof GuildChannel && interaction.channel.nsfw;
     return interaction.editParent({
       embeds: [
         {

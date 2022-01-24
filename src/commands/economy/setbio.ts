@@ -16,7 +16,7 @@ export class SetBio extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'setbio',
-      description: 'Set your bio',
+      description: 'Set your bio.',
       category: 'economy',
       options: [
         {
