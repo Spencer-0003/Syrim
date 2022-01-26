@@ -1,7 +1,7 @@
 FROM node:17.3.1-alpine3.15
 LABEL MAINTAINER="Spencer-0003"
 
-RUN apk add git python3
+RUN apk add git python3 make g++
 
 WORKDIR /syrim
 
