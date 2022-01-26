@@ -36,7 +36,7 @@ export class Stats extends Command {
     super(client, {
       name: 'stats',
       description: 'Shows my stats.',
-      category: 'general'
+      category: 'info'
     });
   }
 

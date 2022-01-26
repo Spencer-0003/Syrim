@@ -14,13 +14,13 @@
 
   "categories": {
     "ECONOMY": "Economy",
-    "GENERAL": "General",
+    "INFO": "Info",
     "MISC": "Misc",
     "NSFW": "NSFW"
   },
 
   "category_descriptions": {
-    "GENERAL": "General commands",
+    "INFO": "Get information about Syrim",
     "ECONOMY": "Economy commands",
     "MISC": "Miscellaneous commands",
     "NSFW": "Ooooh 😳"

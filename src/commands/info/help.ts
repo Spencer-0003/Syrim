@@ -18,7 +18,7 @@ export class Help extends Command {
     super(client, {
       name: 'help',
       description: 'Get a list of my commands.',
-      category: 'general',
+      category: 'info',
       options: [
         {
           name: 'command_or_category',
