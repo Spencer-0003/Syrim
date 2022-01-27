@@ -34,13 +34,11 @@ export class SetBio extends Command {
     await this.client.database.updateUser((user as User).id, { bio: args.bio as string });
 
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
-          description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_BIO'),
-          color: COLORS.GREEN
-        }
-      ]
+      embed: {
+        title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
+        description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_BIO'),
+        color: COLORS.GREEN
+      }
     });
   }
 }

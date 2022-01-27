@@ -26,13 +26,11 @@ export class Divorce extends Command {
 
     if (userData.lover) await this.client.database.updateUser(interaction.member!.id, { lover: '' });
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, userData.lover ? 'economy.DIVORCE' : 'global.ERROR'),
-          description: this.client.locale.translate(data.locale, userData.lover ? 'economy.SUCCESSFULLY_DIVORCED' : 'economy.NOT_MARRIED').replace('SPOUSE', userData.lover),
-          color: userData.lover ? COLORS.GREEN : COLORS.RED
-        }
-      ]
+      embed: {
+        title: this.client.locale.translate(data.locale, userData.lover ? 'economy.DIVORCE' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, userData.lover ? 'economy.SUCCESSFULLY_DIVORCED' : 'economy.NOT_MARRIED').replace('SPOUSE', userData.lover),
+        color: userData.lover ? COLORS.GREEN : COLORS.RED
+      }
     });
   }
 }

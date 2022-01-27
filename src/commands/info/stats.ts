@@ -42,21 +42,19 @@ export class Stats extends Command {
 
   run(interaction: CommandInteraction, _args: Record<string, string>, data: Data): Promise<Message> {
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'general.STATS'),
-          color: COLORS.GREEN,
-          fields: [
-            { name: this.client.locale.translate(data.locale, 'general.SOFTWARE'), value: `Syrim v${this.client.version}\nEris v${VERSION}`, inline: true },
-            {
-              name: this.client.locale.translate(data.locale, 'general.DISCORD'),
-              value: `${this.client.guilds.size.toLocaleString(data.locale)} ${this.client.locale.translate(data.locale, 'general.SERVERS')}\n${this.client.users.size} ${this.client.locale.translate(data.locale, 'general.USERS')}\n${this.client.shards.size} ${this.client.locale.translate(data.locale, 'general.SHARDS')}\n${interaction.guildID ? this.client.guilds.get(interaction.guildID)?.shard.latency : this.client.shards.get(0)!.latency}ms ${this.client.locale.translate(data.locale, 'general.PING')}`,
-              inline: true
-            },
-            { name: this.client.locale.translate(data.locale, 'general.HOST'), value: formatHost(), inline: false }
-          ]
-        }
-      ]
+      embed: {
+        title: this.client.locale.translate(data.locale, 'general.STATS'),
+        color: COLORS.GREEN,
+        fields: [
+          { name: this.client.locale.translate(data.locale, 'general.SOFTWARE'), value: `Syrim v${this.client.version}\nEris v${VERSION}`, inline: true },
+          {
+            name: this.client.locale.translate(data.locale, 'general.DISCORD'),
+            value: `${this.client.guilds.size.toLocaleString(data.locale)} ${this.client.locale.translate(data.locale, 'general.SERVERS')}\n${this.client.users.size} ${this.client.locale.translate(data.locale, 'general.USERS')}\n${this.client.shards.size} ${this.client.locale.translate(data.locale, 'general.SHARDS')}\n${interaction.guildID ? this.client.guilds.get(interaction.guildID)?.shard.latency : this.client.shards.get(0)!.latency}ms ${this.client.locale.translate(data.locale, 'general.PING')}`,
+            inline: true
+          },
+          { name: this.client.locale.translate(data.locale, 'general.HOST'), value: formatHost(), inline: false }
+        ]
+      }
     });
   }
 }

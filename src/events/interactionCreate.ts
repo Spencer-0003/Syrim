@@ -57,13 +57,11 @@ export class InteractionCreate extends Event {
       if (data.guild) {
         if (data.guild.disabledCategories.indexOf(cmd.category) > -1)
           return interaction.createFollowup({
-            embeds: [
-              {
-                title: this.client.locale.translate(data.locale, 'global.ERROR'),
-                description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
-                color: COLORS.RED
-              }
-            ]
+            embed: {
+              title: this.client.locale.translate(data.locale, 'global.ERROR'),
+              description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
+              color: COLORS.RED
+            }
           });
 
         const permissions = channel.permissionsOf(this.client.user.id);
@@ -71,13 +69,11 @@ export class InteractionCreate extends Event {
         const missingUserPerms = cmd.userPermissions.filter(permission => !permissions?.has(permission));
         if ((cmd.clientPermissions || cmd.userPermissions) && (missingClientPerms.length || missingUserPerms.length))
           return interaction.createFollowup({
-            embeds: [
-              {
-                title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
-                description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms).join(', ')}`,
-                color: COLORS.RED
-              }
-            ]
+            embed: {
+              title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
+              description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms).join(', ')}`,
+              color: COLORS.RED
+            }
           });
       }
 

@@ -19,25 +19,21 @@ export class SetGenderComponentEvent extends Event {
     if (chosenGender) {
       await this.client.database.updateUser((interaction.user ?? interaction.member)!.id, { gender: chosenGender.charAt(0).toUpperCase() + chosenGender.slice(1) });
       return interaction.editParent({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
-            description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_GENDER'),
-            color: COLORS.GREEN
-          }
-        ],
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
+          description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_GENDER'),
+          color: COLORS.GREEN
+        },
         components: []
       });
     }
 
     return interaction.editParent({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'economy.SET_GENDER'),
-          description: this.client.locale.translate(data.locale, 'economy.SET_GENDER_DESCRIPTION'),
-          color: COLORS.GREEN
-        }
-      ],
+      embed: {
+        title: this.client.locale.translate(data.locale, 'economy.SET_GENDER'),
+        description: this.client.locale.translate(data.locale, 'economy.SET_GENDER_DESCRIPTION'),
+        color: COLORS.GREEN
+      },
       components: [
         {
           type: Constants.ComponentTypes.ACTION_ROW,

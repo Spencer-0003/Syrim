@@ -36,62 +36,52 @@ export class Marry extends Command {
 
     if (interaction.member!.id === args.user.id || args.user.bot)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, interaction.member!.id === args.user.id ? 'economy.YOU_CANT_MARRY_YOURSELF' : 'economy.YOU_CANT_MARRY_BOTS'),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale.translate(data.locale, interaction.member!.id === args.user.id ? 'economy.YOU_CANT_MARRY_YOURSELF' : 'economy.YOU_CANT_MARRY_BOTS'),
+          color: COLORS.RED
+        }
       });
 
     if (!spouseData)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
+          color: COLORS.RED
+        }
       });
 
     if (userData.lover || spouseData.lover)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, userData.lover ? 'economy.YOURE_ALREADY_MARRIED' : 'economy.SPOUSE_ALREADY_MARRIED'),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, userData.lover ? 'economy.YOURE_ALREADY_MARRIED' : 'economy.SPOUSE_ALREADY_MARRIED'),
+          color: COLORS.RED
+        }
       });
 
     const pendingUserProposal = (await this.client.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
     const pendingSpouseProposal = (await this.client.redis.get(`marriage_request:${args.user.id}`)) as string;
     if (pendingUserProposal || pendingSpouseProposal)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale
-              .translate(data.locale, `economy.${pendingUserProposal ? 'USER' : 'SPOUSE'}_ALREADY_REQUESTED`)
-              .replace('SPOUSE', pendingSpouseProposal)
-              .replace('SENDER', pendingUserProposal),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale
+            .translate(data.locale, `economy.${pendingUserProposal ? 'USER' : 'SPOUSE'}_ALREADY_REQUESTED`)
+            .replace('SPOUSE', pendingSpouseProposal)
+            .replace('SENDER', pendingUserProposal),
+          color: COLORS.RED
+        }
       });
 
     await this.client.redis.set(`marriage_request:${args.user.id}`, interaction.member!.id, 'EX', 120);
     return interaction.createFollowup({
       content: `<@${args.user.id}>`,
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'economy.MARRIAGE'),
-          description: this.client.locale.translate(data.locale, 'economy.NEW_PROPOSAL').replace('USER', `<@${args.user.id}>`).replace('PROPOSER', `<@${interaction.member!.id}>`),
-          color: COLORS.GREEN
-        }
-      ],
+      embed: {
+        title: this.client.locale.translate(data.locale, 'economy.MARRIAGE'),
+        description: this.client.locale.translate(data.locale, 'economy.NEW_PROPOSAL').replace('USER', `<@${args.user.id}>`).replace('PROPOSER', `<@${interaction.member!.id}>`),
+        color: COLORS.GREEN
+      },
       components: [
         {
           type: Constants.ComponentTypes.ACTION_ROW,

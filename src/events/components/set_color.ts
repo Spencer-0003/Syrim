@@ -19,13 +19,11 @@ export class SetColorComponentEvent extends Event {
     if (chosenColor) {
       await this.client.database.updateUser((interaction.user ?? interaction.member)!.id, { color: chosenColor });
       return interaction.editParent({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
-            description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_COLOR'),
-            color: COLORS.GREEN
-          }
-        ],
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
+          description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_COLOR'),
+          color: COLORS.GREEN
+        },
         components: []
       });
     }
@@ -42,13 +40,11 @@ export class SetColorComponentEvent extends Event {
     });
 
     return interaction.editParent({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'economy.SET_COLOR'),
-          description: this.client.locale.translate(data.locale, 'economy.SET_COLOR_DESCRIPTION'),
-          color: COLORS.GREEN
-        }
-      ],
+      embed: {
+        title: this.client.locale.translate(data.locale, 'economy.SET_COLOR'),
+        description: this.client.locale.translate(data.locale, 'economy.SET_COLOR_DESCRIPTION'),
+        color: COLORS.GREEN
+      },
       components
     });
   }

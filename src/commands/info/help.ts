@@ -58,25 +58,21 @@ export class Help extends Command {
 
       if (data.guild?.disabledCategories.indexOf(isCategory) !== -1)
         return interaction.createFollowup({
-          embeds: [
-            {
-              title: this.client.locale.translate(data.locale, 'global.ERROR'),
-              description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
-              color: COLORS.RED
-            }
-          ]
+          embed: {
+            title: this.client.locale.translate(data.locale, 'global.ERROR'),
+            description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
+            color: COLORS.RED
+          }
         });
 
       const channelIsNsfw = interaction.channel instanceof GuildChannel && interaction.channel.nsfw;
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: isCategory === 'nsfw' ? 'NSFW' : isCategory.charAt(0).toUpperCase() + isCategory.slice(1),
-            description: isCategory === 'nsfw' && !channelIsNsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
-            color: isCategory === 'nsfw' && !channelIsNsfw ? COLORS.RED : COLORS.GREEN,
-            fields: isCategory === 'nsfw' && !channelIsNsfw ? [] : fields
-          }
-        ],
+        embed: {
+          title: isCategory === 'nsfw' ? 'NSFW' : isCategory.charAt(0).toUpperCase() + isCategory.slice(1),
+          description: isCategory === 'nsfw' && !channelIsNsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
+          color: isCategory === 'nsfw' && !channelIsNsfw ? COLORS.RED : COLORS.GREEN,
+          fields: isCategory === 'nsfw' && !channelIsNsfw ? [] : fields
+        },
         components
       });
     }
@@ -87,18 +83,16 @@ export class Help extends Command {
       isCommand.options?.forEach(option => (usage += ` [${option.name}]`));
       usage += '`';
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: isCommand.name.charAt(0).toUpperCase() + isCommand.name.slice(1),
-            description: isCommand.description,
-            color: COLORS.GREEN,
-            fields: [
-              { name: this.client.locale.translate(data.locale, 'general.USAGE'), value: usage, inline: false },
-              { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: userNeeded !== '' ? userNeeded : this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
-              { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_I_NEED'), value: isCommand.clientPermissions.join(', '), inline: false }
-            ]
-          }
-        ],
+        embed: {
+          title: isCommand.name.charAt(0).toUpperCase() + isCommand.name.slice(1),
+          description: isCommand.description,
+          color: COLORS.GREEN,
+          fields: [
+            { name: this.client.locale.translate(data.locale, 'general.USAGE'), value: usage, inline: false },
+            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: userNeeded !== '' ? userNeeded : this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
+            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_I_NEED'), value: isCommand.clientPermissions.join(', '), inline: false }
+          ]
+        },
         components
       });
     }
@@ -136,16 +130,14 @@ export class Help extends Command {
     );
 
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'general.HELP'),
-          description: this.client.locale.translate(data.locale, 'general.HELP_DESCRIPTION'),
-          color: COLORS.GREEN,
-          fields,
-          thumbnail: { url: this.client.user.avatarURL },
-          footer: { text: `${this.client.commands.length} commands loaded` }
-        }
-      ],
+      embed: {
+        title: this.client.locale.translate(data.locale, 'general.HELP'),
+        description: this.client.locale.translate(data.locale, 'general.HELP_DESCRIPTION'),
+        color: COLORS.GREEN,
+        fields,
+        thumbnail: { url: this.client.user.avatarURL },
+        footer: { text: `${this.client.commands.length} commands loaded` }
+      },
       components
     });
   }

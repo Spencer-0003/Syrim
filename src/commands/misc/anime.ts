@@ -52,20 +52,18 @@ export class Anime extends Command {
   async run(interaction: CommandInteraction, args: Record<string, string>, data: Data): Promise<Message> {
     const animeData = await graphQl.request(query, { search: args.anime });
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: animeData.Media.title.romaji,
-          description: animeData.Media.description.replace(/<br>/g, ''),
-          thumbnail: { url: animeData.Media.coverImage.large },
-          fields: [
-            { name: this.client.locale.translate(data.locale, 'anime.EPISODES'), value: animeData.Media.episodes, inline: true },
-            { name: this.client.locale.translate(data.locale, 'anime.AVERAGE_RATING'), value: `${animeData.Media.averageScore}/100`, inline: true },
-            { name: this.client.locale.translate(data.locale, 'anime.STATUS'), value: animeData.Media.status, inline: true }
-          ],
-          color: COLORS.LIGHT_BLUE,
-          footer: { icon_url: 'https://anilist.co/favicon.ico', text: this.client.locale.translate(data.locale, 'misc.POWERED_BY_ANILIST') }
-        }
-      ]
+      embed: {
+        title: animeData.Media.title.romaji,
+        description: animeData.Media.description.replace(/<br>/g, ''),
+        thumbnail: { url: animeData.Media.coverImage.large },
+        fields: [
+          { name: this.client.locale.translate(data.locale, 'anime.EPISODES'), value: animeData.Media.episodes, inline: true },
+          { name: this.client.locale.translate(data.locale, 'anime.AVERAGE_RATING'), value: `${animeData.Media.averageScore}/100`, inline: true },
+          { name: this.client.locale.translate(data.locale, 'anime.STATUS'), value: animeData.Media.status, inline: true }
+        ],
+        color: COLORS.LIGHT_BLUE,
+        footer: { icon_url: 'https://anilist.co/favicon.ico', text: this.client.locale.translate(data.locale, 'misc.POWERED_BY_ANILIST') }
+      }
     });
   }
 }

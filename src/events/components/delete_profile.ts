@@ -19,25 +19,21 @@ export class DeleteProfileComponentEvent extends Event {
     if (confirmed) {
       await this.client.database.deleteUser((interaction.user ?? interaction.member)!.id);
       return interaction.editParent({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
-            description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_DELETED_PROFILE'),
-            color: COLORS.GREEN
-          }
-        ],
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
+          description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_DELETED_PROFILE'),
+          color: COLORS.GREEN
+        },
         components: []
       });
     }
 
     return interaction.editParent({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'economy.DELETE_PROFILE'),
-          description: this.client.locale.translate(data.locale, 'economy.DELETE_PROFILE_DESCRIPTION'),
-          color: COLORS.GREEN
-        }
-      ],
+      embed: {
+        title: this.client.locale.translate(data.locale, 'economy.DELETE_PROFILE'),
+        description: this.client.locale.translate(data.locale, 'economy.DELETE_PROFILE_DESCRIPTION'),
+        color: COLORS.GREEN
+      },
       components: [
         {
           type: Constants.ComponentTypes.ACTION_ROW,

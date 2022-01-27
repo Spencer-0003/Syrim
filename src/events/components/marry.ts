@@ -21,13 +21,11 @@ export class MarryComponentEvent extends Event {
     }
 
     return interaction.editParent({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, proposalData ? 'economy.MARRIAGE' : 'global.ERROR'),
-          description: this.client.locale.translate(data.locale, proposalData ? 'economy.SUCCESSFULLY_MARRIED' : 'economy.MARRIAGE_REQUEST_EXPIRED').replace('PROPOSER', proposalData),
-          color: proposalData ? COLORS.GREEN : COLORS.RED
-        }
-      ],
+      embed: {
+        title: this.client.locale.translate(data.locale, proposalData ? 'economy.MARRIAGE' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, proposalData ? 'economy.SUCCESSFULLY_MARRIED' : 'economy.MARRIAGE_REQUEST_EXPIRED').replace('PROPOSER', proposalData),
+        color: proposalData ? COLORS.GREEN : COLORS.RED
+      },
       components: []
     });
   }

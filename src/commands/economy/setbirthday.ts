@@ -35,24 +35,20 @@ export class SetBirthday extends Command {
 
     if (sanitizedBirthday.length < 10 || sanitizedBirthday.indexOf('*') > -1)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, 'economy.INVALID_BIRTHDAY'),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale.translate(data.locale, 'economy.INVALID_BIRTHDAY'),
+          color: COLORS.RED
+        }
       });
 
     await this.client.database.updateUser((user as User).id, { birthday: new Date(sanitizedBirthday) });
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
-          description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_BIRTHDAY'),
-          color: COLORS.GREEN
-        }
-      ]
+      embed: {
+        title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
+        description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_BIRTHDAY'),
+        color: COLORS.GREEN
+      }
     });
   }
 }

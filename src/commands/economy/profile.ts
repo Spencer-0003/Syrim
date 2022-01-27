@@ -42,45 +42,39 @@ export class Profile extends Command {
 
     if (user.bot)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED'),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED'),
+          color: COLORS.RED
+        }
       });
 
     const profile = await this.client.database.getUserIfExists(user.id);
     if (!profile)
       return interaction.createFollowup({
-        embeds: [
-          {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
-            color: COLORS.RED
-          }
-        ]
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
+          color: COLORS.RED
+        }
       });
 
     const xpNeeded = profile.level ** 2 + 25 * profile.level;
     return interaction.createFollowup({
-      embeds: [
-        {
-          title: user.username,
-          description: profile.bio,
-          color: COLORS[profile.color],
-          thumbnail: { url: user.avatarURL },
-          fields: [
-            { name: '📛 ' + this.client.locale.translate(data.locale, 'economy.REPUTATION'), value: profile.reputation, inline: true },
-            { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: `${profile.level}\n(${profile.xp.toLocaleString('en-US')}/${xpNeeded.toLocaleString('en-US')})`, inline: true },
-            { name: '💰 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_MONEY'), value: profile.money.toString(), inline: true },
-            { name: '💖 ' + this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
-            { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true },
-            { name: '🎂 ' + this.client.locale.translate(data.locale, 'economy.BIRTHDAY'), value: profile.birthday ? `${profile.birthday.toLocaleDateString(data.locale)} (${getAge(profile.birthday)})` : this.client.locale.translate(data.locale, 'economy.UNDISCLOSED'), inline: true }
-          ]
-        }
-      ],
+      embed: {
+        title: user.username,
+        description: profile.bio,
+        color: COLORS[profile.color],
+        thumbnail: { url: user.avatarURL },
+        fields: [
+          { name: '📛 ' + this.client.locale.translate(data.locale, 'economy.REPUTATION'), value: profile.reputation, inline: true },
+          { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: `${profile.level}\n(${profile.xp.toLocaleString('en-US')}/${xpNeeded.toLocaleString('en-US')})`, inline: true },
+          { name: '💰 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_MONEY'), value: profile.money.toString(), inline: true },
+          { name: '💖 ' + this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
+          { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true },
+          { name: '🎂 ' + this.client.locale.translate(data.locale, 'economy.BIRTHDAY'), value: profile.birthday ? `${profile.birthday.toLocaleDateString(data.locale)} (${getAge(profile.birthday)})` : this.client.locale.translate(data.locale, 'economy.UNDISCLOSED'), inline: true }
+        ]
+      },
       components:
         user.id === (interaction.user ?? interaction.member)!.id
           ? [
