@@ -12,6 +12,10 @@
     "STATUS": "Status"
   },
 
+  "blacklist": {
+    "USER_BLACKLISTED": "You've been blacklisted from using Syrim, if you wish to appeal join the Discord server."
+  },
+
   "categories": {
     "ECONOMY": "Economy",
     "INFO": "Info",

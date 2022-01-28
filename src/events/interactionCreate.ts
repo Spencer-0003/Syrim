@@ -17,13 +17,37 @@ export class InteractionCreate extends Event {
   async run(interaction: CommandInteraction | ComponentInteraction): Promise<Message | void> {
     const author = (interaction.user ?? interaction.member)!;
     const guildId = interaction.guildID;
+    const locale = interaction.guildLocale ?? interaction.locale;
+
+    if (await this.client.database.getBlacklist(author.id))
+      return interaction.createFollowup({
+        flags: Constants.MessageFlags.EPHEMERAL,
+        embed: {
+          title: this.client.locale.translate(locale, 'global.ERROR'),
+          description: this.client.locale.translate(locale, 'blacklist.USER_BLACKLISTED')
+        },
+        components: [
+          {
+            type: Constants.ComponentTypes.ACTION_ROW,
+            components: [
+              {
+                type: Constants.ComponentTypes.BUTTON,
+                style: Constants.ButtonStyles.LINK,
+                label: this.client.locale.translate(locale, 'general.JOIN_THE_DISCORD'),
+                url: 'https://discord.gg/P5T7MQvPEG'
+              }
+            ]
+          }
+        ]
+      });
+
     const profile = await this.client.database.getUser(author.id);
     const guildData = guildId && (await this.client.database.getGuild(guildId));
 
     const data: Data = {
       profile,
       guild: guildData as Guild,
-      locale: interaction.guildLocale ?? interaction.locale
+      locale
     };
 
     await interaction.acknowledge((interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND && interaction.data.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
