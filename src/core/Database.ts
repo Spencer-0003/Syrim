@@ -5,7 +5,7 @@
  */
 
 // Import classes & types
-import type { Blacklist, Guild, User } from '@prisma/client';
+import type { Blacklist, BlacklistType, Guild, User } from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
 
 export class Database {
@@ -50,7 +50,7 @@ export class Database {
     await this.prisma.guild.update({ where: { id }, data });
   }
 
-  public async createBlacklist(id: string, moderator: string, blacklistType: 'GUILD' | 'USER', reason: string): Promise<void> {
+  public async createBlacklist(id: string, moderator: string, blacklistType: BlacklistType, reason: string): Promise<void> {
     await this.prisma.blacklist.create({ data: { id, moderator, type: blacklistType, reason } });
   }
 
