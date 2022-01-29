@@ -5,12 +5,12 @@ node_modules/
 .eslintignore
 .eslintrc
 .gitattributes
+.github/
 .gitignore
 .prettierrc
 
 LICENSE
 README.md
 
-renovate.json
 tsconfig.tsbuildinfo
 yarn.lock
