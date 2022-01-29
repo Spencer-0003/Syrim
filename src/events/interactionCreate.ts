@@ -1,6 +1,6 @@
 /**
  * @file InteractionCreate
- * @description Event that fires at every interaction
+ * @description Handle application commands and components
  * @author Spencer-0003
  */
 
