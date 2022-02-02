@@ -40,3 +40,6 @@ tsconfig.tsbuildinfo
 
 # Ignore yarn.lock
 yarn.lock
+
+# Ignore Husky
+.husky/_/
