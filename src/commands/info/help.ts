@@ -30,7 +30,7 @@ export class Help extends Command {
   }
 
   run(interaction: CommandInteraction, args: Record<string, string>, data: Data): Promise<Message> {
-    const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd?.name === args.command_or_category.toLowerCase());
+    const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd.name === args.command_or_category.toLowerCase());
     const isCategory = args.command_or_category && !isCommand && this.client.categories.find(cat => cat === args.command_or_category.toLowerCase());
     const components: ActionRow[] = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }];
     const fields: EmbedField[] = [];
@@ -89,7 +89,7 @@ export class Help extends Command {
           color: COLORS.GREEN,
           fields: [
             { name: this.client.locale.translate(data.locale, 'general.USAGE'), value: usage, inline: false },
-            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: userNeeded !== '' ? userNeeded : this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
+            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: userNeeded ?? this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
             { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_I_NEED'), value: isCommand.clientPermissions.join(', '), inline: false }
           ]
         },
