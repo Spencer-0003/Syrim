@@ -15,7 +15,7 @@
     "start": "node dist/index"
   },
   "dependencies": {
-    "@prisma/client": "3.9.0",
+    "@prisma/client": "3.9.1",
     "@sentry/node": "6.17.4",
     "dotenv": "15.0.0",
     "eris": "Spencer-0003/eris#everything",
