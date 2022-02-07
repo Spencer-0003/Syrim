@@ -15,7 +15,7 @@ import { Command } from '@core/Command';
 
 const formatHost = (): string => {
   let platformStr = platform() as string;
-  switch (platform()) {
+  switch (platformStr) {
     case 'darwin':
       platformStr = 'macOS';
       break;
