@@ -28,7 +28,7 @@
     "statcord-eris": "1.1.4"
   },
   "devDependencies": {
-    "@types/ioredis": "4.28.7",
+    "@types/ioredis": "4.28.8",
     "@types/node": "17.0.8",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
