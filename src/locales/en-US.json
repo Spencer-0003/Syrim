@@ -94,6 +94,7 @@
   },
 
   "misc": {
+    "BOT_REQUIRED_PERMISSIONS": "I require the following permissions:",
     "CATEGORY_DISABLED": "This server has disabled this category.",
     "CHANNEL_NOT_NSFW": "This channel is not NSFW.",
     "COMMAND_NOT_FOUND": "This command has been removed and is awaiting a cache update.",
@@ -107,5 +108,13 @@
     "POWERED_BY_ANILIST": "Powered by anilist.co",
     "POWERED_BY_NEKOBOT": "Powered by nekobot.xyz",
     "USER_REQUIRED_PERMISSIONS": "You require the following permissions:"
+  },
+
+  "moderation": {
+    "NO_REASON_PROVIDED": "No reason provided.",
+    "NOT_SUPERIOR": "You can't moderate this user.",
+    "REASON": "Reason",
+    "SUCCESSFULLY_BANNED": "User Banned",
+    "SUCCESSFULLY_BANNED_DESCRIPTION": "You've successfully banned <@USER>."
   }
 }

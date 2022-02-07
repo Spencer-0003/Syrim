@@ -14,5 +14,5 @@ const getTopRole = (member: Member): Role | undefined => {
 
 // Export functions
 export const isSuperior = (memberOne: Member, memberTwo: Member): boolean => {
-  return (getTopRole(memberOne)?.position ?? -1) > (getTopRole(memberTwo)?.position ?? -1);
+  return memberOne.guild.ownerID === memberOne.id ?? (getTopRole(memberOne)?.position ?? -1) > (getTopRole(memberTwo)?.position ?? -1);
 };
