@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "3.9.1",
-    "@sentry/node": "6.17.5",
+    "@sentry/node": "6.17.6",
     "dotenv": "16.0.0",
     "eris": "Spencer-0003/eris#everything",
     "graphql": "16.3.0",
