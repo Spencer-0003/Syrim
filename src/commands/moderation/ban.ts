@@ -6,9 +6,9 @@
 
 // Import classes & types
 import type { User } from 'eris';
-import { CommandInteraction, Constants, Message } from 'eris';
+import { Constants, Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
-import type { Data } from '@typings/command';
+import type { CommandContext } from '@typings/command';
 import { COLORS } from '@utilities/Constants';
 import { isSuperior } from '@utilities/ModerationUtilities';
 import { Command } from '@core/Command';
@@ -18,7 +18,7 @@ export class Ban extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'ban',
-      description: 'Ban a user from the guild',
+      description: 'Ban a user from the guild.',
       category: 'moderation',
       guildOnly: true,
       userPermissions: ['banMembers'],
@@ -39,7 +39,7 @@ export class Ban extends Command {
     });
   }
 
-  async run(interaction: CommandInteraction, args: Record<string, User | string>, data: Data): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<Message> {
     const guildMember = await this.client.getRESTGuildMember(interaction.guildID!, interaction.member!.id);
     const superior = !guildMember ? true : isSuperior(interaction.member!, guildMember);
 

@@ -5,10 +5,10 @@
  */
 
 // Import classes & types
-import type { CommandInteraction, Message } from 'eris';
+import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import { COLORS } from '@utilities/Constants';
-import type { Data } from '@typings/command';
+import type { CommandContext } from '@typings/command';
 import { Command } from '@core/Command';
 
 // Export class
@@ -21,7 +21,7 @@ export class HBoobs extends Command {
     });
   }
 
-  async run(interaction: CommandInteraction, _args: Record<string, string>, data: Data): Promise<Message> {
+  async run({ interaction, data }: CommandContext): Promise<Message> {
     return interaction.createFollowup({
       embed: {
         color: COLORS.GREEN,

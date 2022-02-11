@@ -5,9 +5,9 @@
  */
 
 // Import classes & types
-import type { CommandInteraction, ComponentInteraction, Message, TextChannel, InteractionDataOptionWithValue, Role, User, PartialChannel } from 'eris';
+import type { CommandInteraction, ComponentInteraction, Message, TextChannel, InteractionDataOptionWithValue } from 'eris';
 import type { Guild } from '@prisma/client';
-import type { Data } from '@typings/command';
+import type { CommandContext, Data } from '@typings/command';
 import { Constants } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Event } from '@core/Event';
@@ -60,7 +60,7 @@ export class InteractionCreate extends Event {
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && guildId && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
 
-      const args: Record<string, string | boolean | number | Role | User | PartialChannel> = {};
+      const args: CommandContext['args'] = {};
       interaction.data.options?.forEach(option => {
         switch (option.type) {
           case Constants.ApplicationCommandOptionTypes.USER:
@@ -90,19 +90,19 @@ export class InteractionCreate extends Event {
 
         const permissions = channel.permissionsOf(this.client.user.id);
         const missingClientPerms = cmd.clientPermissions.filter(permission => !permissions?.has(permission));
-        const missingUserPerms = cmd.userPermissions.filter(permission => !permissions?.has(permission));
-        if ((cmd.clientPermissions || cmd.userPermissions) && (missingClientPerms.length || missingUserPerms.length))
+        const missingUserPerms = cmd.userPermissions?.filter(permission => !permissions?.has(permission));
+        if ((cmd.clientPermissions ?? cmd.userPermissions) && (missingClientPerms.length ?? missingUserPerms!.length))
           return interaction.createFollowup({
             embed: {
               title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
-              description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms).join(', ')}`,
+              description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms!).join(', ')}`,
               color: COLORS.RED
             }
           });
       }
 
       if (process.env.NODE_ENV === 'production' && process.env.STATCORD_API_KEY) this.client.statcord.postCommand(cmd.name, author.id);
-      cmd.run(interaction, args, data);
+      cmd.run({ interaction, args, data });
     } else if (interaction.type === Constants.InteractionTypes.MESSAGE_COMPONENT) {
       const customId = interaction.data.custom_id;
       const user = customId.split('.').slice(-1)[0];

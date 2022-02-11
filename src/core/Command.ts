@@ -6,9 +6,9 @@
 
 // import types
 import type { SyrimClient } from '@core/Client';
-import type { Data, Options, CommandOptions } from '@typings/command';
+import type { Options, CommandContext, CommandOptions } from '@typings/command';
 import type { PERMISSIONS } from '@utilities/Constants';
-import { CommandInteraction, Constants } from 'eris';
+import { Constants } from 'eris';
 
 // export class
 export abstract class Command {
@@ -23,7 +23,7 @@ export abstract class Command {
   ownerOnly?: boolean;
   voterOnly?: boolean;
   type = Constants.ApplicationCommandTypes.CHAT_INPUT | Constants.ApplicationCommandTypes.USER;
-  userPermissions: PERMISSIONS[];
+  userPermissions?: PERMISSIONS[];
 
   protected constructor(client: SyrimClient, options: CommandOptions) {
     this.client = client;
@@ -36,10 +36,10 @@ export abstract class Command {
     this.ownerOnly = options.ownerOnly;
     this.voterOnly = options.voterOnly;
     this.type = options.contextMenu ? Constants.ApplicationCommandTypes.USER : Constants.ApplicationCommandTypes.CHAT_INPUT;
-    this.userPermissions = options.userPermissions ?? [];
+    this.userPermissions = options.userPermissions;
 
     if (this.client.categories.indexOf(this.category) === -1) this.client.categories.push(this.category);
   }
 
-  abstract run(interaction: CommandInteraction, args?: Record<string, unknown>, data?: Data): Promise<unknown> | unknown;
+  abstract run(ctx: CommandContext): Promise<unknown> | unknown;
 }

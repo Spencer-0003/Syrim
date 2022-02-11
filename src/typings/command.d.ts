@@ -5,6 +5,7 @@
  */
 
 // Import types
+import type { CommandInteraction, Role, User, PartialChannel } from 'eris';
 import type { Guild, Profile } from '@prisma/client';
 import type { PERMISSIONS } from '@utilities/Constants';
 import { Constants } from 'eris';
@@ -35,4 +36,10 @@ export interface CommandOptions {
   ownerOnly?: boolean;
   voterOnly?: boolean;
   userPermissions?: PERMISSIONS[];
+}
+
+export interface CommandContext {
+  interaction: CommandInteraction;
+  args: Record<string, string | boolean | number | Role | User | PartialChannel>;
+  data: Data;
 }

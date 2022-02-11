@@ -5,9 +5,9 @@
  */
 
 // Import classes, types & constants
-import type { CommandInteraction, Message, User } from 'eris';
+import type { Message, User } from 'eris';
 import type { SyrimClient } from '@core/Client';
-import type { Data } from '@typings/command';
+import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
@@ -29,9 +29,9 @@ export class SetBio extends Command {
     });
   }
 
-  async run(interaction: CommandInteraction, args: Record<string, User | string>, data: Data): Promise<Message> {
-    const user = args.user ?? (interaction.member ?? interaction.user)!;
-    await this.client.database.updateUser((user as User).id, { bio: args.bio as string });
+  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+    const user = args.user as User ?? (interaction.member ?? interaction.user)!;
+    await this.client.database.updateUser(user.id, { bio: args.bio as string });
 
     return interaction.createFollowup({
       embed: {

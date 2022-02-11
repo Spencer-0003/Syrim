@@ -5,9 +5,9 @@
  */
 
 // Import classes, types & constants
-import type { CommandInteraction, Message } from 'eris';
+import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
-import type { Data } from '@typings/command';
+import type { CommandContext } from '@typings/command';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 
@@ -21,7 +21,7 @@ export class Divorce extends Command {
     });
   }
 
-  async run(interaction: CommandInteraction, _args: Record<string, string>, data: Data): Promise<Message> {
+  async run({ interaction, data }: CommandContext): Promise<Message> {
     const userData = await this.client.database.getUser(interaction.member!.id);
 
     if (userData.lover) await this.client.database.updateUser(interaction.member!.id, { lover: '' });

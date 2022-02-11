@@ -5,9 +5,9 @@
  */
 
 // Import classes, types & constants
-import type { ActionRow, CommandInteraction, EmbedField, Message } from 'eris';
+import type { ActionRow, EmbedField, Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
-import type { Data } from '@typings/command';
+import type { CommandContext } from '@typings/command';
 import { Constants, GuildChannel } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
@@ -29,9 +29,9 @@ export class Help extends Command {
     });
   }
 
-  run(interaction: CommandInteraction, args: Record<string, string>, data: Data): Promise<Message> {
-    const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd.name === args.command_or_category.toLowerCase());
-    const isCategory = args.command_or_category && !isCommand && this.client.categories.find(cat => cat === args.command_or_category.toLowerCase());
+  run({ interaction, args, data }: CommandContext): Promise<Message> {
+    const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd.name === (args.command_or_category as string).toLowerCase());
+    const isCategory = args.command_or_category && !isCommand && this.client.categories.find(cat => cat === (args.command_or_category as string).toLowerCase());
     const components: ActionRow[] = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }];
     const fields: EmbedField[] = [];
 
@@ -78,7 +78,6 @@ export class Help extends Command {
     }
 
     if (isCommand) {
-      const userNeeded = isCommand.userPermissions.join(', ');
       let usage = `\`/${isCommand.name}`;
       isCommand.options?.forEach(option => (usage += ` [${option.name}]`));
       usage += '`';
@@ -89,8 +88,8 @@ export class Help extends Command {
           color: COLORS.GREEN,
           fields: [
             { name: this.client.locale.translate(data.locale, 'general.USAGE'), value: usage, inline: false },
-            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: userNeeded ?? this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
-            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_I_NEED'), value: isCommand.clientPermissions.join(', '), inline: false }
+            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: isCommand.userPermissions?.join(', ') ?? this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
+            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_I_NEED'), value: isCommand.clientPermissions.join(', ') ?? this.client.locale.translate(data.locale, 'global.NONE'), inline: false }
           ]
         },
         components

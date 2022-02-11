@@ -5,9 +5,9 @@
  */
 
 // Import classes, types & constants
-import type { CommandInteraction, Message } from 'eris';
+import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
-import type { Data } from '@typings/command';
+import type { CommandContext } from '@typings/command';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 import moment from 'moment';
@@ -22,7 +22,7 @@ export class Work extends Command {
     });
   }
 
-  async run(interaction: CommandInteraction, _args: Record<string, string>, data: Data): Promise<Message> {
+  async run({ interaction, data }: CommandContext): Promise<Message> {
     const cooldownRecord = await this.client.redis.get(`work_cooldown:${interaction.member!.id}`);
     if (cooldownRecord)
       return interaction.createFollowup({
