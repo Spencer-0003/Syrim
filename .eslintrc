@@ -10,10 +10,8 @@
   "plugins": ["@typescript-eslint", "jsdoc", "sonarjs"],
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "plugin:jsdoc/recommended", "plugin:sonarjs/recommended"],
   "rules": {
-    "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
     "sonarjs/cognitive-complexity": ["error", 45],
-    "sonarjs/no-duplicate-string": 0,
-    "no-case-declarations": 0
+    "sonarjs/no-duplicate-string": 0
   }
 }
