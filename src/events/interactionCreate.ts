@@ -55,8 +55,11 @@ export class InteractionCreate extends Event {
     if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND) {
       const channel = interaction.channel as TextChannel;
       const cmd = this.client.commands.find(c => c.name === interaction.data.name);
-      if (!cmd) return interaction.createFollowup({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
-      else if (cmd.ownerOnly && author.id !== '806037166701674511') return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
+
+      if (!cmd) {
+        const customCommand = await this.client.database.findCommand(interaction.data.id);
+        return interaction.createFollowup({ content: customCommand?.response ?? this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
+      } else if (cmd.ownerOnly && author.id !== '806037166701674511') return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && guildId && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
 
@@ -96,6 +99,19 @@ export class InteractionCreate extends Event {
             embed: {
               title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
               description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms!).join(', ')}`,
+              color: COLORS.RED
+            }
+          });
+      }
+
+      if (cmd.validate) {
+        const [validated, errorMessage] = cmd.validate({ interaction, args, data });
+
+        if (!validated)
+          return interaction.createFollowup({
+            embed: {
+              title: this.client.locale.translate(data.locale, 'global.ERROR'),
+              description: errorMessage,
               color: COLORS.RED
             }
           });

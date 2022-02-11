@@ -5,7 +5,7 @@
  */
 
 // Import classes & types
-import type { Blacklist, BlacklistType, Guild, User } from '@prisma/client';
+import type { Blacklist, BlacklistType, Command, Guild, User } from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
 
 export class Database {
@@ -56,5 +56,13 @@ export class Database {
 
   public getBlacklist(id: string): Promise<Blacklist | null> {
     return this.prisma.blacklist.findUnique({ where: { id } });
+  }
+
+  public async createCommand(guildId: string, commandId: string, response: string): Promise<void> {
+    await this.prisma.command.create({ data: { guildId, commandId, response } });
+  }
+
+  public findCommand(commandId: string): Promise<Command | null> {
+    return this.prisma.command.findUnique({ where: { commandId } });
   }
 }

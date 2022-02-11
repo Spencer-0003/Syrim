@@ -35,15 +35,16 @@ export class Help extends Command {
     const components: ActionRow[] = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }];
     const fields: EmbedField[] = [];
 
-    this.client.categories.forEach(category =>
-      components[0].components.push({
+    this.client.categories.forEach(category => {
+      if (components[components.length - 1].components.length >= 5) components.push({ type: Constants.ComponentTypes.ACTION_ROW, components: [] });
+      components[components.length - 1].components.push({
         type: Constants.ComponentTypes.BUTTON,
         style: Constants.ButtonStyles.PRIMARY,
         disabled: isCategory === category,
         custom_id: `help-${category}.${(interaction.user ?? interaction.member)!.id}`,
         label: this.client.locale.translate(data.locale, `categories.${category.toUpperCase()}`)
-      })
-    );
+      });
+    });
 
     if (isCategory) {
       this.client.commands

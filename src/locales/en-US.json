@@ -6,6 +6,13 @@
     "SUCCESS": "Success"
   },
 
+  "administration": {
+    "COMMAND_EXISTS": "COMMAND already exists.",
+    "SUCCESSFULLY_CREATED_COMMAND": "Successfully created command.",
+    "HOW_TO_USE_CUSTOM_COMMAND": "To use your new command, use `/COMMAND`. It may take up to 15 minutes for the command to become available.",
+    "INVALID_COMMAND_NAME": "Make sure your command name doesn't have any spaces and/or special characters."
+  },
+
   "anime": {
     "AVERAGE_RATING": "Average Rating",
     "EPISODES": "Episodes",
@@ -17,6 +24,7 @@
   },
 
   "categories": {
+    "ADMINISTRATION": "Administration",
     "ECONOMY": "Economy",
     "INFO": "Info",
     "MISC": "Misc",
@@ -25,6 +33,7 @@
   },
 
   "category_descriptions": {
+    "ADMINISTRATION": "Manage your server",
     "INFO": "Get information about Syrim",
     "ECONOMY": "Economy commands",
     "MISC": "Miscellaneous commands",

@@ -11,7 +11,7 @@
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "plugin:jsdoc/recommended", "plugin:sonarjs/recommended"],
   "rules": {
     "@typescript-eslint/no-non-null-assertion": 0,
-    "sonarjs/cognitive-complexity": ["error", 45],
+    "sonarjs/cognitive-complexity": ["error", 49],
     "sonarjs/no-duplicate-string": 0
   }
 }

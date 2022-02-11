@@ -22,6 +22,12 @@ model Blacklist {
   reason    String
 }
 
+model Command {
+  commandId String @id
+  guildId   String
+  response  String
+}
+
 model Guild {
   id                 String   @id
   disabledCategories String[]

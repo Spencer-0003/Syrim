@@ -41,5 +41,6 @@ export abstract class Command {
     if (this.client.categories.indexOf(this.category) === -1) this.client.categories.push(this.category);
   }
 
+  validate?(ctx: CommandContext): [boolean, string];
   abstract run(ctx: CommandContext): Promise<unknown> | unknown;
 }
