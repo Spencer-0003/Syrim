@@ -30,7 +30,7 @@ export class SetBirthday extends Command {
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
-    const user = args.user as User ?? (interaction.member ?? interaction.user)!;
+    const user = (args.user as User) ?? (interaction.member ?? interaction.user)!;
     const sanitizedBirthday = (args.birthday as string).replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1').substring(0, 10);
 
     if (sanitizedBirthday.length < 10 || sanitizedBirthday.indexOf('*') > -1)

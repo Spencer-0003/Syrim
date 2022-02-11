@@ -30,7 +30,7 @@ export class SetBio extends Command {
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
-    const user = args.user as User ?? (interaction.member ?? interaction.user)!;
+    const user = (args.user as User) ?? (interaction.member ?? interaction.user)!;
     await this.client.database.updateUser(user.id, { bio: args.bio as string });
 
     return interaction.createFollowup({

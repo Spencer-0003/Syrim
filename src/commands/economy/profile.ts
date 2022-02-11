@@ -38,7 +38,7 @@ export class Profile extends Command {
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
-    const user = args.user as User ?? (interaction.member ?? interaction.user)!;
+    const user = (args.user as User) ?? (interaction.member ?? interaction.user)!;
 
     if (user.bot)
       return interaction.createFollowup({
