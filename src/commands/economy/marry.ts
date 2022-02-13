@@ -30,19 +30,15 @@ export class Marry extends Command {
     });
   }
 
+  validate({ interaction, args, data }: CommandContext): [boolean, string] {
+    const user = args.user as User;
+    return [user.bot ?? interaction.member!.id === user.id, this.client.locale.translate(data.locale, user.bot ? 'economy.YOU_CANT_MARRY_BOTS' : 'economy.YOU_CANT_MARRY_YOURSELF')];
+  }
+
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
     const user = args.user as User;
     const userData = await this.client.database.getUser(interaction.member!.id);
     const spouseData = await this.client.database.getUserIfExists(user.id);
-
-    if (interaction.member!.id === user.id || user.bot)
-      return interaction.createFollowup({
-        embed: {
-          title: this.client.locale.translate(data.locale, 'global.ERROR'),
-          description: this.client.locale.translate(data.locale, interaction.member!.id === user.id ? 'economy.YOU_CANT_MARRY_YOURSELF' : 'economy.YOU_CANT_MARRY_BOTS'),
-          color: COLORS.RED
-        }
-      });
 
     if (!spouseData)
       return interaction.createFollowup({

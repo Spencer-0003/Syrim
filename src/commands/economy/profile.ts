@@ -37,19 +37,14 @@ export class Profile extends Command {
     });
   }
 
+  validate({ args, data }: CommandContext): [boolean, string] {
+    return [!(args.user as User).bot, this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED')];
+  }
+
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
     const user = (args.user as User) ?? (interaction.member ?? interaction.user)!;
-
-    if (user.bot)
-      return interaction.createFollowup({
-        embed: {
-          title: this.client.locale.translate(data.locale, 'global.ERROR'),
-          description: this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED'),
-          color: COLORS.RED
-        }
-      });
-
     const profile = await this.client.database.getUserIfExists(user.id);
+
     if (!profile)
       return interaction.createFollowup({
         embed: {
