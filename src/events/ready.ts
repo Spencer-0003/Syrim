@@ -21,7 +21,7 @@ export class Ready extends Event {
 
     // Add/delete commands
     if (newCommands.length || deletedCommands.length)
-      if (NODE_ENV === 'development') (await this.client.getRESTGuild(DEVELOPMENT_GUILD)).bulkEditCommands(this.client.commands as ApplicationCommandStructure[]);
+      if (NODE_ENV === 'development') this.client.bulkEditGuildCommands(DEVELOPMENT_GUILD, this.client.commands as ApplicationCommandStructure[]);
       else this.client.bulkEditCommands(this.client.commands as ApplicationCommandStructure[]);
 
     setInterval(() => {
