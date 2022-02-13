@@ -124,7 +124,7 @@ export class InteractionCreate extends Event {
       const user = customId.split('.').slice(-1)[0];
 
       if (user !== interaction.member?.id) return interaction.createFollowup({ content: this.client.locale.translate(data.locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
-      this.client.componentCallbacks.filter(cb => cb.id === customId || customId.startsWith(cb.id))[0].callback(interaction, customId, data);
+      this.client.componentCallbacks.find(cb => cb.id === customId || customId.startsWith(cb.id))?.callback(interaction, customId, data);
     }
   }
 }
