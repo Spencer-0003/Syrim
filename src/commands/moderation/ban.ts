@@ -39,6 +39,10 @@ export class Ban extends Command {
     });
   }
 
+  validate({ args, data }: CommandContext): [boolean, string] {
+    return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.BAN_SYRIM')];
+  }
+
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
     const guildMember = await this.client.getRESTGuildMember(interaction.guildID!, interaction.member!.id);
     const superior = !guildMember ? true : isSuperior(interaction.member!, guildMember);

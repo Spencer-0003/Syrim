@@ -122,6 +122,7 @@
   },
 
   "moderation": {
+    "BAN_SYRIM": "Why would you want to ban me? :frowning:",
     "NO_REASON_PROVIDED": "No reason provided.",
     "NOT_SUPERIOR": "You can't moderate this user.",
     "REASON": "Reason",
