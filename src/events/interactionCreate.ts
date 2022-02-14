@@ -41,12 +41,9 @@ export class InteractionCreate extends Event {
         ]
       });
 
-    const profile = await this.client.database.getUser(author.id);
-    const guildData = guildId && (await this.client.database.getGuild(guildId));
-
     const data: Data = {
-      profile,
-      guild: guildData as Guild,
+      profile: await this.client.database.getUser(author.id),
+      guild: (guildId && (await this.client.database.getGuild(guildId))) as Guild,
       locale
     };
 
@@ -92,9 +89,9 @@ export class InteractionCreate extends Event {
           });
 
         const permissions = channel.permissionsOf(this.client.user.id);
-        const missingClientPerms = cmd.clientPermissions.filter(permission => !permissions?.has(permission));
-        const missingUserPerms = cmd.userPermissions?.filter(permission => !permissions?.has(permission));
-        if ((cmd.clientPermissions ?? cmd.userPermissions) && (missingClientPerms.length ?? missingUserPerms!.length))
+        const missingClientPerms = cmd.clientPermissions.filter(permission => !permissions.has(permission));
+        const missingUserPerms = cmd.userPermissions?.filter(permission => !permissions.has(permission));
+        if (missingClientPerms.length ?? missingUserPerms?.length)
           return interaction.createFollowup({
             embed: {
               title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
