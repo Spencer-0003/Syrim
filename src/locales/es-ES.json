@@ -123,10 +123,13 @@
 
   "moderation": {
     "BAN_SYRIM": "¿Por qué querrías prohibirme? :frowning:",
+    "KICK_SYRIM": "¿Por qué querrías patearme? :frowning:",
     "NOT_SUPERIOR": "No puedes moderar a este usuario.",
     "NO_REASON_PROVIDED": "No se proporcionó ninguna razón.",
     "REASON": "Razón",
     "SUCCESSFULLY_BANNED": "Usuario Prohibido",
-    "SUCCESSFULLY_BANNED_DESCRIPTION": "Has prohibido correctamente <@USER>."
+    "SUCCESSFULLY_BANNED_DESCRIPTION": "Has prohibido correctamente <@USER>.",
+    "SUCCESSFULLY_KICKED": "Usuario Expulsado",
+    "SUCCESSFULLY_KICKED_DESCRIPTION": "Has pateado con éxito <@USER>."
   }
 }

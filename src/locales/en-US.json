@@ -123,10 +123,13 @@
 
   "moderation": {
     "BAN_SYRIM": "Why would you want to ban me? :frowning:",
+    "KICK_SYRIM": "Why would you want to kick me? :frowning:",
     "NO_REASON_PROVIDED": "No reason provided.",
     "NOT_SUPERIOR": "You can't moderate this user.",
     "REASON": "Reason",
     "SUCCESSFULLY_BANNED": "User Banned",
-    "SUCCESSFULLY_BANNED_DESCRIPTION": "You've successfully banned <@USER>."
+    "SUCCESSFULLY_BANNED_DESCRIPTION": "You've successfully banned <@USER>.",
+    "SUCCESSFULLY_KICKED": "User Kicked",
+    "SUCCESSFULLY_KICKED_DESCRIPTION": "You've successfully kicked <@USER>."
   }
 }
