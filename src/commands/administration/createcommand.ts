@@ -51,7 +51,15 @@ export class CreateCommand extends Command {
     const commands = await this.client.getGuildCommands(interaction.guildID!);
     const existingCommand = commands.find(command => command.name === args.command_name);
 
-    if (!existingCommand) {
+    if (commands.length === 10 && data.profile.reputation === 'USER')
+      return interaction.createFollowup({
+        embed: {
+          title: this.client.locale.translate(data.locale, 'global.ERROR'),
+          description: this.client.locale.translate(data.locale, 'administration.MAX_COMMANDS_REACHED'),
+          color: COLORS.RED
+        }
+      });
+    else if (!existingCommand) {
       const newCommand = await this.client.createGuildCommand(interaction.guildID!, { name: args.command_name as string, description: args.command_description as string, type: Constants.ApplicationCommandTypes.CHAT_INPUT });
       await this.client.database.createCommand(interaction.guildID!, newCommand.id, args.response as string);
     }

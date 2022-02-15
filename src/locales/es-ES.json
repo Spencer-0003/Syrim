@@ -4,6 +4,7 @@
     "COMMAND_EXISTS": "COMMAND ya existe.",
     "HOW_TO_USE_CUSTOM_COMMAND": "Para usar tu nuevo comando, usa `/COMMAND`. El comando puede tardar hasta 15 minutos en estar disponible.",
     "INVALID_COMMAND_NAME": "Asegúrese de que el nombre del comando no tenga espacios ni caracteres especiales.",
+    "MAX_COMMANDS_REACHED": "Has alcanzado el número máximo de comandos, para añadir más, haz una donación.",
     "SUCCESSFULLY_CREATED_COMMAND": "El comando se creó correctamente.",
     "SUCCESSFULLY_DELETED_COMMAND": "El comando se eliminó correctamente.",
     "SUCCESSFULLY_DELETED_COMMAND_DESCRIPTION": "Se ha eliminado COMMAND, el comando puede tardar hasta 15 minutos en eliminarse del servidor."
