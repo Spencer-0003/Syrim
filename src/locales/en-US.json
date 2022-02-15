@@ -1,16 +1,9 @@
 {
-  "global": {
-    "CONFIRM": "Confirm",
-    "ERROR": "Error",
-    "NONE": "None",
-    "SUCCESS": "Success"
-  },
-
   "administration": {
     "COMMAND_EXISTS": "COMMAND already exists.",
-    "SUCCESSFULLY_CREATED_COMMAND": "Successfully created command.",
     "HOW_TO_USE_CUSTOM_COMMAND": "To use your new command, use `/COMMAND`. It may take up to 15 minutes for the command to become available.",
-    "INVALID_COMMAND_NAME": "Make sure your command name doesn't have any spaces and/or special characters."
+    "INVALID_COMMAND_NAME": "Make sure your command name doesn't have any spaces and/or special characters.",
+    "SUCCESSFULLY_CREATED_COMMAND": "Successfully created command."
   },
 
   "anime": {
@@ -34,8 +27,8 @@
 
   "category_descriptions": {
     "ADMINISTRATION": "Manage your server",
-    "INFO": "Get information about Syrim",
     "ECONOMY": "Economy commands",
+    "INFO": "Get information about Syrim",
     "MISC": "Miscellaneous commands",
     "MODERATION": "Moderate your server",
     "NSFW": "Ooooh 😳"
@@ -48,10 +41,10 @@
     "DELETE_PROFILE": "Delete Profile",
     "DELETE_PROFILE_DESCRIPTION": "If you're sure you want to delete your profile, press the button below.\nUsing any command will remake your profile.",
     "DIVORCE": "Divorce",
+    "FEMALE": "Female",
     "GENDER": "Gender",
     "GLOBAL_LEVEL": "Global Level",
     "GLOBAL_MONEY": "Global Money",
-    "FEMALE": "Female",
     "INVALID_BIRTHDAY": "You've entered an invalid birthday.",
     "LOVER": "Lover",
     "MALE": "Male",
@@ -62,15 +55,15 @@
     "PROFILE_DOESNT_EXIST": "This user doesn't have a profile, you should tell them to make one!",
     "REPUTATION": "Reputation",
     "SET_COLOR": "Set Color",
-    "SET_GENDER": "Set Gender",
     "SET_COLOR_DESCRIPTION": "Use the buttons below to set your color.",
+    "SET_GENDER": "Set Gender",
     "SET_GENDER_DESCRIPTION": "Use the buttons below to set your gender.",
     "SINGLE": "Single",
     "SPOUSE_ALREADY_MARRIED": "This person is already married.",
-    "SUCCESSFULLY_MARRIED": "🎉 You've just married <@PROPOSER> 🎉",
     "SPOUSE_ALREADY_REQUESTED": "<@SPOUSE> has already got a marriage request from <@SENDER>",
     "SUCCESSFULLY_DELETED_PROFILE": "You've successfully delete your profile.",
     "SUCCESSFULLY_DIVORCED": "You've successfully divorced <@SPOUSE>.",
+    "SUCCESSFULLY_MARRIED": "🎉 You've just married <@PROPOSER> 🎉",
     "SUCCESSFULLY_SET_BIO": "You've successfully set your bio.",
     "SUCCESSFULLY_SET_BIRTHDAY": "You've successfully set your birthday.",
     "SUCCESSFULLY_SET_COLOR": "You've successfully set your color.",
@@ -90,8 +83,8 @@
     "DISCORD": "Discord",
     "HELP": "Help",
     "HELP_DESCRIPTION": "Click on one of the buttons below to select a category!",
-    "HELP_PERMISSIONS_YOU_NEED": "Permissions You Need",
     "HELP_PERMISSIONS_I_NEED": "Permissions I Need",
+    "HELP_PERMISSIONS_YOU_NEED": "Permissions You Need",
     "HOST": "Host",
     "INVITE_ME": "Invite me to your server",
     "JOIN_THE_DISCORD": "Join the Discord Server",
@@ -104,14 +97,21 @@
     "USERS": "User(s)"
   },
 
+  "global": {
+    "CONFIRM": "Confirm",
+    "ERROR": "Error",
+    "NONE": "None",
+    "SUCCESS": "Success"
+  },
+
   "misc": {
     "BOT_REQUIRED_PERMISSIONS": "I require the following permissions:",
     "CATEGORY_DISABLED": "This server has disabled this category.",
     "CHANNEL_NOT_NSFW": "This channel is not NSFW.",
-    "COMMAND_NOT_FOUND": "This command has been removed and is awaiting a cache update.",
     "COMMAND_GUILD_ONLY": "This command can only be ran in a server.",
-    "COMMAND_OWNER_ONLY": "This command can only be ran by the owner.",
+    "COMMAND_NOT_FOUND": "This command has been removed and is awaiting a cache update.",
     "COMMAND_NSFW_ONLY": "This command can only be ran in an NSFW channel.",
+    "COMMAND_OWNER_ONLY": "This command can only be ran by the owner.",
     "LINKS": "**Links**",
     "LINKS_DESCRIPTION": "[Invite me](INVITE_LINK) | [My server](SERVER_LINK)",
     "MISSING_PERMISSIONS": "Missing Permissions",

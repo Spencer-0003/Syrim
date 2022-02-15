@@ -1,0 +1,132 @@
+{
+  "administration": {
+    "COMMAND_EXISTS": "COMMAND ya existe.",
+    "HOW_TO_USE_CUSTOM_COMMAND": "Para usar tu nuevo comando, usa `/COMMAND`. El comando puede tardar hasta 15 minutos en estar disponible.",
+    "INVALID_COMMAND_NAME": "Asegúrese de que el nombre del comando no tenga espacios ni caracteres especiales.",
+    "SUCCESSFULLY_CREATED_COMMAND": "El comando se creó correctamente."
+  },
+
+  "anime": {
+    "AVERAGE_RATING": "Valoración media",
+    "EPISODES": "Episodios",
+    "STATUS": "Estado"
+  },
+
+  "blacklist": {
+    "USER_BLACKLISTED": "Has sido incluido en la lista negra para usar Syrim, si deseas apelar únete al servidor de Discord."
+  },
+
+  "categories": {
+    "ADMINISTRATION": "Administración",
+    "ECONOMY": "Económico",
+    "INFO": "Información",
+    "MISC": "Diverso",
+    "MODERATION": "Moderación",
+    "NSFW": "NSFW"
+  },
+
+  "category_descriptions": {
+    "ADMINISTRATION": "Administre su servidor",
+    "ECONOMY": "Comandos de economía",
+    "INFO": "Obtener información sobre Syrim",
+    "MISC": "Comandos varios",
+    "MODERATION": "Moderar el servidor",
+    "NSFW": "Ooooh 😳"
+  },
+
+  "economy": {
+    "ACCEPT_PROPOSAL": "Acepta la propuesta",
+    "BIRTHDAY": "Cumpleaños",
+    "BOTS_NOT_ALLOWED": "Los bots no pueden tener perfiles.",
+    "DELETE_PROFILE": "Eliminar Perfil",
+    "DELETE_PROFILE_DESCRIPTION": "Si estás seguro de que quieres eliminar tu perfil, pulsa el botón de abajo.\nEl uso de cualquier comando rehará tu perfil.",
+    "DIVORCE": "Divorcio",
+    "FEMALE": "Femenino",
+    "GENDER": "Género",
+    "GLOBAL_LEVEL": "Nivel Global",
+    "GLOBAL_MONEY": "Dinero Global",
+    "INVALID_BIRTHDAY": "Has introducido una fecha de nacimiento no válida.",
+    "LOVER": "Amante",
+    "MALE": "Masculino",
+    "MARRIAGE": "El Matrimonio",
+    "MARRIAGE_REQUEST_EXPIRED": "Esta solicitud de matrimonio ha caducado, ¡debe enviar una nueva!",
+    "NEW_PROPOSAL": "USER, tiene una nueva propuesta del PROPOSER. Pulsa el botón de abajo para aceptar su propuesta.",
+    "NOT_MARRIED": "No estás casado",
+    "PROFILE_DOESNT_EXIST": "Este usuario no tiene un perfil, ¡debes decirle que cree uno!",
+    "REPUTATION": "Reputación",
+    "SET_COLOR": "Seleccionar Color",
+    "SET_COLOR_DESCRIPTION": "Usa los botones de abajo para configurar tu color.",
+    "SET_GENDER": "Establecer Género",
+    "SET_GENDER_DESCRIPTION": "Use los botones de abajo para establecer su género.",
+    "SINGLE": "Sencillo",
+    "SPOUSE_ALREADY_MARRIED": "Esta persona ya está casada.",
+    "SPOUSE_ALREADY_REQUESTED": "<@SPOUSE> ya ha recibido una solicitud de matrimonio de <@SENDER>",
+    "SUCCESSFULLY_DELETED_PROFILE": "Has eliminado tu perfil correctamente.",
+    "SUCCESSFULLY_DIVORCED": "Te has divorciado con éxito <@SPOUSE>.",
+    "SUCCESSFULLY_MARRIED": "🎉 Te acabas de casar <@PROPOSER> 🎉",
+    "SUCCESSFULLY_SET_BIO": "Has configurado tu biografía correctamente.",
+    "SUCCESSFULLY_SET_BIRTHDAY": "Has configurado tu fecha de nacimiento correctamente.",
+    "SUCCESSFULLY_SET_COLOR": "Has establecido tu color correctamente.",
+    "SUCCESSFULLY_SET_GENDER": "Has establecido correctamente tu género.",
+    "SUCCESSFULLY_WORKED": "Has ganado £MONEY trabajando.",
+    "UNDISCLOSED": "No divulgado",
+    "USER_ALREADY_REQUESTED": "Ya tienes una solicitud de matrimonio de <@SENDER>",
+    "WORK": "Trabajo",
+    "WORK_COOLDOWN": "No puedes trabajar por otro TIME",
+    "YOURE_ALREADY_MARRIED": "Ya estás casado.",
+    "YOU_CANT_MARRY_BOTS": "No puedes casarte con bots.",
+    "YOU_CANT_MARRY_YOURSELF": "No te puedes casar contigo misma."
+  },
+
+  "general": {
+    "BECOME_A_DONATOR": "Conviértase en Donante",
+    "DISCORD": "Discordia",
+    "HELP": "Ayuda",
+    "HELP_DESCRIPTION": "¡Haz clic en uno de los botones de abajo para seleccionar una categoría!",
+    "HELP_PERMISSIONS_I_NEED": "Permisos Que Necesito",
+    "HELP_PERMISSIONS_YOU_NEED": "Permisos Que Necesita",
+    "HOST": "El Anfitrión",
+    "INVITE_ME": "Invítame a tu servidor",
+    "JOIN_THE_DISCORD": "Únete al servidor de Discord",
+    "PING": "Ping",
+    "SERVERS": "Servidores",
+    "SHARDS": "Fragmentos",
+    "SOFTWARE": "Programa",
+    "STATS": "Estadísticas",
+    "USAGE": "Utilización",
+    "USERS": "Usuarios"
+  },
+
+  "global": {
+    "CONFIRM": "Confirmar",
+    "ERROR": "Error",
+    "NONE": "Ninguno",
+    "SUCCESS": "Éxito"
+  },
+
+  "misc": {
+    "BOT_REQUIRED_PERMISSIONS": "Requiero los siguientes permisos:",
+    "CATEGORY_DISABLED": "Este servidor ha deshabilitado esta categoría.",
+    "CHANNEL_NOT_NSFW": "Este canal no es NSFW.",
+    "COMMAND_GUILD_ONLY": "Este comando solo se puede ejecutar en un servidor.",
+    "COMMAND_NOT_FOUND": "Este comando se ha eliminado y está a la espera de una actualización de la memoria caché.",
+    "COMMAND_NSFW_ONLY": "Este comando solo se puede ejecutar en un canal NSFW.",
+    "COMMAND_OWNER_ONLY": "Este comando sólo lo puede ejecutar el propietario.",
+    "LINKS": "**Enlaces**",
+    "LINKS_DESCRIPTION": "[Invítame](INVITE_LINK) | [Mi servidor](SERVER_LINK)",
+    "MISSING_PERMISSIONS": "Faltan Permisos",
+    "NOT_YOUR_BUTTON": "Este no es el botón para hacer clic.",
+    "POWERED_BY_ANILIST": "Desarrollado por anilist.co",
+    "POWERED_BY_NEKOBOT": "Desarrollado por nekobot.xyz",
+    "USER_REQUIRED_PERMISSIONS": "Requiere los siguientes permisos:"
+  },
+
+  "moderation": {
+    "BAN_SYRIM": "¿Por qué querrías prohibirme? :frowning:",
+    "NOT_SUPERIOR": "No puedes moderar a este usuario.",
+    "NO_REASON_PROVIDED": "No se proporcionó ninguna razón.",
+    "REASON": "Razón",
+    "SUCCESSFULLY_BANNED": "Usuario Prohibido",
+    "SUCCESSFULLY_BANNED_DESCRIPTION": "Has prohibido correctamente <@USER>."
+  }
+}
