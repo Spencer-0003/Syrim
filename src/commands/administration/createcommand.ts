@@ -44,7 +44,7 @@ export class CreateCommand extends Command {
   }
 
   validate({ args, data }: CommandContext): [boolean, string] {
-    return [Boolean((args.command_name as string).match(/^[\w-]{1,32}$/)), this.client.locale.translate(data.locale, 'administration.INVALID_COMMAND_NAME')];
+    return [/^[\w-]{1,32}$/.test(args.command_name as string), this.client.locale.translate(data.locale, 'administration.INVALID_COMMAND_NAME')];
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
