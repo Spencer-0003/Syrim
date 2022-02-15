@@ -65,4 +65,8 @@ export class Database {
   public findCommand(commandId: string): Promise<Command | null> {
     return this.prisma.command.findUnique({ where: { commandId } });
   }
+
+  public async deleteCommand(commandId: string): Promise<void> {
+    await this.prisma.command.delete({ where: { commandId } });
+  }
 }

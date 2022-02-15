@@ -1,9 +1,12 @@
 {
   "administration": {
+    "COMMAND_DOES_NOT_EXIST": "COMMAND does not exist.",
     "COMMAND_EXISTS": "COMMAND already exists.",
     "HOW_TO_USE_CUSTOM_COMMAND": "To use your new command, use `/COMMAND`. It may take up to 15 minutes for the command to become available.",
     "INVALID_COMMAND_NAME": "Make sure your command name doesn't have any spaces and/or special characters.",
-    "SUCCESSFULLY_CREATED_COMMAND": "Successfully created command."
+    "SUCCESSFULLY_CREATED_COMMAND": "Successfully created command.",
+    "SUCCESSFULLY_DELETED_COMMAND": "Successfully deleted command.",
+    "SUCCESSFULLY_DELETED_COMMAND_DESCRIPTION": "COMMAND has been deleted, it may take up to 15 minutes for the command to be deleted from the server."
   },
 
   "anime": {
