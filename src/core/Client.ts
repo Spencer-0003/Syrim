@@ -92,7 +92,8 @@ export class SyrimClient extends Client {
 
   public async getOrCreateWebhook(channelId: string): Promise<Webhook> {
     const webhooks = await this.getChannelWebhooks(channelId);
-    let webhook = webhooks.find(w => w.name === this.user.username) ?? await this.createChannelWebhook(channelId, {
+    let webhook = webhooks.find(w => w.name === this.user.username);
+    webhook ??= await this.createChannelWebhook(channelId, {
       name: this.user.username,
       avatar: this.user.avatarURL
     });
