@@ -21,6 +21,7 @@ coverage
 
 # API keys and secrets
 .env
+localazy.json
 
 # Dependency directory
 node_modules

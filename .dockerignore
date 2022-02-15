@@ -13,5 +13,7 @@ node_modules/
 LICENSE
 README.md
 
+localazy.json
+
 tsconfig.tsbuildinfo
 yarn.lock
