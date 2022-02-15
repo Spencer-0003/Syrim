@@ -37,7 +37,7 @@ export class SyrimClient extends Client {
       maxShards: 'auto',
       disableEvents: { TYPING_START: true },
       messageLimit: 10,
-      intents: ['directMessageReactions', 'directMessages', 'guildBans', 'guildMembers', 'guildMessageReactions', 'guildMessages', 'guildPresences', 'guildVoiceStates', 'guilds']
+      intents: ['directMessages', 'guildBans', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guilds']
     });
 
     this.categories = [];
