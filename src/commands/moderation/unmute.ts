@@ -61,14 +61,14 @@ export class Unmute extends Command {
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
 
     if (superior) await this.client.editGuildMember(interaction.guildID!, (args.user as User).id, { communicationDisabledUntil: null }, reason);
-      return interaction.createFollowup({
-        embed: {
-          title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_UNMUTED' : 'global.ERROR'),
-          description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_UNMUTED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
-          color: superior ? COLORS.GREEN : COLORS.RED,
-          thumbnail: { url: (args.user as User).avatarURL },
-          fields: !superior ? [] : [{ name: this.client.locale.translate(data.locale, 'moderation.REASON'), value: reason }]
-        }
-      });
+    return interaction.createFollowup({
+      embed: {
+        title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_UNMUTED' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_UNMUTED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
+        color: superior ? COLORS.GREEN : COLORS.RED,
+        thumbnail: { url: (args.user as User).avatarURL },
+        fields: !superior ? [] : [{ name: this.client.locale.translate(data.locale, 'moderation.REASON'), value: reason }]
+      }
+    });
   }
 }
