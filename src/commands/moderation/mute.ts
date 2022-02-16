@@ -76,9 +76,10 @@ export class Mute extends Command {
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
-    const guildMember = (await this.client.getRESTGuild(interaction.guildID!)).members.get((args.user as User).id);
-
-    if (!guildMember)
+    let guildMember;
+    try {
+      guildMember = await this.client.getRESTGuildMember(interaction.guildID!, (args.user as User).id);
+    } catch {
       return interaction.createFollowup({
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
@@ -86,6 +87,7 @@ export class Mute extends Command {
           color: COLORS.RED
         }
       });
+    }
 
     const superior = isSuperior(interaction.member!, guildMember);
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
