@@ -138,6 +138,9 @@
     "SUCCESSFULLY_KICKED": "Usuario Expulsado",
     "SUCCESSFULLY_KICKED_DESCRIPTION": "Has pateado con éxito <@USER>.",
     "SUCCESSFULLY_MUTED": "Silenciado por el usuario",
-    "SUCCESSFULLY_MUTED_DESCRIPTION": "Has silenciado correctamente <@USER>."
+    "SUCCESSFULLY_MUTED_DESCRIPTION": "Has silenciado correctamente <@USER>.",
+    "SUCCESSFULLY_UNMUTED": "Usuario no silenciada",
+    "SUCCESSFULLY_UNMUTED_DESCRIPTION": "Ha activado correctamente el sonido de <@USER>.",
+    "UNMUTE_SYRIM": "Lindo gesto pero no estoy en silencio :flushed:"
   }
 }
