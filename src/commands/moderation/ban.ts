@@ -44,7 +44,7 @@ export class Ban extends Command {
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
-    const guildMember = await this.client.getRESTGuildMember(interaction.guildID!, interaction.member!.id);
+    const guildMember = (await this.client.getRESTGuild(interaction.guildID!)).members.get((args.user as User).id);
     const superior = !guildMember ? true : isSuperior(interaction.member!, guildMember);
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
 
