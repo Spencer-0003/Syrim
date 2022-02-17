@@ -24,7 +24,8 @@ export class InteractionCreate extends Event {
         flags: Constants.MessageFlags.EPHEMERAL,
         embed: {
           title: this.client.locale.translate(locale, 'global.ERROR'),
-          description: this.client.locale.translate(locale, 'blacklist.USER_BLACKLISTED')
+          description: this.client.locale.translate(locale, 'blacklist.USER_BLACKLISTED'),
+          color: COLORS.RED
         },
         components: [
           {
