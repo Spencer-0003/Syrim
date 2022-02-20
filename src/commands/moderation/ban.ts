@@ -40,7 +40,7 @@ export class Ban extends Command {
   }
 
   validate({ args, data }: CommandContext): [boolean, string] {
-    return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.BAN_SYRIM')];
+    return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.self.BAN')];
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {

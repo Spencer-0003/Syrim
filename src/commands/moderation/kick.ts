@@ -40,7 +40,7 @@ export class Kick extends Command {
   }
 
   validate({ args, data }: CommandContext): [boolean, string] {
-    return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.KICK_SYRIM')];
+    return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.self.KICK')];
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {

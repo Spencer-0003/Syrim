@@ -126,8 +126,10 @@
   },
 
   "moderation": {
-    "BAN_SYRIM": "¿Por qué querrías prohibirme? :frowning:",
-    "KICK_SYRIM": "¿Por qué querrías patearme? :frowning:",
+    "self": {
+      "BAN": "¿Por qué querrías prohibirme? :frowning:",
+      "KICK": "¿Por qué querrías patearme? :frowning:"
+    },
     "MEMBER_NOT_IN_GUILD": "Este miembro no se encuentra en este servidor.",
     "MUTE_SYRIM": "Why would you want to mute me? :frowning:",
     "NOT_SUPERIOR": "No puedes moderar a este usuario.",

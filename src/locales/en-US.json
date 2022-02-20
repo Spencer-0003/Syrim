@@ -126,8 +126,10 @@
   },
 
   "moderation": {
-    "BAN_SYRIM": "Why would you want to ban me? :frowning:",
-    "KICK_SYRIM": "Why would you want to kick me? :frowning:",
+    "self": {
+      "BAN": "Why would you want to ban me? :frowning:",
+      "KICK": "Why would you want to kick me? :frowning:"
+    },
     "MEMBER_NOT_IN_GUILD": "This member is not in this server.",
     "MUTE_SYRIM": "Why would you want to mute me? :frowning:",
     "NO_REASON_PROVIDED": "No reason provided.",
