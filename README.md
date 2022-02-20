@@ -31,9 +31,9 @@ Any stars/forks of Syrim are appreciated as they help the project grow.
 Using the bot is free but providing the bot is not. Syrim will never lock commands behind a pay-wall so donations are the only way of making an income. All donations are appreciated!
 
 - Paypal: https://ko-fi.com/spencer0003
-- Bitcoin: bc1qecuy2k4zwpf9g4mc6s5dzedhck0kh85mcmjtd0
-- Ethereum: 0x2bdaA7A4A1588b90aa68bdbf1A112E7872562835
-- Litecoin: Lam3MQRFvvgqAFSg24oRK2sLjTKKa9z7K6
+- Bitcoin: bc1qlms6d3jxx7e0v9tk8qfr26sff26hvj0trx33ck
+- Ethereum: 0x3c2e37a2d1766c45815e96aa91dfd8999701f425
+- Cronos (CRO Network): cro1t0t4ned4dqlj4hgtwhfykvzugwtl6yk90w26he
 - Basic Attention Token: Donate through Brave
 
 ## Legal
