@@ -128,7 +128,9 @@
   "moderation": {
     "self": {
       "BAN": "¿Por qué querrías prohibirme? :frowning:",
-      "KICK": "¿Por qué querrías patearme? :frowning:"
+      "KICK": "¿Por qué querrías patearme? :frowning:",
+      "MUTE": "¿Por qué querrías silenciarme? :frowning:",
+      "UNMUTE": "Lindo gesto pero no estoy en silencio :flushed:"
     },
     "MEMBER_NOT_IN_GUILD": "Este miembro no se encuentra en este servidor.",
     "MUTE_SYRIM": "Why would you want to mute me? :frowning:",

@@ -128,10 +128,11 @@
   "moderation": {
     "self": {
       "BAN": "Why would you want to ban me? :frowning:",
-      "KICK": "Why would you want to kick me? :frowning:"
+      "KICK": "Why would you want to kick me? :frowning:",
+      "MUTE": "Why would you want to mute me? :frowning:",
+      "UNMUTE": "Cute gesture but I'm not muted :flushed:"
     },
     "MEMBER_NOT_IN_GUILD": "This member is not in this server.",
-    "MUTE_SYRIM": "Why would you want to mute me? :frowning:",
     "NO_REASON_PROVIDED": "No reason provided.",
     "NOT_SUPERIOR": "You can't moderate this user.",
     "REASON": "Reason",
@@ -142,7 +143,6 @@
     "SUCCESSFULLY_MUTED": "User Muted",
     "SUCCESSFULLY_MUTED_DESCRIPTION": "You've successfully muted <@USER>.",
     "SUCCESSFULLY_UNMUTED": "User Unmuted",
-    "SUCCESSFULLY_UNMUTED_DESCRIPTION": "You've successfully unmuted <@USER>.",
-    "UNMUTE_SYRIM": "Cute gesture but I'm not muted :flushed:"
+    "SUCCESSFULLY_UNMUTED_DESCRIPTION": "You've successfully unmuted <@USER>."
   }
 }
