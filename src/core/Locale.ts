@@ -29,9 +29,9 @@ export class Locale {
   public translate(locale: string, field: string): string {
     if (field.indexOf('.') > -1) {
       let translated = this.locales[locale];
-      field.split('.').forEach(subField => (translated as unknown) = translated[subField]);
-      return translated as unknown as string ?? 'TRANSLATION_NOT_FOUND';
+      field.split('.').forEach(subField => ((translated as unknown) = translated[subField]));
+      return (translated as unknown as string) ?? 'TRANSLATION_NOT_FOUND';
     }
-    return this.locales[locale][field] as unknown as string ?? 'TRANSLATION_NOT_FOUND';
+    return (this.locales[locale][field] as unknown as string) ?? 'TRANSLATION_NOT_FOUND';
   }
 }
