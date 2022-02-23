@@ -22,6 +22,8 @@ Due to Syrim being so early into development, there is no live version at the mo
 - [`Sentry`]: To log errors.
 - [`Statcord`]: To log interactions.
 
+To self-host Syrim, check the guide in the wiki: https://github.com/Spencer-0003/Syrim/wiki/Self-Hosting
+
 ## Support Syrim
 
 ### Starring/forking
