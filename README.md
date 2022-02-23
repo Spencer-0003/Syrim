@@ -4,7 +4,7 @@
 </div>
 
 ## Notice
-Due to Syrim being so early into development, there is no live version at the moment. We're hoping to have one up within the next 2 weeks.
+Due to Syrim being so early into development, there is no live version at the moment.
 
 ## Self-hosting
 <div align="center">
