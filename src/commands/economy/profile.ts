@@ -38,7 +38,7 @@ export class Profile extends Command {
   }
 
   validate({ args, data }: CommandContext): [boolean, string] {
-    return [!(args.user as User).bot, this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED')];
+    return [!args.user ?? !(args.user as User).bot, this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED')];
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
