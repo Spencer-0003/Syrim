@@ -57,7 +57,7 @@ export class Kick extends Command {
       });
     }
 
-    const superior = !guildMember ? true : isSuperior(interaction.member!, guildMember);
+    const superior = isSuperior(interaction.member!, guildMember);
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
 
     if (superior) await this.client.kickGuildMember(interaction.guildID!, (args.user as User).id, reason);
