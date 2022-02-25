@@ -38,7 +38,7 @@ export class Profile extends Command {
   }
 
   validate({ args, data }: CommandContext): [boolean, string] {
-    return [!args.user ?? !(args.user as User).bot, this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED')];
+    return [!args.user || !(args.user as User).bot, this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED')];
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<Message> {
@@ -62,7 +62,7 @@ export class Profile extends Command {
         color: COLORS[profile.color],
         thumbnail: { url: user.avatarURL },
         fields: [
-          { name: '📛 ' + this.client.locale.translate(data.locale, 'economy.REPUTATION'), value: profile.reputation, inline: true },
+          { name: '📛 ' + this.client.locale.translate(data.locale, 'economy.REPUTATION'), value: profile.reputation.charAt(0) + profile.reputation.slice(1).toLowerCase(), inline: true },
           { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: `${profile.level}\n(${profile.xp.toLocaleString('en-US')}/${xpNeeded.toLocaleString('en-US')})`, inline: true },
           { name: '💰 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_MONEY'), value: profile.money.toString(), inline: true },
           { name: '💖 ' + this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
