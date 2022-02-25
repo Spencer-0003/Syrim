@@ -109,10 +109,11 @@ export class SyrimClient extends Client {
     return webhook;
   }
 
-  public launch(): void {
+  public launch(): SyrimClient {
     this._loadCommands(join(__dirname, '../commands'));
     this._loadEvents(join(__dirname, '../events'));
     this._loadEvents(join(__dirname, '../events/components'), true);
     void this.connect();
+    return this;
   }
 }

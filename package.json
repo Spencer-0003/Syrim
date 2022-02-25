@@ -19,6 +19,8 @@
     "@sentry/node": "6.18.0",
     "dotenv": "16.0.0",
     "eris": "Spencer-0003/eris#everything",
+    "fastify": "3.27.2",
+    "fastify-helmet": "7.0.1",
     "graphql": "16.3.0",
     "graphql-request": "4.0.0",
     "ioredis": "4.28.5",
@@ -46,6 +48,7 @@
     "zlib-sync": "0.1.7"
   },
   "_moduleAliases": {
+    "@api": "dist/api",
     "@core": "dist/core",
     "@utilities": "dist/utilities"
   }

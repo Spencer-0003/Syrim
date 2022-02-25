@@ -8,6 +8,7 @@ import 'module-alias/register';
 import 'dotenv/config';
 import '@utilities/ErisPatch';
 import { configureScope, init } from '@sentry/node';
+import { launchAPI } from '@api/index';
 import { SyrimClient } from '@core/Client';
 import { commitHash } from '@utilities/Constants';
 
@@ -16,4 +17,4 @@ if (process.env.SENTRY_DSN) {
   configureScope(scope => scope.setTags({ 'syrim.commitHash': commitHash }));
 } else console.warn('Sentry DSN not found, no error reporting will be sent.');
 
-void new SyrimClient(process.env.DISCORD_TOKEN).launch();
+launchAPI(new SyrimClient(process.env.DISCORD_TOKEN).launch());
