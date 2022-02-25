@@ -20,21 +20,26 @@ export const launchAPI = (client: SyrimClient): void => {
 
   server.get('/api/v1/user/:id', async req => {
     const profile = await client.database.getUserIfExists((req.params as Record<string, string>).id);
-    if (!profile) return { StatusCode: 400, Message: "This user doesn't have a profile." };
-    else if (!profile.visibleInAPI) return { StatusCode: 400, Message: 'This user has disabled API access to their profile.' };
+    if (!profile) return { success: false, error: { code: 'no_profile', message: "This user doesn't have a profile." } };
+    else if (!profile.visibleInAPI) return { success: false, error: { code: 'api_disabled', message: 'This user has disabled API access to their profile.' } };
 
     return {
-      id: profile.id,
-      bio: profile.bio,
-      birthday: profile.birthday,
-      color: profile.color,
-      gender: profile.gender,
-      level: profile.level,
-      lover: profile.lover,
-      money: profile.money,
-      reputation: profile.reputation,
-      xp: profile.xp,
-      attributes: JSON.parse(profile.attributes)
+      success: true,
+      data: {
+        attributes: JSON.parse(profile.attributes),
+        discord: client.users.get(profile.id) ?? await client.getRESTUser(profile.id),
+        profile: {
+          bio: profile.bio,
+          birthday: profile.birthday,
+          color: profile.color,
+          gender: profile.gender,
+          level: profile.level,
+          lover: profile.lover,
+          money: profile.money,
+          reputation: profile.reputation,
+          xp: profile.xp
+        }
+      }
     };
   });
 

@@ -51,7 +51,7 @@ model User {
   color        String         @default("GREEN")
   gender       String         @default("Undisclosed")
   level        Int            @default(1)
-  lover        String         @default("")
+  lover        String?
   money        Int            @default(0)
   reputation   ReputationType @default(USER)
   xp           Int            @default(0)

@@ -90,6 +90,12 @@ export class Profile extends Command {
                   },
                   {
                     type: Constants.ComponentTypes.BUTTON,
+                    style: !profile.visibleInAPI ? Constants.ButtonStyles.PRIMARY : Constants.ButtonStyles.DANGER,
+                    custom_id: `toggle_api.${user.id}`,
+                    label: this.client.locale.translate(data.locale, `economy.TOGGLE_API`)
+                  },
+                  {
+                    type: Constants.ComponentTypes.BUTTON,
                     style: Constants.ButtonStyles.DANGER,
                     custom_id: `delete_profile.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.DELETE_PROFILE`)

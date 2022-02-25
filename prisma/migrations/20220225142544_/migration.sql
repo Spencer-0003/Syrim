@@ -1,0 +1,3 @@
+--AlterTable
+ALTER TABLE "User" ALTER COLUMN "lover" DROP NOT NULL,
+ALTER COLUMN "lover" DROP DEFAULT;

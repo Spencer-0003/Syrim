@@ -1,6 +1,6 @@
 /**
  * @file Delete profile
- * @description Set Color component callback
+ * @description Delete Profile component callback
  * @author Spencer-0003
  */
 
