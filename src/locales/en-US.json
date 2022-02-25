@@ -40,6 +40,7 @@
 
   "economy": {
     "ACCEPT_PROPOSAL": "Accept proposal",
+    "ATTRIBUTE_SET": "You've successfully set an attribute.",
     "BIRTHDAY": "Birthday",
     "BOTS_NOT_ALLOWED": "Bots can't have profiles.",
     "DELETE_PROFILE": "Delete Profile",
@@ -52,10 +53,12 @@
     "GLOBAL_LEVEL": "Global Level",
     "GLOBAL_MONEY": "Global Money",
     "INVALID_BIRTHDAY": "You've entered an invalid birthday.",
+    "INVALID_KEY_NAME": "Make sure your key doesn't have any spaces and/or special characters.",
     "LOVER": "Lover",
     "MALE": "Male",
     "MARRIAGE": "Marriage",
     "MARRIAGE_REQUEST_EXPIRED": "This marriage request has expired, you should send a new one!",
+    "MAXIMUM_ATTRIBUTES": "You've reached the maximum number of attributes, please delete one or donate.",
     "NEW_PROPOSAL": "USER, you have a new proposal from PROPOSER. Press the button below to accept their proposal.",
     "NOT_MARRIED": "You're not married",
     "PROFILE_DOESNT_EXIST": "This user doesn't have a profile, you should tell them to make one!",

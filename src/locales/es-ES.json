@@ -40,6 +40,7 @@
 
   "economy": {
     "ACCEPT_PROPOSAL": "Acepta la propuesta",
+    "ATTRIBUTE_SET": "Has establecido un atributo correctamente.",
     "BIRTHDAY": "Cumpleaños",
     "BOTS_NOT_ALLOWED": "Los bots no pueden tener perfiles.",
     "DELETE_PROFILE": "Eliminar Perfil",
@@ -52,10 +53,12 @@
     "GLOBAL_LEVEL": "Nivel Global",
     "GLOBAL_MONEY": "Dinero Global",
     "INVALID_BIRTHDAY": "Has introducido una fecha de nacimiento no válida.",
+    "INVALID_KEY_NAME": "Asegúrate de que la llave no tenga espacios ni caracteres especiales.",
     "LOVER": "Amante",
     "MALE": "Masculino",
     "MARRIAGE": "El Matrimonio",
     "MARRIAGE_REQUEST_EXPIRED": "Esta solicitud de matrimonio ha caducado, ¡debe enviar una nueva!",
+    "MAXIMUM_ATTRIBUTES": "Has alcanzado el número máximo de atributos, elimina uno o dona.",
     "NEW_PROPOSAL": "USER, tiene una nueva propuesta del PROPOSER. Pulsa el botón de abajo para aceptar su propuesta.",
     "NOT_MARRIED": "No estás casado",
     "PROFILE_DOESNT_EXIST": "Este usuario no tiene un perfil, ¡debes decirle que cree uno!",
