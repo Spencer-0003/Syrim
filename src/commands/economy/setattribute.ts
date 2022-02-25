@@ -50,7 +50,7 @@ export class SetAttribute extends Command {
           color: COLORS.RED
         }
       });
-    
+
     attributes[args.key as string] = args.value as string;
     await this.client.database.updateUser(data.profile.id, { attributes: JSON.stringify(attributes) });
 
