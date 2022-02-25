@@ -27,7 +27,7 @@ export const launchAPI = (client: SyrimClient): void => {
       success: true,
       data: {
         attributes: JSON.parse(profile.attributes),
-        discord: client.users.get(profile.id) ?? await client.getRESTUser(profile.id),
+        discord: client.users.get(profile.id) ?? (await client.getRESTUser(profile.id)),
         profile: {
           bio: profile.bio,
           birthday: profile.birthday,

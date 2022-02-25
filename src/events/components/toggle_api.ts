@@ -15,7 +15,7 @@ export class ToggleAPIComponentEvent extends Event {
   async run(interaction: ComponentInteraction, _id: string, data: Data): Promise<void> {
     const newVisiblity = !data.profile.visibleInAPI;
 
-    await this.client.database.updateUser(data.profile.id, { visibleInAPI: newVisiblity })
+    await this.client.database.updateUser(data.profile.id, { visibleInAPI: newVisiblity });
     return interaction.editParent({
       embed: {
         title: this.client.locale.translate(data.locale, 'economy.TOGGLE_API'),
