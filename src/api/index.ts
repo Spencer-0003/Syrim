@@ -35,7 +35,7 @@ export const launchAPI = (client: SyrimClient): void => {
       reputation: profile.reputation,
       xp: profile.xp,
       attributes: JSON.parse(profile.attributes)
-    }
+    };
   });
 
   server.listen(process.env.API_PORT ?? 3000, '0.0.0.0', (err, address) => {
