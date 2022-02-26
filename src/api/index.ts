@@ -43,8 +43,7 @@ export const launchAPI = (client: SyrimClient): void => {
     };
   });
 
-  server.listen(process.env.API_PORT ?? 3000, '0.0.0.0', (err, address) => {
+  server.listen(process.env.API_PORT ?? 3000, '0.0.0.0', err => {
     if (err) throw new Error('[API]: Port already in use.');
-    console.log(`Server running at: ${address}`); // remove later
   });
 };
