@@ -40,6 +40,8 @@
 
   "economy": {
     "ACCEPT_PROPOSAL": "Accept proposal",
+    "ATTRIBUTE_DELETED": "Successfully deleted attribute.",
+    "ATTRIBUTE_NOT_FOUND": "Attribute not found.",
     "ATTRIBUTE_SET": "You've successfully set an attribute.",
     "BIRTHDAY": "Birthday",
     "BOTS_NOT_ALLOWED": "Bots can't have profiles.",

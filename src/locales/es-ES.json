@@ -40,6 +40,8 @@
 
   "economy": {
     "ACCEPT_PROPOSAL": "Acepta la propuesta",
+    "ATTRIBUTE_DELETED": "Se eliminó correctamente el atributo.",
+    "ATTRIBUTE_NOT_FOUND": "No se encontró el atributo.",
     "ATTRIBUTE_SET": "Has establecido un atributo correctamente.",
     "BIRTHDAY": "Cumpleaños",
     "BOTS_NOT_ALLOWED": "Los bots no pueden tener perfiles.",
