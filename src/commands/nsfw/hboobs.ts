@@ -5,7 +5,6 @@
  */
 
 // Import classes & types
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import { COLORS } from '@utilities/Constants';
 import type { CommandContext } from '@typings/command';
@@ -21,8 +20,8 @@ export class HBoobs extends Command {
     });
   }
 
-  async run({ interaction, data }: CommandContext): Promise<Message> {
-    return interaction.createFollowup({
+  async run({ interaction, data }: CommandContext): Promise<void> {
+    return interaction.createMessage({
       embed: {
         color: COLORS.GREEN,
         image: { url: await this.client.nekoBot.get('hboobs') },

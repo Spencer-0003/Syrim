@@ -5,7 +5,7 @@
  */
 
 // Import classes, types & constants
-import type { Message, User } from 'eris';
+import type { User } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -35,13 +35,13 @@ export class Marry extends Command {
     return [user.bot ?? interaction.member!.id === user.id, this.client.locale.translate(data.locale, user.bot ? 'economy.YOU_CANT_MARRY_BOTS' : 'economy.YOU_CANT_MARRY_YOURSELF')];
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const user = args.user as User;
     const userData = await this.client.database.getUser(interaction.member!.id);
     const spouseData = await this.client.database.getUserIfExists(user.id);
 
     if (!spouseData)
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
           description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
@@ -50,7 +50,7 @@ export class Marry extends Command {
       });
 
     if (userData.lover || spouseData.lover)
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: this.client.locale.translate(data.locale, userData.lover ? 'economy.YOURE_ALREADY_MARRIED' : 'economy.SPOUSE_ALREADY_MARRIED'),
           color: COLORS.RED
@@ -60,7 +60,7 @@ export class Marry extends Command {
     const pendingUserProposal = (await this.client.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
     const pendingSpouseProposal = (await this.client.redis.get(`marriage_request:${user.id}`)) as string;
     if (pendingUserProposal || pendingSpouseProposal)
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
           description: this.client.locale
@@ -72,7 +72,7 @@ export class Marry extends Command {
       });
 
     await this.client.redis.set(`marriage_request:${user.id}`, interaction.member!.id, 'EX', 120);
-    return interaction.createFollowup({
+    return interaction.createMessage({
       content: `<@${user.id}>`,
       embed: {
         title: this.client.locale.translate(data.locale, 'economy.MARRIAGE'),

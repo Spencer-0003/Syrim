@@ -5,7 +5,7 @@
  */
 
 // Import classes & types
-import type { CommandInteraction, ComponentInteraction, Message, TextChannel, InteractionDataOptionWithValue } from 'eris';
+import type { CommandInteraction, ComponentInteraction, ModalSubmitInteraction, TextChannel, InteractionDataOptionWithValue } from 'eris';
 import type { Guild } from '@prisma/client';
 import type { CommandContext, Data } from '@typings/command';
 import { Constants } from 'eris';
@@ -14,13 +14,13 @@ import { Event } from '@core/Event';
 
 // Export event
 export class InteractionCreate extends Event {
-  async run(interaction: CommandInteraction | ComponentInteraction): Promise<Message | void> {
+  async run(interaction: CommandInteraction | ComponentInteraction | ModalSubmitInteraction): Promise<void> {
     const author = (interaction.user ?? interaction.member)!;
     const guildId = interaction.guildID;
-    const locale = interaction.guildLocale ?? interaction.locale;
+    const locale = (interaction.guildLocale ?? interaction.locale)!; // MODAL_SUBMIT doesn't have a locale but it's not needed.
 
     if (await this.client.database.getBlacklist(author.id))
-      return interaction.createFollowup({
+      return interaction.createMessage({
         flags: Constants.MessageFlags.EPHEMERAL,
         embed: {
           title: this.client.locale.translate(locale, 'global.ERROR'),
@@ -48,7 +48,9 @@ export class InteractionCreate extends Event {
       locale
     };
 
-    await interaction.acknowledge((interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND && interaction.data.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
+    if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND && interaction.data.name === 'help')
+      // Why the actual fuck can't we use modals on acknowledged interactions???? I FUCKING HATE the Discord API
+      await interaction.acknowledge(Constants.MessageFlags.EPHEMERAL);
 
     if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND) {
       const channel = interaction.channel as TextChannel;
@@ -56,7 +58,7 @@ export class InteractionCreate extends Event {
 
       if (!cmd) {
         const customCommand = await this.client.database.findCommand(interaction.data.id);
-        return interaction.createFollowup({ content: customCommand?.response ?? this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
+        return interaction.createMessage({ content: customCommand?.response ?? this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
       } else if (cmd.ownerOnly && author.id !== '806037166701674511') return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && guildId && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
@@ -81,7 +83,7 @@ export class InteractionCreate extends Event {
 
       if (data.guild) {
         if (data.guild.disabledCategories.indexOf(cmd.category) > -1)
-          return interaction.createFollowup({
+          return interaction.createMessage({
             embed: {
               title: this.client.locale.translate(data.locale, 'global.ERROR'),
               description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
@@ -93,7 +95,7 @@ export class InteractionCreate extends Event {
         const missingClientPerms = cmd.clientPermissions.filter(permission => !permissions.has(permission));
         const missingUserPerms = cmd.userPermissions?.filter(permission => !permissions.has(permission));
         if (missingClientPerms.length ?? missingUserPerms?.length)
-          return interaction.createFollowup({
+          return interaction.createMessage({
             embed: {
               title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
               description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms!).join(', ')}`,
@@ -106,7 +108,7 @@ export class InteractionCreate extends Event {
         const [validated, errorMessage] = cmd.validate({ interaction, args, data });
 
         if (!validated)
-          return interaction.createFollowup({
+          return interaction.createMessage({
             embed: {
               title: this.client.locale.translate(data.locale, 'global.ERROR'),
               description: errorMessage,
@@ -117,11 +119,11 @@ export class InteractionCreate extends Event {
 
       if (process.env.NODE_ENV === 'production' && process.env.STATCORD_API_KEY) this.client.statcord.postCommand(cmd.name, author.id);
       cmd.run({ interaction, args, data });
-    } else if (interaction.type === Constants.InteractionTypes.MESSAGE_COMPONENT) {
+    } else if (interaction.type === Constants.InteractionTypes.MESSAGE_COMPONENT || interaction.type === Constants.InteractionTypes.MODAL_SUBMIT) {
       const customId = interaction.data.custom_id;
       const user = customId.split('.').slice(-1)[0];
 
-      if (user !== interaction.member?.id) return interaction.createFollowup({ content: this.client.locale.translate(data.locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
+      if (user !== interaction.member?.id) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.NOT_YOUR_BUTTON'), flags: Constants.MessageFlags.EPHEMERAL });
       this.client.componentCallbacks.find(cb => cb.id === customId || customId.startsWith(cb.id))?.callback(interaction, customId, data);
     }
   }

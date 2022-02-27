@@ -5,7 +5,6 @@
  */
 
 // Import classes, types & constants
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { VERSION } from 'eris';
@@ -40,8 +39,8 @@ export class Stats extends Command {
     });
   }
 
-  run({ interaction, data }: CommandContext): Promise<Message> {
-    return interaction.createFollowup({
+  run({ interaction, data }: CommandContext): Promise<void> {
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, 'general.STATS'),
         color: COLORS.GREEN,

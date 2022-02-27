@@ -6,7 +6,7 @@
 
 // Import classes & types
 import type { User } from 'eris';
-import { Constants, Message } from 'eris';
+import { Constants } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { COLORS } from '@utilities/Constants';
@@ -43,13 +43,13 @@ export class Ban extends Command {
     return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.self.BAN')];
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const guildMember = await this.client.getRESTGuildMember(interaction.guildID!, (args.user as User).id).catch(() => null);
     const superior = !guildMember ? true : isSuperior(interaction.member!, guildMember);
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
 
     if (superior) await this.client.banGuildMember(interaction.guildID!, (args.user as User).id, 0, reason);
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_BANNED' : 'global.ERROR'),
         description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_BANNED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),

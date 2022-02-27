@@ -5,7 +5,6 @@
  */
 
 // Import classes, types & constants
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { COLORS } from '@utilities/Constants';
@@ -21,11 +20,11 @@ export class Divorce extends Command {
     });
   }
 
-  async run({ interaction, data }: CommandContext): Promise<Message> {
+  async run({ interaction, data }: CommandContext): Promise<void> {
     const userData = await this.client.database.getUser(interaction.member!.id);
 
     if (userData.lover) await this.client.database.updateUser(interaction.member!.id, { lover: null });
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, userData.lover ? 'economy.DIVORCE' : 'global.ERROR'),
         description: this.client.locale.translate(data.locale, userData.lover ? 'economy.SUCCESSFULLY_DIVORCED' : 'economy.NOT_MARRIED').replace('SPOUSE', userData.lover as string),

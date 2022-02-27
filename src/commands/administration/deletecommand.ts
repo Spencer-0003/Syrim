@@ -5,7 +5,6 @@
  */
 
 // Import classes, types & constants
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -35,7 +34,7 @@ export class DeleteCommand extends Command {
     return [/^[\w-]{1,32}$/.test(args.command_name as string), this.client.locale.translate(data.locale, 'administration.INVALID_COMMAND_NAME')];
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const commands = await this.client.getGuildCommands(interaction.guildID!);
     const existingCommand = commands.find(command => command.name === args.command_name);
 
@@ -44,7 +43,7 @@ export class DeleteCommand extends Command {
       await this.client.database.deleteCommand(existingCommand.id);
     }
 
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, !existingCommand ? 'global.ERROR' : 'administration.SUCCESSFULLY_DELETED_COMMAND'),
         description: this.client.locale.translate(data.locale, !existingCommand ? 'administration.COMMAND_DOES_NOT_EXIST' : 'administration.SUCCESSFULLY_DELETED_COMMAND_DESCRIPTION').replace('COMMAND', args.command_name as string),

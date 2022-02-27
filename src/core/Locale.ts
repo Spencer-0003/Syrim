@@ -27,6 +27,7 @@ export class Locale {
   }
 
   public translate(locale: string, field: string): string {
+    if (!this.locales[locale]) locale = 'en-US';
     if (field.indexOf('.') > -1) {
       let translated = this.locales[locale];
       field.split('.').forEach(subField => ((translated as unknown) = translated[subField]));

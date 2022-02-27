@@ -5,7 +5,6 @@
  */
 
 // Import classes, types & constants
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -28,7 +27,7 @@ export class DeleteAttribute extends Command {
       ]
     });
   }
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const attributes = JSON.parse(data.profile.attributes);
     let deleted = false;
 
@@ -38,7 +37,7 @@ export class DeleteAttribute extends Command {
       await this.client.database.updateUser(data.profile.id, { attributes: JSON.stringify(attributes) });
     }
 
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, deleted ? 'global.SUCCESS' : 'global.ERROR'),
         description: this.client.locale.translate(data.locale, deleted ? 'economy.ATTRIBUTE_DELETED' : 'economy.ATTRIBUTE_NOT_FOUND'),

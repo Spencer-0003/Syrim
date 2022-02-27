@@ -5,7 +5,6 @@
  */
 
 // Import classes & types
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -49,9 +48,9 @@ export class Anime extends Command {
     });
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const animeData = await graphQl.request(query, { search: args.anime });
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: animeData.Media.title.romaji,
         description: animeData.Media.description.replace(/<br>/g, ''),

@@ -5,7 +5,7 @@
  */
 
 // Import classes, types & constants
-import type { ActionRow, EmbedField, Message } from 'eris';
+import type { ActionRow, EmbedField } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants, GuildChannel } from 'eris';
@@ -29,7 +29,7 @@ export class Help extends Command {
     });
   }
 
-  run({ interaction, args, data }: CommandContext): Promise<Message> {
+  run({ interaction, args, data }: CommandContext): Promise<void> {
     const isCommand = args.command_or_category && this.client.commands.find(cmd => cmd.name === (args.command_or_category as string).toLowerCase());
     const isCategory = args.command_or_category && !isCommand && this.client.categories.find(cat => cat === (args.command_or_category as string).toLowerCase());
     const components: ActionRow[] = [{ type: Constants.ComponentTypes.ACTION_ROW, components: [] }];
@@ -58,7 +58,7 @@ export class Help extends Command {
         );
 
       if (data.guild?.disabledCategories.indexOf(isCategory) !== -1)
-        return interaction.createFollowup({
+        return interaction.createMessage({
           embed: {
             title: this.client.locale.translate(data.locale, 'global.ERROR'),
             description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
@@ -67,7 +67,7 @@ export class Help extends Command {
         });
 
       const channelIsNsfw = interaction.channel instanceof GuildChannel && interaction.channel.nsfw;
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: isCategory === 'nsfw' ? 'NSFW' : isCategory.charAt(0).toUpperCase() + isCategory.slice(1),
           description: isCategory === 'nsfw' && !channelIsNsfw ? this.client.locale.translate(data.locale, 'misc.CHANNEL_NOT_NSFW') : this.client.locale.translate(data.locale, `category_descriptions.${isCategory.toUpperCase()}`),
@@ -82,7 +82,7 @@ export class Help extends Command {
       let usage = `\`/${isCommand.name}`;
       isCommand.options?.forEach(option => (usage += ` [${option.name}]`));
       usage += '`';
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: isCommand.name.charAt(0).toUpperCase() + isCommand.name.slice(1),
           description: isCommand.description,
@@ -129,7 +129,7 @@ export class Help extends Command {
       })
     );
 
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, 'general.HELP'),
         description: this.client.locale.translate(data.locale, 'general.HELP_DESCRIPTION'),

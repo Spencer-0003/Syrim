@@ -5,7 +5,7 @@
  */
 
 // Import classes, types & constants
-import type { Message, User } from 'eris';
+import type { User } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -29,11 +29,11 @@ export class SetBio extends Command {
     });
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const user = (args.user as User) ?? (interaction.member ?? interaction.user)!;
     await this.client.database.updateUser(user.id, { bio: args.bio as string });
 
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, 'global.SUCCESS'),
         description: this.client.locale.translate(data.locale, 'economy.SUCCESSFULLY_SET_BIO'),

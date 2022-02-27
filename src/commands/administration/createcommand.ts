@@ -5,7 +5,6 @@
  */
 
 // Import classes, types & constants
-import type { Message } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -47,12 +46,12 @@ export class CreateCommand extends Command {
     return [/^[\w-]{1,32}$/.test(args.command_name as string), this.client.locale.translate(data.locale, 'administration.INVALID_COMMAND_NAME')];
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const commands = await this.client.getGuildCommands(interaction.guildID!);
     const existingCommand = commands.find(command => command.name === args.command_name);
 
     if (commands.length === 10 && data.profile.reputation === 'USER')
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
           description: this.client.locale.translate(data.locale, 'administration.MAX_COMMANDS_REACHED'),
@@ -64,7 +63,7 @@ export class CreateCommand extends Command {
       await this.client.database.createCommand(interaction.guildID!, newCommand.id, args.response as string);
     }
 
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, existingCommand ? 'global.ERROR' : 'administration.SUCCESSFULLY_CREATED_COMMAND'),
         description: this.client.locale.translate(data.locale, existingCommand ? 'administration.COMMAND_EXISTS' : 'administration.HOW_TO_USE_CUSTOM_COMMAND').replace('COMMAND', args.command_name as string),

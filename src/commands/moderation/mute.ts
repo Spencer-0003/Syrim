@@ -6,7 +6,7 @@
 
 // Import classes & types
 import type { User } from 'eris';
-import { Constants, Message } from 'eris';
+import { Constants } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { COLORS } from '@utilities/Constants';
@@ -75,12 +75,12 @@ export class Mute extends Command {
     return [args.user !== this.client.user, this.client.locale.translate(data.locale, 'moderation.self.MUTE')];
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     let guildMember;
     try {
       guildMember = await this.client.getRESTGuildMember(interaction.guildID!, (args.user as User).id);
     } catch {
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
           description: this.client.locale.translate(data.locale, 'moderation.MEMBER_NOT_IN_GUILD'),
@@ -93,7 +93,7 @@ export class Mute extends Command {
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
 
     if (superior) await this.client.editGuildMember(interaction.guildID!, (args.user as User).id, { communicationDisabledUntil: new Date(Date.now() + (args.time as number)) }, reason);
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_MUTED' : 'global.ERROR'),
         description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_MUTED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),

@@ -5,8 +5,8 @@
  */
 
 // Import types
-import type { ComponentInteraction } from 'eris';
+import type { ComponentInteraction, ModalSubmitInteraction } from 'eris';
 import type { Data } from '@typings/command';
 
 // Export types
-export type Callback = (interaction: ComponentInteraction, id: string, data: Data) => Promise<unknown> | unknown;
+export type Callback = (interaction: ComponentInteraction | ModalSubmitInteraction, id: string, data: Data) => Promise<unknown> | unknown;

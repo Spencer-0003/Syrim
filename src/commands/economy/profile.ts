@@ -5,7 +5,7 @@
  */
 
 // Import classes, types & constants
-import type { Message, User } from 'eris';
+import type { User } from 'eris';
 import type { SyrimClient } from '@core/Client';
 import type { CommandContext } from '@typings/command';
 import { Constants } from 'eris';
@@ -41,12 +41,12 @@ export class Profile extends Command {
     return [!args.user || !(args.user as User).bot, this.client.locale.translate(data.locale, 'economy.BOTS_NOT_ALLOWED')];
   }
 
-  async run({ interaction, args, data }: CommandContext): Promise<Message> {
+  async run({ interaction, args, data }: CommandContext): Promise<void> {
     const user = (args.user as User) ?? (interaction.member ?? interaction.user)!;
     const profile = await this.client.database.getUserIfExists(user.id);
 
     if (!profile)
-      return interaction.createFollowup({
+      return interaction.createMessage({
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
           description: this.client.locale.translate(data.locale, 'economy.PROFILE_DOESNT_EXIST'),
@@ -55,7 +55,7 @@ export class Profile extends Command {
       });
 
     const xpNeeded = profile.level ** 2 + 25 * profile.level;
-    return interaction.createFollowup({
+    return interaction.createMessage({
       embed: {
         title: user.username,
         description: profile.bio,
@@ -81,6 +81,12 @@ export class Profile extends Command {
                     style: Constants.ButtonStyles.PRIMARY,
                     custom_id: `set_gender.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_GENDER`)
+                  },
+                  {
+                    type: Constants.ComponentTypes.BUTTON,
+                    style: Constants.ButtonStyles.PRIMARY,
+                    custom_id: `set_birthday-component.${user.id}`,
+                    label: this.client.locale.translate(data.locale, `economy.SET_BIRTHDAY`)
                   },
                   {
                     type: Constants.ComponentTypes.BUTTON,
