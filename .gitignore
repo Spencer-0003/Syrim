@@ -42,5 +42,8 @@ tsconfig.tsbuildinfo
 # Ignore yarn.lock
 yarn.lock
 
+# Ignore Docker Compose
+docker-compose.yml
+
 # Ignore Husky
 .husky/_/

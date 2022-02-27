@@ -5,7 +5,6 @@
  */
 
 import 'module-alias/register';
-import 'dotenv/config';
 import '@utilities/ErisPatch';
 import { configureScope, init } from '@sentry/node';
 import { launchAPI } from '@api/index';
