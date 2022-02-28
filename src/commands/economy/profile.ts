@@ -91,9 +91,20 @@ export class Profile extends Command {
                   {
                     type: Constants.ComponentTypes.BUTTON,
                     style: Constants.ButtonStyles.PRIMARY,
+                    custom_id: `set_bio-component.${user.id}`,
+                    label: this.client.locale.translate(data.locale, `economy.SET_BIO`)
+                  },
+                  {
+                    type: Constants.ComponentTypes.BUTTON,
+                    style: Constants.ButtonStyles.PRIMARY,
                     custom_id: `set_color.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_COLOR`)
-                  },
+                  }
+                ]
+              },
+              {
+                type: Constants.ComponentTypes.ACTION_ROW,
+                components: [
                   {
                     type: Constants.ComponentTypes.BUTTON,
                     style: !profile.visibleInAPI ? Constants.ButtonStyles.PRIMARY : Constants.ButtonStyles.DANGER,
