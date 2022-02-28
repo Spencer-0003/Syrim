@@ -26,8 +26,8 @@ export class Divorce extends Command {
     if (userData.lover) await this.client.database.updateUser(interaction.member!.id, { lover: null });
     return interaction.createMessage({
       embed: {
-        title: this.client.locale.translate(data.locale, userData.lover ? 'economy.DIVORCE' : 'global.ERROR'),
-        description: this.client.locale.translate(data.locale, userData.lover ? 'economy.SUCCESSFULLY_DIVORCED' : 'economy.NOT_MARRIED').replace('SPOUSE', userData.lover as string),
+        title: this.client.locale.translate(data.locale, userData.lover ? 'economy.marriage.DIVORCE' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, userData.lover ? 'economy.marriage.SUCCESSFULLY_DIVORCED' : 'economy.marriage.NOT_MARRIED').replace('SPOUSE', userData.lover as string),
         color: userData.lover ? COLORS.GREEN : COLORS.RED
       }
     });

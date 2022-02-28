@@ -23,7 +23,7 @@ export class MarryComponentEvent extends Event {
     return interaction.editParent({
       embed: {
         title: this.client.locale.translate(data.locale, proposalData ? 'economy.MARRIAGE' : 'global.ERROR'),
-        description: this.client.locale.translate(data.locale, proposalData ? 'economy.SUCCESSFULLY_MARRIED' : 'economy.MARRIAGE_REQUEST_EXPIRED').replace('PROPOSER', proposalData),
+        description: this.client.locale.translate(data.locale, proposalData ? 'economy.marriage.SUCCESSFULLY_MARRIED' : 'economy.marriage.MARRIAGE_REQUEST_EXPIRED').replace('PROPOSER', proposalData),
         color: proposalData ? COLORS.GREEN : COLORS.RED
       },
       components: []

@@ -32,7 +32,7 @@ export class Marry extends Command {
 
   validate({ interaction, args, data }: CommandContext): [boolean, string] {
     const user = args.user as User;
-    return [user.bot ?? interaction.member!.id === user.id, this.client.locale.translate(data.locale, user.bot ? 'economy.YOU_CANT_MARRY_BOTS' : 'economy.YOU_CANT_MARRY_YOURSELF')];
+    return [user.bot ?? interaction.member!.id === user.id, this.client.locale.translate(data.locale, user.bot ? 'economy.marriage.YOU_CANT_MARRY_BOTS' : 'economy.marriage.YOU_CANT_MARRY_YOURSELF')];
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<void> {
@@ -52,7 +52,7 @@ export class Marry extends Command {
     if (userData.lover || spouseData.lover)
       return interaction.createMessage({
         embed: {
-          title: this.client.locale.translate(data.locale, userData.lover ? 'economy.YOURE_ALREADY_MARRIED' : 'economy.SPOUSE_ALREADY_MARRIED'),
+          title: this.client.locale.translate(data.locale, userData.lover ? 'economy.marriage.YOURE_ALREADY_MARRIED' : 'economy.marriage.SPOUSE_ALREADY_MARRIED'),
           color: COLORS.RED
         }
       });
@@ -64,7 +64,7 @@ export class Marry extends Command {
         embed: {
           title: this.client.locale.translate(data.locale, 'global.ERROR'),
           description: this.client.locale
-            .translate(data.locale, `economy.${pendingUserProposal ? 'USER' : 'SPOUSE'}_ALREADY_REQUESTED`)
+            .translate(data.locale, `economy.marriage.${pendingUserProposal ? 'USER' : 'SPOUSE'}_ALREADY_REQUESTED`)
             .replace('SPOUSE', pendingSpouseProposal)
             .replace('SENDER', pendingUserProposal),
           color: COLORS.RED
@@ -76,7 +76,7 @@ export class Marry extends Command {
       content: `<@${user.id}>`,
       embed: {
         title: this.client.locale.translate(data.locale, 'economy.MARRIAGE'),
-        description: this.client.locale.translate(data.locale, 'economy.NEW_PROPOSAL').replace('USER', `<@${user.id}>`).replace('PROPOSER', `<@${interaction.member!.id}>`),
+        description: this.client.locale.translate(data.locale, 'economy.marriage.NEW_PROPOSAL').replace('USER', `<@${user.id}>`).replace('PROPOSER', `<@${interaction.member!.id}>`),
         color: COLORS.GREEN
       },
       components: [
@@ -87,7 +87,7 @@ export class Marry extends Command {
               type: Constants.ComponentTypes.BUTTON,
               style: Constants.ButtonStyles.PRIMARY,
               custom_id: `marry.${user.id}`,
-              label: this.client.locale.translate(data.locale, `economy.ACCEPT_PROPOSAL`)
+              label: this.client.locale.translate(data.locale, `economy.marriage.ACCEPT_PROPOSAL`)
             }
           ]
         }

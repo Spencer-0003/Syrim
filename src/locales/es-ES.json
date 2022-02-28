@@ -39,7 +39,21 @@
   },
 
   "economy": {
-    "ACCEPT_PROPOSAL": "Acepta la propuesta",
+    "marriage": {
+      "ACCEPT_PROPOSAL": "Acepta la propuesta",
+      "DIVORCE": "Divorcio",
+      "MARRIAGE_REQUEST_EXPIRED": "Esta solicitud de matrimonio ha caducado, ¡debe enviar una nueva!",
+      "NEW_PROPOSAL": "USER, tiene una nueva propuesta del PROPOSER. Pulsa el botón de abajo para aceptar su propuesta.",
+      "NOT_MARRIED": "No estás casado",
+      "SPOUSE_ALREADY_MARRIED": "Esta persona ya está casada.",
+      "SPOUSE_ALREADY_REQUESTED": "<@SPOUSE> ya ha recibido una solicitud de matrimonio de <@SENDER>",
+      "SUCCESSFULLY_DIVORCED": "Te has divorciado con éxito <@SPOUSE>.",
+      "SUCCESSFULLY_MARRIED": "🎉 Te acabas de casar <@PROPOSER> 🎉",
+      "USER_ALREADY_REQUESTED": "Ya tienes una solicitud de matrimonio de <@SENDER>",
+      "YOURE_ALREADY_MARRIED": "Ya estás casado.",
+      "YOU_CANT_MARRY_BOTS": "No puedes casarte con bots.",
+      "YOU_CANT_MARRY_YOURSELF": "No te puedes casar contigo misma."
+    },
     "ATTRIBUTE_DELETED": "Se eliminó correctamente el atributo.",
     "ATTRIBUTE_NOT_FOUND": "No se encontró el atributo.",
     "ATTRIBUTE_SET": "Has establecido un atributo correctamente.",
@@ -50,7 +64,6 @@
     "DELETE_PROFILE": "Eliminar Perfil",
     "DELETE_PROFILE_DESCRIPTION": "Si estás seguro de que quieres eliminar tu perfil, pulsa el botón de abajo.\nEl uso de cualquier comando rehará tu perfil.",
     "DISABLED_API": "Has ocultado correctamente tu perfil de la API.",
-    "DIVORCE": "Divorcio",
     "ENABLED_API": "Has hecho que tu perfil sea visible para la API.",
     "FEMALE": "Femenino",
     "GENDER": "Género",
@@ -61,10 +74,7 @@
     "LOVER": "Amante",
     "MALE": "Masculino",
     "MARRIAGE": "El Matrimonio",
-    "MARRIAGE_REQUEST_EXPIRED": "Esta solicitud de matrimonio ha caducado, ¡debe enviar una nueva!",
     "MAXIMUM_ATTRIBUTES": "Has alcanzado el número máximo de atributos, elimina uno o dona.",
-    "NEW_PROPOSAL": "USER, tiene una nueva propuesta del PROPOSER. Pulsa el botón de abajo para aceptar su propuesta.",
-    "NOT_MARRIED": "No estás casado",
     "PROFILE_DOESNT_EXIST": "Este usuario no tiene un perfil, ¡debes decirle que cree uno!",
     "REPUTATION": "Reputación",
     "SET_BIO": "Bio Conjunto",
@@ -74,11 +84,7 @@
     "SET_GENDER": "Establecer Género",
     "SET_GENDER_DESCRIPTION": "Use los botones de abajo para establecer su género.",
     "SINGLE": "Sencillo",
-    "SPOUSE_ALREADY_MARRIED": "Esta persona ya está casada.",
-    "SPOUSE_ALREADY_REQUESTED": "<@SPOUSE> ya ha recibido una solicitud de matrimonio de <@SENDER>",
     "SUCCESSFULLY_DELETED_PROFILE": "Has eliminado tu perfil correctamente.",
-    "SUCCESSFULLY_DIVORCED": "Te has divorciado con éxito <@SPOUSE>.",
-    "SUCCESSFULLY_MARRIED": "🎉 Te acabas de casar <@PROPOSER> 🎉",
     "SUCCESSFULLY_SET_BIO": "Has configurado tu biografía correctamente.",
     "SUCCESSFULLY_SET_BIRTHDAY": "Has configurado tu fecha de nacimiento correctamente.",
     "SUCCESSFULLY_SET_COLOR": "Has establecido tu color correctamente.",
@@ -86,12 +92,8 @@
     "SUCCESSFULLY_WORKED": "Has ganado £MONEY trabajando.",
     "TOGGLE_API": "Alternar visibilidad de API",
     "UNDISCLOSED": "No divulgado",
-    "USER_ALREADY_REQUESTED": "Ya tienes una solicitud de matrimonio de <@SENDER>",
     "WORK": "Trabajo",
-    "WORK_COOLDOWN": "No puedes trabajar por otro TIME",
-    "YOURE_ALREADY_MARRIED": "Ya estás casado.",
-    "YOU_CANT_MARRY_BOTS": "No puedes casarte con bots.",
-    "YOU_CANT_MARRY_YOURSELF": "No te puedes casar contigo misma."
+    "WORK_COOLDOWN": "No puedes trabajar por otro TIME"
   },
 
   "general": {
