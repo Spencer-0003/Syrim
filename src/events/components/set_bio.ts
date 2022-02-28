@@ -35,7 +35,7 @@ export class SetBioComponentEvent extends Event {
           }
         ]
       });
-    
+
     await this.client.database.updateUser((interaction.member ?? interaction.user)!.id, { bio: (interaction as unknown as ModalSubmitInteraction).data.components[0].components[0].value as string });
     return interaction.createMessage({
       embed: {
