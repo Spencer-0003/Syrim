@@ -39,7 +39,7 @@
     "husky": "7.0.4",
     "prettier": "2.5.1",
     "prisma": "3.10.0",
-    "typescript": "4.5.5"
+    "typescript": "4.6.2"
   },
   "optionalDependencies": {
     "erlpack": "abalabahaha/erlpack",
