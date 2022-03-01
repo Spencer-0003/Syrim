@@ -17,7 +17,7 @@ export class InteractionCreate extends Event {
   async run(interaction: CommandInteraction | ComponentInteraction | ModalSubmitInteraction): Promise<void> {
     const author = (interaction.user ?? interaction.member)!;
     const guildId = interaction.guildID;
-    const locale = (interaction.guildLocale ?? interaction.locale)!; // MODAL_SUBMIT doesn't have a locale but it's not needed.
+    const locale = (interaction.guildLocale ?? interaction.locale);
 
     if (await this.client.database.getBlacklist(author.id))
       return interaction.createMessage({
