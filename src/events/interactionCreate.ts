@@ -84,6 +84,7 @@ export class InteractionCreate extends Event {
       if (data.guild) {
         if (data.guild.disabledCategories.indexOf(cmd.category) > -1)
           return interaction.createMessage({
+            flags: Constants.MessageFlags.EPHEMERAL,
             embed: {
               title: this.client.locale.translate(data.locale, 'global.ERROR'),
               description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
@@ -96,6 +97,7 @@ export class InteractionCreate extends Event {
         const missingUserPerms = cmd.userPermissions?.filter(permission => !permissions.has(permission));
         if (missingClientPerms.length ?? missingUserPerms?.length)
           return interaction.createMessage({
+            flags: Constants.MessageFlags.EPHEMERAL,
             embed: {
               title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
               description: `${this.client.locale.translate(data.locale, missingClientPerms.length ? 'misc.BOT_REQUIRED_PERMISSIONS' : 'misc.USER_REQUIRED_PERMISSIONS')} ${(missingClientPerms.length ? missingClientPerms : missingUserPerms!).join(', ')}`,
@@ -109,6 +111,7 @@ export class InteractionCreate extends Event {
 
         if (!validated)
           return interaction.createMessage({
+            flags: Constants.MessageFlags.EPHEMERAL,
             embed: {
               title: this.client.locale.translate(data.locale, 'global.ERROR'),
               description: errorMessage,
