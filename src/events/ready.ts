@@ -37,6 +37,5 @@ export class Ready extends Event {
     });
 
     if (process.env.NODE_ENV === 'production' && process.env.STATCORD_API_KEY) this.client.statcord.autopost();
-    console.log("[Syrim]: I'm online.");
   }
 }
