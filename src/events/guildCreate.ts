@@ -38,7 +38,8 @@ export class GuildCreate extends Event {
           { name: 'Owner', value: `<@${guild.ownerID}>`, inline: true },
           { name: 'Member Count', value: members.filter(member => !member.bot).length.toString(), inline: true },
           { name: 'Bot Count', value: members.filter(member => member.bot).length.toString(), inline: true }
-        ]
+        ],
+        footer: { text: `Total guilds: ${(await this.client.getRESTGuilds()).length}` }
       }
     });
   }

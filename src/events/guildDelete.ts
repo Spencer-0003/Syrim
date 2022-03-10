@@ -24,7 +24,8 @@ export class GuildDelete extends Event {
           { name: 'Name', value: guild.name, inline: true },
           { name: 'ID', value: guild.id, inline: true },
           { name: 'Owner', value: `<@${guild.ownerID}>`, inline: true }
-        ]
+        ],
+        footer: { text: `Total guilds: ${(await this.client.getRESTGuilds()).length}` }
       }
     });
   }
