@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "3.11.0",
-    "@sentry/node": "6.19.1",
+    "@sentry/node": "6.19.2",
     "eris": "Spencer-0003/eris#everything",
     "fastify": "3.27.4",
     "fastify-helmet": "7.0.1",
