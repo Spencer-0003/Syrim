@@ -15,7 +15,7 @@
     "start": "node dist/index"
   },
   "dependencies": {
-    "@prisma/client": "3.11.0",
+    "@prisma/client": "3.11.1",
     "@sentry/node": "6.19.2",
     "eris": "Spencer-0003/eris#everything",
     "fastify": "3.27.4",
@@ -38,7 +38,7 @@
     "eslint-plugin-sonarjs": "0.12.0",
     "husky": "7.0.4",
     "prettier": "2.6.0",
-    "prisma": "3.11.0",
+    "prisma": "3.11.1",
     "typescript": "4.6.3"
   },
   "optionalDependencies": {
