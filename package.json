@@ -18,8 +18,6 @@
     "@prisma/client": "3.11.1",
     "@sentry/node": "6.19.2",
     "eris": "Spencer-0003/eris#everything",
-    "fastify": "3.27.4",
-    "fastify-helmet": "7.0.1",
     "graphql": "16.3.0",
     "graphql-request": "4.2.0",
     "ioredis": "4.28.5",
@@ -47,7 +45,6 @@
     "zlib-sync": "0.1.7"
   },
   "_moduleAliases": {
-    "@api": "dist/api",
     "@core": "dist/core",
     "@utilities": "dist/utilities"
   }
