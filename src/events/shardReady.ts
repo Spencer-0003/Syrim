@@ -10,6 +10,6 @@ import { Event } from '@core/Event';
 // Export class
 export class Ready extends Event {
   run(id: number): void {
-    console.log(`[Syrim]: Shard ${id} logged in.`);
+    console.log(`[${this.client.user.username}]: Shard ${id} logged in.`);
   }
 }
