@@ -7,14 +7,17 @@
 // Import classes & types
 import type { Blacklist, BlacklistType, Command, Guild, User } from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
+import Redis from 'ioredis';
 
 export class Database {
   // Properties
   private prisma: PrismaClient;
+  redis: Redis;
 
   // Constructor
   constructor() {
     this.prisma = new PrismaClient();
+    this.redis = new Redis(process.env.REDIS_URL);
   }
 
   // Functions

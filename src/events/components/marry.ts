@@ -13,11 +13,11 @@ import { COLORS } from '@utilities/Constants';
 // Export class
 export class MarryComponentEvent extends Event {
   async run(interaction: ComponentInteraction, _id: string, data: Data): Promise<void> {
-    const proposalData = (await this.client.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
+    const proposalData = (await this.client.database.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
     if (proposalData) {
       await this.client.database.updateUser(interaction.member!.id, { lover: proposalData });
       await this.client.database.updateUser(proposalData, { lover: interaction.member!.id });
-      await this.client.redis.del(`marriage_request:${interaction.member!.id}`);
+      await this.client.database.redis.del(`marriage_request:${interaction.member!.id}`);
     }
 
     return interaction.editParent({

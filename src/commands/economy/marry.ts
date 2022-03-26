@@ -57,8 +57,8 @@ export class Marry extends Command {
         }
       });
 
-    const pendingUserProposal = (await this.client.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
-    const pendingSpouseProposal = (await this.client.redis.get(`marriage_request:${user.id}`)) as string;
+    const pendingUserProposal = (await this.client.database.redis.get(`marriage_request:${interaction.member!.id}`)) as string;
+    const pendingSpouseProposal = (await this.client.database.redis.get(`marriage_request:${user.id}`)) as string;
     if (pendingUserProposal || pendingSpouseProposal)
       return interaction.createMessage({
         embed: {
@@ -71,7 +71,7 @@ export class Marry extends Command {
         }
       });
 
-    await this.client.redis.set(`marriage_request:${user.id}`, interaction.member!.id, 'EX', 120);
+    await this.client.database.redis.set(`marriage_request:${user.id}`, interaction.member!.id, 'EX', 120);
     return interaction.createMessage({
       content: `<@${user.id}>`,
       embed: {

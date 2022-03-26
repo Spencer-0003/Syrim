@@ -15,7 +15,6 @@ import { NekoBot } from 'nekobot-api';
 import { Client as StatcordClient } from 'statcord-eris';
 import { Database } from '@core/Database';
 import { Locale } from '@core/Locale';
-import Redis from 'ioredis';
 
 // Export client
 export class SyrimClient extends Client {
@@ -26,7 +25,6 @@ export class SyrimClient extends Client {
   database: Database;
   locale: Locale;
   nekoBot: NekoBot;
-  redis: Redis;
   statcord: StatcordClient;
 
   // Constructor
@@ -47,7 +45,6 @@ export class SyrimClient extends Client {
     this.database = new Database();
     this.locale = new Locale(join(__dirname, '../locales'));
     this.nekoBot = new NekoBot(process.env.NEKOBOT_API_KEY);
-    this.redis = new Redis(process.env.REDIS_URL);
     this.statcord = new StatcordClient({ client: this, key: process.env.STATCORD_API_KEY });
   }
 
