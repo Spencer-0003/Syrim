@@ -14,6 +14,7 @@ declare namespace NodeJS {
     ERROR_LOGS: string;
     JOINED_GUILD_LOGS: string;
     LEFT_GUILD_LOGS: string;
+    LOG_LOCALE: string;
     NODE_ENV: string;
     NEKOBOT_API_KEY: string;
     npm_package_version: string;

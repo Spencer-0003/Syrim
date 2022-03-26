@@ -115,6 +115,17 @@
     "SUCCESS": "Success"
   },
 
+  "logs": {
+    "BOT_COUNT": "Bot Count",
+    "JOINED_BOT_FARM": "Attempted to Join a Bot Farm",
+    "JOINED_GUILD": "Joined a Guild",
+    "LEFT_GUILD": "Left a Guild",
+    "MEMBER_COUNT": "Member Count",
+    "NAME": "Name",
+    "OWNER": "Owner",
+    "TOTAL_GUILDS": "Total guilds"
+  },
+
   "misc": {
     "BOT_REQUIRED_PERMISSIONS": "I require the following permissions:",
     "CATEGORY_DISABLED": "This server has disabled this category.",

@@ -115,6 +115,17 @@
     "SUCCESS": "Éxito"
   },
 
+  "logs": {
+    "BOT_COUNT": "Recuento de bots",
+    "JOINED_BOT_FARM": "Intento de unirse a una granja de bots",
+    "JOINED_GUILD": "Se unió a un gremio",
+    "LEFT_GUILD": "Abandonó un gremio",
+    "MEMBER_COUNT": "Recuento de miembros",
+    "NAME": "Nombre",
+    "OWNER": "Propietario",
+    "TOTAL_GUILDS": "Gremios totales"
+  },
+
   "misc": {
     "BOT_REQUIRED_PERMISSIONS": "Requiero los siguientes permisos:",
     "CATEGORY_DISABLED": "Este servidor ha deshabilitado esta categoría.",

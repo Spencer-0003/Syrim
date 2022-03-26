@@ -17,15 +17,15 @@ export class GuildDelete extends Event {
     const webhook = await this.client.getOrCreateWebhook(process.env.NODE_ENV === 'development' ? process.env.DEVELOPMENT_LOGS : process.env.LEFT_GUILD_LOGS);
     this.client.executeWebhook(webhook.id, webhook.token!, {
       embed: {
-        title: 'Left a Guild',
+        title: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.LEFT_GUILD'),
         color: COLORS.RED,
         thumbnail: { url: guild.iconURL ?? 'https://better-default-discord.netlify.app/Icons/Gradient-Red.png' },
         fields: [
-          { name: 'Name', value: guild.name, inline: true },
+          { name: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.NAME'), value: guild.name, inline: true },
           { name: 'ID', value: guild.id, inline: true },
-          { name: 'Owner', value: `<@${guild.ownerID}>`, inline: true }
+          { name: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.OWNER'), value: `<@${guild.ownerID}>`, inline: true }
         ],
-        footer: { text: `Total guilds: ${(await this.client.getRESTGuilds()).length}` }
+        footer: { text: `${this.client.locale.translate(process.env.LOG_LOCALE, 'logs.TOTAL_GUILDS')}: ${(await this.client.getRESTGuilds()).length}` }
       }
     });
   }

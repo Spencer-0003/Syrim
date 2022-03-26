@@ -29,17 +29,17 @@ export class GuildCreate extends Event {
 
     this.client.executeWebhook(webhook.id, webhook.token!, {
       embed: {
-        title: isBotFarm ? 'Attempted to Join a Bot Farm' : 'Joined a Guild',
+        title: this.client.locale.translate(process.env.LOG_LOCALE, isBotFarm ? 'logs.JOINED_BOT_FARM' : 'logs.JOINED_GUILD'),
         color: isBotFarm ? COLORS.RED : COLORS.GREEN,
         thumbnail: { url: guild.iconURL ?? 'https://better-default-discord.netlify.app/Icons/Gradient-Red.png' },
         fields: [
-          { name: 'Name', value: guild.name, inline: true },
+          { name: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.NAME'), value: guild.name, inline: true },
           { name: 'ID', value: guild.id, inline: true },
-          { name: 'Owner', value: `<@${guild.ownerID}>`, inline: true },
-          { name: 'Member Count', value: members.filter(member => !member.bot).length.toString(), inline: true },
-          { name: 'Bot Count', value: members.filter(member => member.bot).length.toString(), inline: true }
+          { name: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.OWNER'), value: `<@${guild.ownerID}>`, inline: true },
+          { name: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.MEMBER_COUNT'), value: members.filter(member => !member.bot).length.toString(), inline: true },
+          { name: this.client.locale.translate(process.env.LOG_LOCALE, 'logs.BOT_COUNT'), value: members.filter(member => member.bot).length.toString(), inline: true }
         ],
-        footer: { text: `Total guilds: ${(await this.client.getRESTGuilds()).length}` }
+        footer: { text: `${this.client.locale.translate(process.env.LOG_LOCALE, 'logs.TOTAL_GUILDS')}: ${(await this.client.getRESTGuilds()).length}` }
       }
     });
   }
