@@ -15,4 +15,4 @@ if (process.env.SENTRY_DSN) {
   configureScope(scope => scope.setTags({ 'syrim.commitHash': commitHash }));
 } else console.warn('Sentry DSN not found, no error reporting will be sent.');
 
-new SyrimClient(process.env.DISCORD_TOKEN).launch()
+new SyrimClient(process.env.DISCORD_TOKEN).launch();

@@ -51,8 +51,8 @@ export class Ban extends Command {
     if (superior) await this.client.banGuildMember(interaction.guildID!, (args.user as User).id, 0, reason);
     return interaction.createMessage({
       embed: {
-        title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_BANNED' : 'global.ERROR'),
-        description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_BANNED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
+        title: this.client.locale.translate(data.locale, superior ? 'moderation.ban.SUCCESS' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, superior ? 'moderation.ban.DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
         color: superior ? COLORS.GREEN : COLORS.RED,
         thumbnail: { url: (args.user as User).avatarURL },
         fields: !superior ? [] : [{ name: this.client.locale.translate(data.locale, 'moderation.REASON'), value: reason }]

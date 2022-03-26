@@ -54,9 +54,6 @@
       "YOU_CANT_MARRY_YOURSELF": "You can't marry yourself.",
       "YOURE_ALREADY_MARRIED": "You're already married."
     },
-    "ATTRIBUTE_DELETED": "Successfully deleted attribute.",
-    "ATTRIBUTE_NOT_FOUND": "Attribute not found.",
-    "ATTRIBUTE_SET": "You've successfully set an attribute.",
     "BIO_MODAL_TITLE": "Your epic bio.",
     "BIRTHDAY": "Birthday",
     "BIRTHDAY_MODAL_TITLE": "Birthday (dd/mm/yyyy)",
@@ -72,7 +69,6 @@
     "LOVER": "Lover",
     "MALE": "Male",
     "MARRIAGE": "Marriage",
-    "MAXIMUM_ATTRIBUTES": "You've reached the maximum number of attributes, please delete one or donate.",
     "PROFILE_DOESNT_EXIST": "This user doesn't have a profile, you should tell them to make one!",
     "REPUTATION": "Reputation",
     "SET_BIO": "Set Bio",
@@ -137,6 +133,22 @@
   },
 
   "moderation": {
+    "ban": {
+      "SUCCESS": "User Banned",
+      "DESCRIPTION": "You've successfully banned <@USER>."
+    },
+    "kick": {
+      "SUCCESS": "User Kicked",
+      "DESCRIPTION": "You've successfully kicked <@USER>."
+    },
+    "mute": {
+      "SUCCESS": "User Muted",
+      "DESCRIPTION": "You've successfully muted <@USER>."
+    },
+    "unmute": {
+      "SUCCESS": "User Unmuted",
+      "DESCRIPTION": "You've successfully unmuted <@USER>."
+    },
     "self": {
       "BAN": "Why would you want to ban me? :frowning:",
       "KICK": "Why would you want to kick me? :frowning:",
@@ -146,14 +158,6 @@
     "MEMBER_NOT_IN_GUILD": "This member is not in this server.",
     "NO_REASON_PROVIDED": "No reason provided.",
     "NOT_SUPERIOR": "You can't moderate this user.",
-    "REASON": "Reason",
-    "SUCCESSFULLY_BANNED": "User Banned",
-    "SUCCESSFULLY_BANNED_DESCRIPTION": "You've successfully banned <@USER>.",
-    "SUCCESSFULLY_KICKED": "User Kicked",
-    "SUCCESSFULLY_KICKED_DESCRIPTION": "You've successfully kicked <@USER>.",
-    "SUCCESSFULLY_MUTED": "User Muted",
-    "SUCCESSFULLY_MUTED_DESCRIPTION": "You've successfully muted <@USER>.",
-    "SUCCESSFULLY_UNMUTED": "User Unmuted",
-    "SUCCESSFULLY_UNMUTED_DESCRIPTION": "You've successfully unmuted <@USER>."
+    "REASON": "Reason"
   }
 }

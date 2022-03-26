@@ -63,8 +63,8 @@ export class Kick extends Command {
     if (superior) await this.client.kickGuildMember(interaction.guildID!, (args.user as User).id, reason);
     return interaction.createMessage({
       embed: {
-        title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_KICKED' : 'global.ERROR'),
-        description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_KICKED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
+        title: this.client.locale.translate(data.locale, superior ? 'moderation.kick.SUCCESS' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, superior ? 'moderation.kick.DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
         color: superior ? COLORS.GREEN : COLORS.RED,
         thumbnail: { url: (args.user as User).avatarURL },
         fields: !superior ? [] : [{ name: this.client.locale.translate(data.locale, 'moderation.REASON'), value: reason }]

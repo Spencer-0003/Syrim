@@ -54,9 +54,6 @@
       "YOU_CANT_MARRY_BOTS": "No puedes casarte con bots.",
       "YOU_CANT_MARRY_YOURSELF": "No te puedes casar contigo misma."
     },
-    "ATTRIBUTE_DELETED": "Se eliminó correctamente el atributo.",
-    "ATTRIBUTE_NOT_FOUND": "No se encontró el atributo.",
-    "ATTRIBUTE_SET": "Has establecido un atributo correctamente.",
     "BIO_MODAL_TITLE": "Tu biografía épica.",
     "BIRTHDAY": "Cumpleaños",
     "BIRTHDAY_MODAL_TITLE": "Cumpleaños (dd/mm/yyyy)",
@@ -72,7 +69,6 @@
     "LOVER": "Amante",
     "MALE": "Masculino",
     "MARRIAGE": "El Matrimonio",
-    "MAXIMUM_ATTRIBUTES": "Has alcanzado el número máximo de atributos, elimina uno o dona.",
     "PROFILE_DOESNT_EXIST": "Este usuario no tiene un perfil, ¡debes decirle que cree uno!",
     "REPUTATION": "Reputación",
     "SET_BIO": "Bio Conjunto",
@@ -137,6 +133,22 @@
   },
 
   "moderation": {
+    "ban": {
+      "DESCRIPTION": "Has prohibido correctamente <@USER>.",
+      "SUCCESS": "Usuario Prohibido"
+    },
+    "kick": {
+      "DESCRIPTION": "Has pateado con éxito <@USER>.",
+      "SUCCESS": "Usuario Expulsado"
+    },
+    "mute": {
+      "DESCRIPTION": "Has silenciado correctamente <@USER>.",
+      "SUCCESS": "Silenciado por el usuario"
+    },
+    "unmute": {
+      "DESCRIPTION": "Ha activado correctamente el sonido de <@USER>.",
+      "SUCCESS": "Usuario no silenciada"
+    },
     "self": {
       "BAN": "¿Por qué querrías prohibirme? :frowning:",
       "KICK": "¿Por qué querrías patearme? :frowning:",
@@ -146,15 +158,6 @@
     "MEMBER_NOT_IN_GUILD": "Este miembro no se encuentra en este servidor.",
     "NOT_SUPERIOR": "No puedes moderar a este usuario.",
     "NO_REASON_PROVIDED": "No se proporcionó ninguna razón.",
-    "REASON": "Razón",
-    "SUCCESSFULLY_BANNED": "Usuario Prohibido",
-    "SUCCESSFULLY_BANNED_DESCRIPTION": "Has prohibido correctamente <@USER>.",
-    "SUCCESSFULLY_KICKED": "Usuario Expulsado",
-    "SUCCESSFULLY_KICKED_DESCRIPTION": "Has pateado con éxito <@USER>.",
-    "SUCCESSFULLY_MUTED": "Silenciado por el usuario",
-    "SUCCESSFULLY_MUTED_DESCRIPTION": "Has silenciado correctamente <@USER>.",
-    "SUCCESSFULLY_UNMUTED": "Usuario no silenciada",
-    "SUCCESSFULLY_UNMUTED_DESCRIPTION": "Ha activado correctamente el sonido de <@USER>.",
-    "UNMUTE_SYRIM": "Lindo gesto pero no estoy en silencio :flushed:"
+    "REASON": "Razón"
   }
 }

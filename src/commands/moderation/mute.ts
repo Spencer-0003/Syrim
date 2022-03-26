@@ -95,8 +95,8 @@ export class Mute extends Command {
     if (superior) await this.client.editGuildMember(interaction.guildID!, (args.user as User).id, { communicationDisabledUntil: new Date(Date.now() + (args.time as number)) }, reason);
     return interaction.createMessage({
       embed: {
-        title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_MUTED' : 'global.ERROR'),
-        description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_MUTED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
+        title: this.client.locale.translate(data.locale, superior ? 'moderation.mute.SUCCESS' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, superior ? 'moderation.mute.DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
         color: superior ? COLORS.GREEN : COLORS.RED,
         thumbnail: { url: (args.user as User).avatarURL },
         fields: !superior ? [] : [{ name: this.client.locale.translate(data.locale, 'moderation.REASON'), value: reason }]

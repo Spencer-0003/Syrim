@@ -63,8 +63,8 @@ export class Unmute extends Command {
     if (superior) await this.client.editGuildMember(interaction.guildID!, (args.user as User).id, { communicationDisabledUntil: null }, reason);
     return interaction.createMessage({
       embed: {
-        title: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_UNMUTED' : 'global.ERROR'),
-        description: this.client.locale.translate(data.locale, superior ? 'moderation.SUCCESSFULLY_UNMUTED_DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
+        title: this.client.locale.translate(data.locale, superior ? 'moderation.unmute.SUCCESS' : 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, superior ? 'moderation.unmute.DESCRIPTION' : 'moderation.NOT_SUPERIOR').replace('USER', (args.user as User).id),
         color: superior ? COLORS.GREEN : COLORS.RED,
         thumbnail: { url: (args.user as User).avatarURL },
         fields: !superior ? [] : [{ name: this.client.locale.translate(data.locale, 'moderation.REASON'), value: reason }]
