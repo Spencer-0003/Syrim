@@ -14,7 +14,7 @@ export class GuildDelete extends Event {
   async run(guild: Guild): Promise<void> {
     if (await this.client.database.getBlacklist(guild.id)) return;
 
-    const webhook = await this.client.getOrCreateWebhook('934409414750924810');
+    const webhook = await this.client.getOrCreateWebhook(process.env.NODE_ENV === 'development' ? process.env.DEVELOPMENT_LOGS : process.env.LEFT_GUILD_LOGS);
     this.client.executeWebhook(webhook.id, webhook.token!, {
       embed: {
         title: 'Left a Guild',

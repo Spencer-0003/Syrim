@@ -14,7 +14,7 @@ export class ErrorLog extends Event {
   async run(err: DiscordRESTError): Promise<void> {
     if (err.code === 1006) return;
 
-    const webhook = await this.client.getOrCreateWebhook(process.env.NODE_ENV === 'development' ? '924316514407030784' : '935639888198525008');
+    const webhook = await this.client.getOrCreateWebhook(process.env.NODE_ENV === 'development' ? process.env.DEVELOPMENT_LOGS : process.env.ERROR_LOGS);
     this.client.executeWebhook(webhook.id, webhook.token!, {
       embed: {
         title: 'Error',

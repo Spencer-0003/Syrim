@@ -23,7 +23,7 @@ export class GuildCreate extends Event {
 
     const members = await guild.fetchMembers();
     const isBotFarm = members.filter(member => member.bot).length >= 50 && whitelistedGuilds.indexOf(guild.id) === -1;
-    const webhook = await this.client.getOrCreateWebhook(isBotFarm ? '934399418168377354' : '934399565749162024');
+    const webhook = await this.client.getOrCreateWebhook(process.env.NODE_ENV === 'development' ? process.env.DEVELOPMENT_LOGS : isBotFarm ? process.env.BOT_FARM_LOGS : process.env.JOINED_GUILD_LOGS);
 
     if (isBotFarm) this.client.database.createBlacklist(guild.id, 'Syrim', 'GUILD', 'Bot farm').then(guild.leave);
 
