@@ -8,7 +8,7 @@
 import { Event } from '@core/Event';
 
 // Export class
-export class Ready extends Event {
+export class ShardReady extends Event {
   run(id: number): void {
     console.log(`[${this.client.user.username}]: Shard ${id} logged in.`);
   }
