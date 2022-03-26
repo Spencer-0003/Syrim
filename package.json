@@ -20,7 +20,7 @@
     "eris": "Spencer-0003/eris#everything",
     "graphql": "16.3.0",
     "graphql-request": "4.2.0",
-    "ioredis": "5.0.0",
+    "ioredis": "5.0.1",
     "module-alias": "2.2.2",
     "moment": "2.29.1",
     "nekobot-api": "2.1.0",
