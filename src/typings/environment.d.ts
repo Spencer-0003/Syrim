@@ -9,6 +9,7 @@ declare namespace NodeJS {
     DATABASE_URL: string;
     DEVELOPMENT_GUILD: string;
     DISCORD_TOKEN: string;
+    OWNER_ID: string;
     NODE_ENV: string;
     NEKOBOT_API_KEY: string;
     npm_package_version: string;
