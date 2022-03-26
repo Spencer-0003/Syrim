@@ -26,7 +26,7 @@ export class SyrimClient extends Client {
   database: Database;
   locale: Locale;
   nekoBot: NekoBot;
-  redis: Redis.Redis;
+  redis: Redis;
   statcord: StatcordClient;
 
   // Constructor
