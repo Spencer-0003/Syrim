@@ -9,7 +9,7 @@ import { Event } from '@core/Event';
 
 // Export class
 export class Ready extends Event {
-  async run(id: number): Promise<void> {
+  run(id: number): void {
     console.log(`[Syrim]: Shard ${id} logged in.`);
   }
 }
