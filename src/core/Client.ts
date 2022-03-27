@@ -25,7 +25,7 @@ export class SyrimClient extends Client {
   database: Database;
   locale: Locale;
   nekoBot: NekoBot;
-  statcord: StatcordClient;
+  statcord?: StatcordClient;
 
   // Constructor
   constructor(token: string) {
@@ -45,7 +45,7 @@ export class SyrimClient extends Client {
     this.database = new Database();
     this.locale = new Locale(join(__dirname, '../locales'));
     this.nekoBot = new NekoBot(process.env.NEKOBOT_API_KEY);
-    this.statcord = new StatcordClient({ client: this, key: process.env.STATCORD_API_KEY });
+    if (process.env.STATCORD_API_KEY) this.statcord = new StatcordClient({ client: this, key: process.env.STATCORD_API_KEY });
   }
 
   // Getters

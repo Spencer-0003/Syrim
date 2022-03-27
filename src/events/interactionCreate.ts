@@ -120,7 +120,7 @@ export class InteractionCreate extends Event {
           });
       }
 
-      if (process.env.NODE_ENV === 'production' && process.env.STATCORD_API_KEY) this.client.statcord.postCommand(cmd.name, author.id);
+      if (process.env.NODE_ENV === 'production') this.client.statcord?.postCommand(cmd.name, author.id);
       cmd.run({ interaction, args, data });
     } else if (interaction.type === Constants.InteractionTypes.MESSAGE_COMPONENT || interaction.type === Constants.InteractionTypes.MODAL_SUBMIT) {
       const customId = interaction.data.custom_id;
