@@ -61,7 +61,7 @@ export class InteractionCreate extends Event {
         return interaction.createMessage({ content: customCommand?.response ?? this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
       } else if (cmd.ownerOnly && author.id !== process.env.OWNER_ID) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
-      else if (cmd.category === 'nsfw' && guildId && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
+      else if (cmd.category === 'nsfw' && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
 
       const args: CommandContext['args'] = {};
       interaction.data.options?.forEach(option => {
