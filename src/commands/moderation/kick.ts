@@ -44,18 +44,15 @@ export class Kick extends Command {
   }
 
   async run({ interaction, args, data }: CommandContext): Promise<void> {
-    let guildMember;
-    try {
-      guildMember = await this.client.getRESTGuildMember(interaction.guildID!, (args.user as User).id);
-    } catch {
-      return interaction.createMessage({
-        embed: {
-          title: this.client.locale.translate(data.locale, 'global.ERROR'),
-          description: this.client.locale.translate(data.locale, 'moderation.MEMBER_NOT_IN_GUILD'),
-          color: COLORS.RED
-        }
-      });
-    }
+    const guildMember = await this.client.getRESTGuildMember(interaction.guildID!, (args.user as User).id).catch(() => interaction.createMessage({
+      embed: {
+        title: this.client.locale.translate(data.locale, 'global.ERROR'),
+        description: this.client.locale.translate(data.locale, 'moderation.MEMBER_NOT_IN_GUILD'),
+        color: COLORS.RED
+      }
+    }));
+
+    if (!guildMember) return;
 
     const superior = isSuperior(interaction.member!, guildMember);
     const reason = (args.reason as string) ?? this.client.locale.translate(data.locale, 'moderation.NO_REASON_PROVIDED');
