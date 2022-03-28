@@ -15,7 +15,7 @@ RUN yarn build
 FROM node:17.3.1-alpine3.15 as cleaner
 LABEL maintainer="Spencer-0003"
 
-RUN apk add git
+RUN apk add git python3
 WORKDIR /syrim
 
 COPY --from=compiler /syrim/.git ./.git
