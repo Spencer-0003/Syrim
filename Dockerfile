@@ -18,7 +18,6 @@ LABEL maintainer="Spencer-0003"
 RUN apk add git python3 make g++
 WORKDIR /syrim
 
-COPY --from=compiler /syrim/.git ./.git
 COPY --from=compiler /syrim/package.json ./
 COPY --from=compiler /syrim/dist ./dist
 COPY --from=compiler /syrim/prisma ./prisma
