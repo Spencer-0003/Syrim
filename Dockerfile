@@ -2,7 +2,7 @@
 FROM node:17.3.1-alpine3.15 as compiler
 LABEL maintainer="Spencer-0003"
 
-RUN apk add git python3 make g++
+RUN apk add --no-cache git python3 make g++
 WORKDIR /syrim
 
 COPY package.json ./
@@ -14,7 +14,7 @@ RUN yarn prisma generate && yarn build
 FROM node:17.3.1-alpine3.15 as cleaner
 LABEL maintainer="Spencer-0003"
 
-RUN apk add git python3 make g++
+RUN apk add --no-cache git python3 make g++
 WORKDIR /syrim
 
 COPY --from=compiler /syrim/package.json ./
@@ -26,7 +26,7 @@ RUN yarn --production=true
 FROM node:17.3.1-alpine3.15
 LABEL maintainer="Spencer-0003"
 
-RUN apk add git
+RUN apk add --no-cache git
 WORKDIR /syrim
 
 COPY --from=cleaner /syrim ./
