@@ -30,7 +30,7 @@ RUN apk add --no-cache git
 WORKDIR /syrim
 
 COPY --from=cleaner /syrim ./
-RUN chown node:node /syrim/node_modules/prisma
+RUN chown node:node /syrim/node_modules/prisma && yarn cache clean
 USER node
 
 CMD ["yarn", "docker:start"]
