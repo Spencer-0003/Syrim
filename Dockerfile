@@ -8,8 +8,7 @@ WORKDIR /syrim
 COPY package.json ./
 RUN yarn
 COPY . ./
-RUN yarn prisma generate
-RUN yarn build
+RUN yarn prisma generate && yarn build
 
 # Cleaner
 FROM node:17.3.1-alpine3.15 as cleaner
