@@ -16,7 +16,7 @@ Due to Syrim being so early into development, there is no live version at the mo
 - [`Node.js`]: To run Syrim.
 - [`PostgreSQL`]: To store data.
 - [`Redis`]: To store temporary data and cache.
-- [`NekoBot-API-Key`]: To use NSFW commands.
+- [`NekoBot-API-Key`]: To use specific NSFW commands (cosplay).
 
 ### Optional Requirements
 - [`Sentry`]: To log errors.
