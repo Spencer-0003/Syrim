@@ -10,7 +10,7 @@ on:
       - '.vscode/**'
       - '.gitignore'
       - 'LICENSE'
-      - 'README'
+      - 'README.md'
 
 jobs:
   publish:
