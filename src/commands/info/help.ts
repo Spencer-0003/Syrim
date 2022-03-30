@@ -116,7 +116,7 @@ export class Help extends Command {
           type: Constants.ComponentTypes.BUTTON,
           style: Constants.ButtonStyles.LINK,
           label: this.client.locale.translate(data.locale, 'general.INVITE_ME'),
-          url: 'https://discord.com/api/oauth2/authorize?client_id=862765256929706035&permissions=8560045566&scope=bot%20applications.commands'
+          url: `https://discord.com/api/oauth2/authorize?client_id=${this.client.user.id}&permissions=8560045566&scope=bot%20applications.commands`
         }
       ]
     });
