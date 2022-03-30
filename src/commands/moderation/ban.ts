@@ -18,7 +18,11 @@ export class Ban extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'ban',
+      name_localizations: {},
       description: 'Ban a user from the guild.',
+      description_localizations: {
+        'es-ES': 'Prohibir a un usuario del gremio.'
+      },
       category: 'moderation',
       guildOnly: true,
       userPermissions: ['banMembers'],

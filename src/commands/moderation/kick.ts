@@ -18,7 +18,13 @@ export class Kick extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'kick',
+      name_localizations: {
+        'es-ES': 'patear'
+      },
       description: 'Kick a user from the guild.',
+      description_localizations: {
+        'es-ES': 'Patea a un usuario del gremio.'
+      },
       category: 'moderation',
       guildOnly: true,
       userPermissions: ['kickMembers'],

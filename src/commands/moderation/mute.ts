@@ -18,7 +18,13 @@ export class Mute extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'mute',
+      name_localizations: {
+        'es-ES': 'mudo'
+      },
       description: 'Mute a user in the guild.',
+      description_localizations: {
+        'es-ES': 'Silenciar a un usuario en el gremio.'
+      },
       category: 'moderation',
       guildOnly: true,
       userPermissions: ['moderateMembers'],
