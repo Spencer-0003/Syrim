@@ -15,7 +15,9 @@ export abstract class Command {
   // Properties
   client: SyrimClient;
   name: string;
+  name_localizations?: Record<string, string>;
   description: string;
+  description_localizations?: Record<string, string>;
   category: string;
   clientPermissions: PERMISSIONS[];
   guildOnly?: boolean;
@@ -28,7 +30,9 @@ export abstract class Command {
   protected constructor(client: SyrimClient, options: CommandOptions) {
     this.client = client;
     this.name = options.name;
+    this.name_localizations = options.name_localizations;
     this.description = options.description;
+    this.description_localizations = options.description_localizations;
     this.category = options.category;
     this.clientPermissions = options.clientPermissions ?? ['viewChannel', 'sendMessages'];
     this.guildOnly = options.guildOnly;
