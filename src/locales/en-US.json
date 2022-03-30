@@ -140,6 +140,7 @@
     "NOT_YOUR_BUTTON": "This is not your button to click.",
     "POWERED_BY_ANILIST": "Powered by anilist.co",
     "POWERED_BY_NEKOBOT": "Powered by nekobot.xyz",
+    "REQUIRES_NEKOBOT_KEY": "This NSFW command requires a nekobot API key.",
     "USER_REQUIRED_PERMISSIONS": "You require the following permissions:"
   },
 

@@ -20,6 +20,10 @@ export class Cosplay extends Command {
     });
   }
 
+  validate({ data }: CommandContext): [boolean, string] {
+    return [process.env.NEKOBOT_API_KEY !== undefined, this.client.locale.translate(data.locale, 'misc.REQUIRES_NEKOBOT_KEY')];
+  }
+
   async run({ interaction, data }: CommandContext): Promise<void> {
     return interaction.createMessage({
       embed: {
