@@ -28,8 +28,6 @@ export class Database {
   public async getUser(id: string): Promise<User> {
     let user = await this.prisma.user.findUnique({ where: { id } });
     user ??= await this.prisma.user.create({ data: { id } });
-
-    this.prisma.$disconnect();
     return user;
   }
 
@@ -44,8 +42,6 @@ export class Database {
   public async getGuild(id: string): Promise<Guild> {
     let guild = await this.prisma.guild.findUnique({ where: { id } });
     guild ??= await this.prisma.guild.create({ data: { id } });
-
-    this.prisma.$disconnect();
     return guild;
   }
 
