@@ -15,7 +15,13 @@ export class HAss extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'hass',
+      name_localizations: {
+        'es-ES': 'hculo'
+      },
       description: 'Returns an image of an ass (Hentai).',
+      description_localizations: {
+        'es-ES': 'Devuelve una imagen de un culo (Hentai).'
+      },
       category: 'nsfw'
     });
   }

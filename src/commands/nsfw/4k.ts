@@ -16,6 +16,9 @@ export class FourK extends Command {
     super(client, {
       name: '4k',
       description: 'Returns 4K lewd media.',
+      description_localizations: {
+        'es-ES': 'Devuelve medios lascivos 4K.'
+      },
       category: 'nsfw'
     });
   }

@@ -15,7 +15,13 @@ export class HBoobs extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'hboobs',
+      name_localizations: {
+        'es-ES': 'htetas'
+      },
       description: 'Returns an image of boobs (Hentai).',
+      description_localizations: {
+        'es-ES': 'Devuelve una imagen de tetas (Hentai).'
+      },
       category: 'nsfw'
     });
   }

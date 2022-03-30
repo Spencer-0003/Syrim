@@ -15,7 +15,13 @@ export class Boobs extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'boobs',
+      name_localizations: {
+        'es-ES': 'tetas'
+      },
       description: 'Returns an image of boobs.',
+      description_localizations: {
+        'es-ES': 'Devuelve una imagen de tetas.'
+      },
       category: 'nsfw'
     });
   }

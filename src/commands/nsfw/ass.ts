@@ -15,7 +15,13 @@ export class Ass extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'ass',
+      name_localizations: {
+        'es-ES': 'culo'
+      },
       description: 'Returns an image of an ass.',
+      description_localizations: {
+        'es-ES': 'Devuelve la imagen de un culo..'
+      },
       category: 'nsfw'
     });
   }
