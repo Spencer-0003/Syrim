@@ -32,37 +32,67 @@ export class Mute extends Command {
       options: [
         {
           name: 'user',
+          name_localizations: {
+            'es-ES': 'usuario'
+          },
           description: 'The user to mute.',
+          description_localizations: {
+            'es-ES': 'El usuario para silenciar.'
+          },
           type: Constants.ApplicationCommandOptionTypes.USER,
           required: true
         },
         {
           name: 'time',
+          name_localizations: {
+            'es-ES': 'hora'
+          },
           description: 'The time to mute the user for.',
+          description_localizations: {
+            'es-ES': 'El tiempo para silenciar al usuario.'
+          },
           type: Constants.ApplicationCommandOptionTypes.NUMBER,
           choices: [
             {
               name: '60 seconds',
+              name_localizations: {
+                'es-ES': '60 segundos'
+              },
               value: 60000
             },
             {
               name: '5 minutes',
+              name_localizations: {
+                'es-ES': '5 minutos'
+              },
               value: 300000
             },
             {
               name: '10 minutes',
+              name_localizations: {
+                'es-ES': '10 minutos'
+              },
               value: 600000
             },
             {
               name: '1 hour',
+              name_localizations: {
+                'es-ES': '1 hora'
+              },
               value: 3600000
             },
             {
               name: '1 day',
+              name_localizations: {
+                'es-ES': '1 día'
+              },
               value: 86400000
             },
             {
               name: '1 week',
+              name_localizations: {
+                'es-ES': '1 semana'
+              },
               value: 604800000
             }
           ],
@@ -70,7 +100,13 @@ export class Mute extends Command {
         },
         {
           name: 'reason',
+          name_localizations: {
+            'es-ES': 'razón'
+          },
           description: 'The reason for the mute.',
+          description_localizations: {
+            'es-ES': 'La razón del mudo.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING
         }
       ]

@@ -32,13 +32,25 @@ export class Unmute extends Command {
       options: [
         {
           name: 'user',
-          description: 'The user to mute.',
+          name_localizations: {
+            'es-ES': 'usuario'
+          },
+          description: 'The user to unmute.',
+          description_localizations: {
+            'es-ES': 'El usuario para desactivar el silencio.'
+          },
           type: Constants.ApplicationCommandOptionTypes.USER,
           required: true
         },
         {
           name: 'reason',
-          description: 'The reason for the mute.',
+          name_localizations: {
+            'es-ES': 'razón'
+          },
+          description: 'The reason for the unmute.',
+          description_localizations: {
+            'es-ES': 'La razón del un mudo.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING
         }
       ]

@@ -30,13 +30,25 @@ export class Ban extends Command {
       options: [
         {
           name: 'user',
+          name_localizations: {
+            'es-ES': 'usuario'
+          },
           description: 'The user to ban.',
+          description_localizations: {
+            'es-ES': 'El usuario a prohibir.',
+          },
           type: Constants.ApplicationCommandOptionTypes.USER,
           required: true
         },
         {
           name: 'reason',
+          name_localizations: {
+            'es-ES': 'razón'
+          },
           description: 'The reason for the ban.',
+          description_localizations: {
+            'es-ES': 'El motivo de la prohibición.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING
         }
       ]

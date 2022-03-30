@@ -22,7 +22,7 @@ export interface Options {
   name_localizations?: Record<string, string>;
   description: string;
   description_localizations?: Record<string, string>;
-  choices?: { name: string; value: string | number | boolean }[];
+  choices?: { name: string; name_localizations?: Record<string, string>; value: string | number | boolean }[];
   required?: boolean;
   type: Constants.ApplicationCommandOptionTypes.STRING | Constants.ApplicationCommandOptionTypes.INTEGER | Constants.ApplicationCommandOptionTypes.BOOLEAN | Constants.ApplicationCommandOptionTypes.USER | Constants.ApplicationCommandOptionTypes.CHANNEL;
 }

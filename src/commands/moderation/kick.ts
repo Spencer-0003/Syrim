@@ -32,13 +32,25 @@ export class Kick extends Command {
       options: [
         {
           name: 'user',
+          name_localizations: {
+            'es-ES': 'usuario'
+          },
           description: 'The user to kick.',
+          description_localizations: {
+            'es-ES': 'El usuario a patear.'
+          },
           type: Constants.ApplicationCommandOptionTypes.USER,
           required: true
         },
         {
           name: 'reason',
+          name_localizations: {
+            'es-ES': 'razón'
+          },
           description: 'The reason for the kick.',
+          description_localizations: {
+            'es-ES': 'El motivo de la patada.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING
         }
       ]
