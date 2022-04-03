@@ -136,7 +136,7 @@ export class Help extends Command {
         color: COLORS.GREEN,
         fields,
         thumbnail: { url: this.client.user.avatarURL },
-        footer: { text: `${this.client.commands.length} commands loaded` }
+        footer: { text: this.client.locale.translate(data.locale, 'misc.COMMANDS_LOADED').replace('COMMANDS_LOADED', this.client.commands.length.toString()) }
       },
       components
     });

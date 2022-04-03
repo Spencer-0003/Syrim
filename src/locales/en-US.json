@@ -134,6 +134,7 @@
     "COMMAND_NOT_FOUND": "This command has been removed and is awaiting a cache update.",
     "COMMAND_NSFW_ONLY": "This command can only be ran in an NSFW channel.",
     "COMMAND_OWNER_ONLY": "This command can only be ran by the owner.",
+    "COMMANDS_LOADED": "COMMANDS_LOADED commands loaded",
     "LINKS": "**Links**",
     "LINKS_DESCRIPTION": "[Invite me](INVITE_LINK) | [My server](SERVER_LINK)",
     "MISSING_PERMISSIONS": "Missing Permissions",

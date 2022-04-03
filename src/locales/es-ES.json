@@ -134,6 +134,7 @@
     "COMMAND_NOT_FOUND": "Este comando se ha eliminado y está a la espera de una actualización de la memoria caché.",
     "COMMAND_NSFW_ONLY": "Este comando solo se puede ejecutar en un canal NSFW.",
     "COMMAND_OWNER_ONLY": "Este comando sólo lo puede ejecutar el propietario.",
+    "COMMANDS_LOADED": "comandos COMMANDS_LOADED cargados",
     "LINKS": "**Enlaces**",
     "LINKS_DESCRIPTION": "[Invítame](INVITE_LINK) | [Mi servidor](SERVER_LINK)",
     "MISSING_PERMISSIONS": "Faltan Permisos",
