@@ -36,6 +36,7 @@ export class Ready extends Event {
       type: Constants.ActivityTypes.WATCHING
     });
 
+    console.clear();
     if (process.env.NODE_ENV === 'production') this.client.statcord?.autopost();
   }
 }
