@@ -12,7 +12,7 @@ import { COLORS } from '@utilities/Constants';
 // Export class
 export class ErrorLog extends Event {
   async run(err: DiscordRESTError): Promise<void> {
-    if (err.code === 1006) return;
+    if (err.code === 1006 || err.code === 1001) return;
 
     const webhook = await this.client.getOrCreateWebhook(process.env.NODE_ENV === 'development' ? process.env.DEVELOPMENT_LOGS : process.env.ERROR_LOGS);
     this.client.executeWebhook(webhook.id, webhook.token!, {
