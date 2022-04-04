@@ -22,14 +22,14 @@
     "graphql-request": "4.2.0",
     "ioredis": "5.0.3",
     "module-alias": "2.2.2",
-    "moment": "2.29.1",
+    "moment": "2.29.2",
     "nekobot-api": "2.1.0",
     "statcord-eris": "1.1.4"
   },
   "devDependencies": {
     "@types/node": "17.0.8",
-    "@typescript-eslint/eslint-plugin": "5.17.0",
-    "@typescript-eslint/parser": "5.17.0",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
     "eslint": "8.12.0",
     "eslint-plugin-jsdoc": "38.1.6",
     "eslint-plugin-sonarjs": "0.13.0",
