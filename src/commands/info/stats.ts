@@ -34,7 +34,13 @@ export class Stats extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'stats',
+      name_localizations: {
+        'es-ES': 'estadísticas'
+      },
       description: 'Shows my stats.',
+      description_localizations: {
+        'es-ES': 'Muestra mis estadísticas.'
+      },
       category: 'info'
     });
   }

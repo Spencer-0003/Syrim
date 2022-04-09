@@ -16,13 +16,25 @@ export class DeleteCommand extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'deletecommand',
+      name_localizations: {
+        'es-ES': 'eliminarcomando'
+      },
       description: 'Delete a custom command.',
+      description_localizations: {
+        'es-ES': 'Eliminar un comando personalizado.'
+      },
       category: 'administration',
       guildOnly: true,
       options: [
         {
           name: 'command_name',
+          name_localizations: {
+            'es-ES': 'nombre_comando'
+          },
           description: 'The name of the command.',
+          description_localizations: {
+            'es-ES': 'El nombre del comando.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING,
           required: true
         }

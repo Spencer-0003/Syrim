@@ -35,12 +35,24 @@ export class Anime extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'anime',
+      name_localizations: {
+        'es-ES': 'animado'
+      },
       description: 'Returns information about the chosen anime.',
+      description_localizations: {
+        'es-ES': 'Devuelve información sobre el anime elegido.'
+      },
       category: 'misc',
       options: [
         {
           name: 'anime',
+          name_localizations: {
+            'es-ES': 'animado'
+          },
           description: 'The anime to get information about.',
+          description_localizations: {
+            'es-ES': 'El anime para obtener información sobre.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING,
           required: true
         }

@@ -15,7 +15,13 @@ export class Work extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'work',
+      name_localizations: {
+        'es-ES': 'labor'
+      },
       description: 'Work for some money.',
+      description_localizations: {
+        'es-ES': 'Trabaja por algo de dinero.'
+      },
       category: 'economy',
       guildOnly: true
     });

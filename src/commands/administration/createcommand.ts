@@ -16,25 +16,49 @@ export class CreateCommand extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'createcommand',
+      name_localizations: {
+        'es-ES': 'Crearcomando'
+      },
       description: 'Create a custom command.',
+      description_localizations: {
+        'es-ES': 'Cree un comando personalizado.'
+      },
       category: 'administration',
       guildOnly: true,
       options: [
         {
           name: 'command_name',
+          name_localizations: {
+            'es-ES': 'nombre_comando'
+          },
           description: 'The name of the command.',
+          description_localizations: {
+            'es-ES': 'El nombre del comando.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING,
           required: true
         },
         {
           name: 'command_description',
+          name_localizations: {
+            'es-ES': 'comando_descripción'
+          },
           description: 'The description of the command.',
+          description_localizations: {
+            'es-ES': 'La descripción del comando.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING,
           required: true
         },
         {
           name: 'response',
+          name_localizations: {
+            'es-ES': 'respuesta'
+          },
           description: 'The response to the command.',
+          description_localizations: {
+            'es-ES': 'La respuesta al comando.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING,
           required: true
         }

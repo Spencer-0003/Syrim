@@ -25,12 +25,24 @@ export class Profile extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'profile',
+      name_localizations: {
+        'es-ES': 'perfil'
+      },
       description: 'View your economy profile.',
+      description_localizations: {
+        'es-ES': 'Ver tu perfil económico.'
+      },
       category: 'economy',
       options: [
         {
           name: 'user',
+          name_localizations: {
+            'es-ES': 'usuario'
+          },
           description: 'User to view profile of.',
+          description_localizations: {
+            'es-ES': 'Usuario para ver el perfil de.'
+          },
           type: Constants.ApplicationCommandOptionTypes.USER
         }
       ]

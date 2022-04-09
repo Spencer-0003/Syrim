@@ -16,13 +16,25 @@ export class Marry extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'marry',
+      name_localizations: {
+        'es-ES': 'casar'
+      },
       description: 'Marry a person.',
+      description_localizations: {
+        'es-ES': 'Casarse con una persona.'
+      },
       category: 'economy',
       guildOnly: true,
       options: [
         {
           name: 'user',
+          name_localizations: {
+            'es-ES': 'usuario'
+          },
           description: 'User to propose to.',
+          description_localizations: {
+            'es-ES': 'Usuario a quien proponer.'
+          },
           type: Constants.ApplicationCommandOptionTypes.USER,
           required: true
         }

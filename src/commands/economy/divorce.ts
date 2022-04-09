@@ -14,7 +14,13 @@ export class Divorce extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'divorce',
+      name_localizations: {
+        'es-ES': 'divorcio'
+      },
       description: 'Divorce your spouse.',
+      description_localizations: {
+        'es-ES': 'Divorciarse de su cónyuge.'
+      },
       category: 'economy',
       guildOnly: true
     });

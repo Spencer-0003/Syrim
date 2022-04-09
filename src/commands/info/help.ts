@@ -17,12 +17,24 @@ export class Help extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'help',
+      name_localizations: {
+        'es-ES': 'ayuda'
+      },
       description: 'Get a list of my commands.',
+      description_localizations: {
+        'es-ES': 'Obtener una lista de mis comandos.'
+      },
       category: 'info',
       options: [
         {
           name: 'command_or_category',
+          name_localizations: {
+            'es-ES': 'comando_o_categoría'
+          },
           description: 'Command or category to get info about.',
+          description_localizations: {
+            'es-ES': 'Comando o categoría sobre la que obtener información.'
+          },
           type: Constants.ApplicationCommandOptionTypes.STRING
         }
       ]
