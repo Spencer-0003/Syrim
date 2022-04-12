@@ -12,15 +12,6 @@ import { Constants } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Command } from '@core/Command';
 
-const getAge = (birthday: Date): number => {
-  const today = new Date();
-  const month = today.getMonth() - birthday.getMonth();
-  let age = today.getFullYear() - birthday.getFullYear();
-  if (month < 0 || (month === 0 && today.getDate() < birthday.getDate())) age--;
-
-  return age;
-};
-
 export class Profile extends Command {
   constructor(client: SyrimClient) {
     super(client, {
@@ -78,8 +69,7 @@ export class Profile extends Command {
           { name: '💡 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_LEVEL'), value: `${profile.level}\n(${profile.xp.toLocaleString('en-US')}/${xpNeeded.toLocaleString('en-US')})`, inline: true },
           { name: '💰 ' + this.client.locale.translate(data.locale, 'economy.GLOBAL_MONEY'), value: profile.money.toString(), inline: true },
           { name: '💖 ' + this.client.locale.translate(data.locale, 'economy.LOVER'), value: profile.lover ? `<@${profile.lover}>` : this.client.locale.translate(data.locale, 'economy.SINGLE'), inline: true },
-          { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true },
-          { name: '🎂 ' + this.client.locale.translate(data.locale, 'economy.BIRTHDAY'), value: profile.birthday ? `${profile.birthday.toLocaleDateString(data.locale)} (${getAge(profile.birthday)})` : this.client.locale.translate(data.locale, 'economy.UNDISCLOSED'), inline: true }
+          { name: '⚧ ' + this.client.locale.translate(data.locale, 'economy.GENDER'), value: profile.gender, inline: true }
         ]
       },
       components:
@@ -93,12 +83,6 @@ export class Profile extends Command {
                     style: Constants.ButtonStyles.PRIMARY,
                     custom_id: `set_gender.${user.id}`,
                     label: this.client.locale.translate(data.locale, `economy.SET_GENDER`)
-                  },
-                  {
-                    type: Constants.ComponentTypes.BUTTON,
-                    style: Constants.ButtonStyles.PRIMARY,
-                    custom_id: `set_birthday-component.${user.id}`,
-                    label: this.client.locale.translate(data.locale, `economy.SET_BIRTHDAY`)
                   },
                   {
                     type: Constants.ComponentTypes.BUTTON,

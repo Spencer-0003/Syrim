@@ -11,7 +11,7 @@
     "lint": "prettier --config .prettierrc ./src/**/*.ts --write && eslint . --ext .ts",
     "build": "tsc",
     "docker:start": "prisma migrate deploy; yarn run start",
-    "prepare": "node -e \"try { require('husky').install } catch {}\"",
+    "prepare": "husky install",
     "start": "node dist/index"
   },
   "dependencies": {
