@@ -122,7 +122,7 @@ export class Help extends Command {
           type: Constants.ComponentTypes.BUTTON,
           style: Constants.ButtonStyles.LINK,
           label: this.client.locale.translate(data.locale, 'general.BECOME_A_DONATOR'),
-          url: 'https://github.com/Spencer-0003/Syrim/blob/master/README.md#donations'
+          url: 'https://ko-fi.com/spencer0003'
         },
         {
           type: Constants.ComponentTypes.BUTTON,
