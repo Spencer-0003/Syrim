@@ -106,6 +106,17 @@ export class InteractionCreate extends Event {
           });
       }
 
+      if (cmd.voterOnly && author.id !== process.env.OWNER_ID && !this.client.database.redis.get(`voted:${author.id}`))
+        /* TODO: Add button with voting link when ready. */
+        return interaction.createMessage({
+          flags: Constants.MessageFlags.EPHEMERAL,
+          embed: {
+            title: this.client.locale.translate(data.locale, 'vote.TITLE'),
+            description: this.client.locale.translate(data.locale, 'vote.DESCRIPTION'),
+            color: COLORS.RED
+          }
+        });
+
       if (cmd.validate) {
         const [validated, errorMessage] = cmd.validate({ interaction, args, data });
 

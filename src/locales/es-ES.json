@@ -167,5 +167,10 @@
     "NOT_SUPERIOR": "No puedes moderar a este usuario.",
     "NO_REASON_PROVIDED": "No se proporcionó ninguna razón.",
     "REASON": "Razón"
+  },
+
+  "vote": {
+    "TITLE": "Se requiere voto",
+    "DESCRIPTION": "Para usar este comando, debes votar por mí."
   }
 }

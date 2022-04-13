@@ -167,5 +167,10 @@
     "NO_REASON_PROVIDED": "No reason provided.",
     "NOT_SUPERIOR": "You can't moderate this user.",
     "REASON": "Reason"
+  },
+
+  "vote": {
+    "TITLE": "Vote Required",
+    "DESCRIPTION": "To use this command, you must vote for me."
   }
 }
