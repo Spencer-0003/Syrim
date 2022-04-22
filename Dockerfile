@@ -26,7 +26,7 @@ RUN yarn --production=true
 FROM node:17.3.1-alpine3.15
 LABEL maintainer="Spencer-0003"
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git bash
 WORKDIR /syrim
 
 COPY --from=cleaner /syrim ./
