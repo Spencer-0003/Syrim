@@ -5,7 +5,7 @@
  */
 
 // Import classes & types
-import type { CommandInteraction, ComponentInteraction, ModalSubmitInteraction, TextChannel, InteractionDataOptionWithValue, InteractionDataOption } from 'eris';
+import type { CommandInteraction, ComponentInteraction, ModalSubmitInteraction, TextChannel, InteractionDataOptionWithValue, InteractionDataOption, InteractionDataOptionSubCommandGroup } from 'eris';
 import type { Guild } from '@prisma/client';
 import type { CommandContext, Data } from '@typings/command';
 import { Constants } from 'eris';
@@ -29,6 +29,9 @@ const resolveArgs = (interaction: CommandInteraction, options?: InteractionDataO
         break;
       case Constants.ApplicationCommandOptionTypes.SUB_COMMAND:
         args = resolveArgs(interaction, options);
+        break;
+      case Constants.ApplicationCommandOptionTypes.SUB_COMMAND_GROUP:
+        args = resolveArgs(interaction, (option as InteractionDataOptionSubCommandGroup).options);
         break;
       default:
         args[option.name] = (option as InteractionDataOptionWithValue).value;
