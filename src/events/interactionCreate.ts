@@ -5,12 +5,46 @@
  */
 
 // Import classes & types
-import type { CommandInteraction, ComponentInteraction, ModalSubmitInteraction, TextChannel, InteractionDataOptionWithValue } from 'eris';
+import type {
+  CommandInteraction,
+  ComponentInteraction,
+  ModalSubmitInteraction,
+  TextChannel,
+  InteractionDataOptionWithValue,
+  InteractionDataOption
+} from 'eris';
 import type { Guild } from '@prisma/client';
 import type { CommandContext, Data } from '@typings/command';
 import { Constants } from 'eris';
 import { COLORS } from '@utilities/Constants';
 import { Event } from '@core/Event';
+
+// Arg resolver
+const resolveArgs = (interaction: CommandInteraction, options: InteractionDataOption[] = []): CommandContext['args'] => {
+  let args: CommandContext['args'] = {};
+
+  options.forEach(option => {
+    switch (option.type) {
+      case Constants.ApplicationCommandOptionTypes.USER:
+        args[option.name] = interaction.data.resolved!.users!.get(option.value)!;
+        break;
+      case Constants.ApplicationCommandOptionTypes.CHANNEL:
+        args[option.name] = interaction.data.resolved!.channels!.get(option.value)!;
+        break;
+      case Constants.ApplicationCommandOptionTypes.ROLE:
+        args[option.name] = interaction.data.resolved!.roles!.get(option.value)!;
+        break;
+      case Constants.ApplicationCommandOptionTypes.SUB_COMMAND:
+        args = resolveArgs(interaction, options);
+        break;
+      default:
+        args[option.name] = (option as InteractionDataOptionWithValue).value;
+        break;
+    }
+  });
+
+  return args;
+}
 
 // Export event
 export class InteractionCreate extends Event {
@@ -63,23 +97,7 @@ export class InteractionCreate extends Event {
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
 
-      const args: CommandContext['args'] = {};
-      interaction.data.options?.forEach(option => {
-        switch (option.type) {
-          case Constants.ApplicationCommandOptionTypes.USER:
-            args[option.name] = interaction.data.resolved!.users!.get(option.value)!;
-            break;
-          case Constants.ApplicationCommandOptionTypes.CHANNEL:
-            args[option.name] = interaction.data.resolved!.channels!.get(option.value)!;
-            break;
-          case Constants.ApplicationCommandOptionTypes.ROLE:
-            args[option.name] = interaction.data.resolved!.roles!.get(option.value)!;
-            break;
-          default:
-            args[option.name] = (option as InteractionDataOptionWithValue).value;
-            break;
-        }
-      });
+      const args = resolveArgs(interaction, interaction.data.options);
 
       if (data.guild) {
         if (data.guild.disabledCategories.indexOf(cmd.category) > -1)
