@@ -5,14 +5,7 @@
  */
 
 // Import classes & types
-import type {
-  CommandInteraction,
-  ComponentInteraction,
-  ModalSubmitInteraction,
-  TextChannel,
-  InteractionDataOptionWithValue,
-  InteractionDataOption
-} from 'eris';
+import type { CommandInteraction, ComponentInteraction, ModalSubmitInteraction, TextChannel, InteractionDataOptionWithValue, InteractionDataOption } from 'eris';
 import type { Guild } from '@prisma/client';
 import type { CommandContext, Data } from '@typings/command';
 import { Constants } from 'eris';
@@ -20,10 +13,10 @@ import { COLORS } from '@utilities/Constants';
 import { Event } from '@core/Event';
 
 // Arg resolver
-const resolveArgs = (interaction: CommandInteraction, options: InteractionDataOption[] = []): CommandContext['args'] => {
+const resolveArgs = (interaction: CommandInteraction, options?: InteractionDataOption[]): CommandContext['args'] => {
   let args: CommandContext['args'] = {};
 
-  options.forEach(option => {
+  options?.forEach(option => {
     switch (option.type) {
       case Constants.ApplicationCommandOptionTypes.USER:
         args[option.name] = interaction.data.resolved!.users!.get(option.value)!;
@@ -44,7 +37,7 @@ const resolveArgs = (interaction: CommandInteraction, options: InteractionDataOp
   });
 
   return args;
-}
+};
 
 // Export event
 export class InteractionCreate extends Event {
