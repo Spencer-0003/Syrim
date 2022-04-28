@@ -30,6 +30,7 @@ export class InteractionCreate extends Event {
           break;
         case Constants.ApplicationCommandOptionTypes.SUB_COMMAND:
           args = this.resolveArgs(interaction, options);
+          args.subCommand = option.name;
           break;
         case Constants.ApplicationCommandOptionTypes.SUB_COMMAND_GROUP:
           args = this.resolveArgs(interaction, (option as InteractionDataOptionSubCommandGroup).options);
@@ -77,10 +78,6 @@ export class InteractionCreate extends Event {
       locale
     };
 
-    if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND && interaction.data.name === 'help')
-      // Why the actual fuck can't we use modals on acknowledged interactions???? I FUCKING HATE the Discord API
-      await interaction.acknowledge(Constants.MessageFlags.EPHEMERAL);
-
     if (interaction.type === Constants.InteractionTypes.APPLICATION_COMMAND) {
       const channel = interaction.channel as TextChannel;
       const cmd = this.client.commands.find(c => c.name === interaction.data.name);
@@ -91,6 +88,9 @@ export class InteractionCreate extends Event {
       } else if (cmd.ownerOnly && author.id !== process.env.OWNER_ID) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
+      // else if (interaction.data.name === 'help') await interaction.acknowledge(Constants.MessageFlags.EPHEMERAL);  // Why the actual fuck can't we use modals on acknowledged interactions???? I FUCKING HATE the Discord API
+
+      await interaction.acknowledge((interaction.data.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
 
       const args = this.resolveArgs(interaction, interaction.data.options);
 
