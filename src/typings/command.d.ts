@@ -39,7 +39,7 @@ export interface CommandOptions {
   options?: Options[];
   ownerOnly?: boolean;
   voterOnly?: boolean;
-  userPermissions?: PERMISSIONS[];
+  userPermissions?: string;
 }
 
 export interface CommandContext {

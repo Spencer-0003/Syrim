@@ -27,7 +27,7 @@ export class Kick extends Command {
       },
       category: 'moderation',
       guildOnly: true,
-      userPermissions: ['kickMembers'],
+      userPermissions: Constants.Permissions.kickMembers.toString(),
       clientPermissions: ['kickMembers'],
       options: [
         {

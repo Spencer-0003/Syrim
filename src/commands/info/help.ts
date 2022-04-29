@@ -101,7 +101,6 @@ export class Help extends Command {
           color: COLORS.GREEN,
           fields: [
             { name: this.client.locale.translate(data.locale, 'general.USAGE'), value: usage, inline: false },
-            { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_YOU_NEED'), value: isCommand.userPermissions?.join(', ') ?? this.client.locale.translate(data.locale, 'global.NONE'), inline: false },
             { name: this.client.locale.translate(data.locale, 'general.HELP_PERMISSIONS_I_NEED'), value: isCommand.clientPermissions.join(', ') ?? this.client.locale.translate(data.locale, 'global.NONE'), inline: false }
           ]
         },

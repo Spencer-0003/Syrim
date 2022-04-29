@@ -27,7 +27,7 @@ export class Mute extends Command {
       },
       category: 'moderation',
       guildOnly: true,
-      userPermissions: ['moderateMembers'],
+      userPermissions: Constants.Permissions.moderateMembers.toString(),
       clientPermissions: ['moderateMembers'],
       options: [
         {

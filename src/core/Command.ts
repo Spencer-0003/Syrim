@@ -25,7 +25,7 @@ export abstract class Command {
   ownerOnly?: boolean;
   voterOnly?: boolean;
   type = Constants.ApplicationCommandTypes.CHAT_INPUT | Constants.ApplicationCommandTypes.USER;
-  userPermissions?: PERMISSIONS[];
+  default_member_permissions?: string;
 
   protected constructor(client: SyrimClient, options: CommandOptions) {
     this.client = client;
@@ -40,7 +40,7 @@ export abstract class Command {
     this.ownerOnly = options.ownerOnly;
     this.voterOnly = options.voterOnly;
     this.type = options.contextMenu ? Constants.ApplicationCommandTypes.USER : Constants.ApplicationCommandTypes.CHAT_INPUT;
-    this.userPermissions = options.userPermissions;
+    this.default_member_permissions = options.userPermissions;
 
     if (this.client.categories.indexOf(this.category) === -1) this.client.categories.push(this.category);
   }

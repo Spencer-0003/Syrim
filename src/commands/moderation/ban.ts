@@ -25,7 +25,7 @@ export class Ban extends Command {
       },
       category: 'moderation',
       guildOnly: true,
-      userPermissions: ['banMembers'],
+      userPermissions: Constants.Permissions.banMembers.toString(),
       clientPermissions: ['banMembers'],
       options: [
         {
