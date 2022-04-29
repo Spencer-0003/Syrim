@@ -20,7 +20,7 @@ export abstract class Command {
   description_localizations?: Record<string, string>;
   category: string;
   clientPermissions: PERMISSIONS[];
-  guildOnly?: boolean;
+  dm_permission?: boolean;
   options?: Options[];
   ownerOnly?: boolean;
   voterOnly?: boolean;
@@ -35,7 +35,7 @@ export abstract class Command {
     this.description_localizations = options.description_localizations;
     this.category = options.category;
     this.clientPermissions = options.clientPermissions ?? ['viewChannel', 'sendMessages'];
-    this.guildOnly = options.guildOnly;
+    this.dm_permission = !options.guildOnly;
     this.options = options.options;
     this.ownerOnly = options.ownerOnly;
     this.voterOnly = options.voterOnly;

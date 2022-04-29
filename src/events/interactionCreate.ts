@@ -86,7 +86,6 @@ export class InteractionCreate extends Event {
         const customCommand = await this.client.database.findCommand(interaction.data.id);
         return interaction.createMessage({ content: customCommand?.response ?? this.client.locale.translate(data.locale, 'misc.COMMAND_NOT_FOUND') });
       } else if (cmd.ownerOnly && author.id !== process.env.OWNER_ID) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_OWNER_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
-      else if (cmd.guildOnly && !guildId) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_GUILD_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
       else if (cmd.category === 'nsfw' && !channel.nsfw) return interaction.createMessage({ content: this.client.locale.translate(data.locale, 'misc.COMMAND_NSFW_ONLY'), flags: Constants.MessageFlags.EPHEMERAL });
 
       await interaction.acknowledge((interaction.data.name === 'help' && Constants.MessageFlags.EPHEMERAL) as number);
