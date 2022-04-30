@@ -61,13 +61,14 @@ export class Help extends Command {
     if (isCategory) {
       this.client.commands
         .filter(cmd => cmd.category === isCategory)
-        .forEach(cmd =>
+        .forEach(cmd => {
+          const cmdName = cmd.name_localizations?.[data.locale] ?? cmd.name;
           fields.push({
-            name: cmd.name.charAt(0).toUpperCase() + cmd.name.slice(1),
-            value: cmd.description,
+            name: cmdName.charAt(0).toUpperCase() + cmdName.slice(1),
+            value: cmd.description_localizations?.[data.locale] ?? cmd.description,
             inline: true
           })
-        );
+        });
 
       if (data.guild?.disabledCategories.indexOf(isCategory) !== -1)
         return interaction.createMessage({
@@ -94,10 +95,12 @@ export class Help extends Command {
       let usage = `\`/${isCommand.name}`;
       isCommand.options?.forEach(option => (usage += ` [${option.name}]`));
       usage += '`';
+
+      const cmdName = isCommand.name_localizations?.[data.locale] ?? isCommand.name;
       return interaction.createMessage({
         embed: {
-          title: isCommand.name.charAt(0).toUpperCase() + isCommand.name.slice(1),
-          description: isCommand.description,
+          title: cmdName.charAt(0).toUpperCase() + cmdName.slice(1),
+          description: isCommand.description_localizations?.[data.locale] ?? isCommand.description,
           color: COLORS.GREEN,
           fields: [
             { name: this.client.locale.translate(data.locale, 'general.USAGE'), value: usage, inline: false },
