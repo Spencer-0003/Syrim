@@ -125,7 +125,6 @@
     "BOT_REQUIRED_PERMISSIONS": "Requiero los siguientes permisos:",
     "CATEGORY_DISABLED": "Este servidor ha deshabilitado esta categoría.",
     "CHANNEL_NOT_NSFW": "Este canal no es NSFW.",
-    "COMMAND_GUILD_ONLY": "Este comando solo se puede ejecutar en un servidor.",
     "COMMAND_NOT_FOUND": "Este comando se ha eliminado y está a la espera de una actualización de la memoria caché.",
     "COMMAND_NSFW_ONLY": "Este comando solo se puede ejecutar en un canal NSFW.",
     "COMMAND_OWNER_ONLY": "Este comando sólo lo puede ejecutar el propietario.",

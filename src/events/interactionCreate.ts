@@ -92,15 +92,28 @@ export class InteractionCreate extends Event {
 
       const args = this.resolveArgs(interaction, interaction.data.options);
 
-      if (data.guild && data.guild.disabledCategories.indexOf(cmd.category) > -1)
-        return interaction.createMessage({
-          flags: Constants.MessageFlags.EPHEMERAL,
-          embed: {
-            title: this.client.locale.translate(data.locale, 'global.ERROR'),
-            description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
-            color: COLORS.RED
-          }
-        });
+      if (data.guild) {
+        if (data.guild.disabledCategories.indexOf(cmd.category) > -1)
+          return interaction.createMessage({
+            flags: Constants.MessageFlags.EPHEMERAL,
+            embed: {
+              title: this.client.locale.translate(data.locale, 'global.ERROR'),
+              description: this.client.locale.translate(data.locale, 'misc.CATEGORY_DISABLED'),
+              color: COLORS.RED
+            }
+          });
+
+        const missingPerms = cmd.clientPermissions.filter(permission => !channel.permissionsOf(this.client.user.id).has(permission));
+        if (missingPerms.length)
+          return interaction.createMessage({
+            flags: Constants.MessageFlags.EPHEMERAL,
+            embed: {
+              title: this.client.locale.translate(data.locale, 'misc.MISSING_PERMISSIONS'),
+              description: `${this.client.locale.translate(data.locale, 'misc.BOT_REQUIRED_PERMISSIONS')} ${missingPerms.join(', ')}`,
+              color: COLORS.RED
+            }
+          });
+      }
 
       if (cmd.voterOnly && author.id !== process.env.OWNER_ID && !this.client.database.redis.get(`voted:${author.id}`))
         /* TODO: Add button with voting link when ready. */

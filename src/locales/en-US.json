@@ -125,7 +125,6 @@
     "BOT_REQUIRED_PERMISSIONS": "I require the following permissions:",
     "CATEGORY_DISABLED": "This server has disabled this category.",
     "CHANNEL_NOT_NSFW": "This channel is not NSFW.",
-    "COMMAND_GUILD_ONLY": "This command can only be ran in a server.",
     "COMMAND_NOT_FOUND": "This command has been removed and is awaiting a cache update.",
     "COMMAND_NSFW_ONLY": "This command can only be ran in an NSFW channel.",
     "COMMAND_OWNER_ONLY": "This command can only be ran by the owner.",
