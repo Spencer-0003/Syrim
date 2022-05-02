@@ -17,7 +17,7 @@ export class CreateCommand extends Command {
     super(client, {
       name: 'createcommand',
       name_localizations: {
-        'es-ES': 'Crearcomando'
+        'es-ES': 'crearcomando'
       },
       description: 'Create a custom command.',
       description_localizations: {

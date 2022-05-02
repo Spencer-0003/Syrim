@@ -2,6 +2,7 @@
  * @file Database
  * @description Handles the database connection and queries
  * @author Spencer-0003
+ * @todo Add Redis caching when https://github.com/Asjas/prisma-redis-middleware supports Node 17
  */
 
 // Import classes & types
