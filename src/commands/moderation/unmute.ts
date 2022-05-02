@@ -19,7 +19,7 @@ export class Unmute extends Command {
     super(client, {
       name: 'unmute',
       name_localizations: {
-        'es-ES': 'un mudo'
+        'es-ES': 'unmudo'
       },
       description: 'Unmute a user in the guild.',
       description_localizations: {
