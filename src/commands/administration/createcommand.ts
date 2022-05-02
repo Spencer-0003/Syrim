@@ -41,7 +41,7 @@ export class CreateCommand extends Command {
         {
           name: 'command_description',
           name_localizations: {
-            'es-ES': 'comando_descripción'
+            'es-ES': 'comando_descripcion'
           },
           description: 'The description of the command.',
           description_localizations: {
