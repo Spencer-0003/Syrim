@@ -20,7 +20,6 @@ export class Ready extends Event {
     const deletedCommands = commands.filter(cmd => !this.client.commands.some(c => c.name === cmd.name));
 
     // Add/delete commands
-    if (process.env.NODE_ENV === 'development') console.log(`Creating commands:\n${this.client.commands}`);
     if (newCommands.length || deletedCommands.length)
       if (NODE_ENV === 'development') this.client.bulkEditGuildCommands(DEVELOPMENT_GUILD, this.client.commands as ApplicationCommandStructure[]);
       else this.client.bulkEditCommands(this.client.commands as ApplicationCommandStructure[]);
