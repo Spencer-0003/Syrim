@@ -15,9 +15,6 @@ export class Cosplay extends Command {
   constructor(client: SyrimClient) {
     super(client, {
       name: 'cosplay',
-      name_localizations: {
-        'es-ES': 'tetas'
-      },
       description: 'Returns an image of an NSFW cosplay.',
       description_localizations: {
         'es-ES': 'Devuelve una imagen de un cosplay NSFW.'
