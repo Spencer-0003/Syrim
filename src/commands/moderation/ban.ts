@@ -42,7 +42,7 @@ export class Ban extends Command {
         {
           name: 'reason',
           name_localizations: {
-            'es-ES': 'razón'
+            'es-ES': 'razon'
           },
           description: 'The reason for the ban.',
           description_localizations: {

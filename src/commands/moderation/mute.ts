@@ -101,7 +101,7 @@ export class Mute extends Command {
         {
           name: 'reason',
           name_localizations: {
-            'es-ES': 'razón'
+            'es-ES': 'razon'
           },
           description: 'The reason for the mute.',
           description_localizations: {
