@@ -6,7 +6,7 @@
  */
 
 // Import classes & types
-import type { Blacklist, BlacklistType, Command, Guild, User } from '@prisma/client';
+import type { BlacklistType, Command, Guild, User } from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
 import Redis from 'ioredis';
 
@@ -33,8 +33,8 @@ export class Database {
 
       if (cached) return JSON.parse(cached);
 
-      const res = await next(params);
-      if (res) await this.redis.set(`blacklist:${key}`, JSON.stringify(res), 'EX', 3600);
+      const res = (await next(params)) ?? {};
+      await this.redis.set(`blacklist:${key}`, JSON.stringify(res), 'EX', 3600);
 
       return res;
     });
@@ -73,8 +73,8 @@ export class Database {
     await this.prisma.blacklist.create({ data: { id, moderator, type: blacklistType, reason } });
   }
 
-  public getBlacklist(id: string): Promise<Blacklist | null> {
-    return this.prisma.blacklist.findUnique({ where: { id } });
+  public async isBlacklisted(id: string): Promise<boolean> {
+    return Object.keys(this.prisma.blacklist.findUnique({ where: { id } })).length !== 0;
   }
 
   public async createCommand(guildId: string, commandId: string, response: string): Promise<void> {

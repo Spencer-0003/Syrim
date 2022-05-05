@@ -16,7 +16,7 @@ const whitelistedGuilds: string[] = [
 // Export class
 export class GuildCreate extends Event {
   async run(guild: Guild): Promise<void> {
-    if (await this.client.database.getBlacklist(guild.id)) {
+    if (await this.client.database.isBlacklisted(guild.id)) {
       await guild.leave();
       return;
     }

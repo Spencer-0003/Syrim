@@ -49,7 +49,7 @@ export class InteractionCreate extends Event {
     const guildId = interaction.guildID;
     const locale = interaction.guildLocale ?? interaction.locale;
 
-    if (await this.client.database.getBlacklist(author.id))
+    if (await this.client.database.isBlacklisted(author.id))
       return interaction.createMessage({
         flags: Constants.MessageFlags.EPHEMERAL,
         embed: {
