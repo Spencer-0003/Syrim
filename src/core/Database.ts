@@ -74,7 +74,7 @@ export class Database {
   }
 
   public async isBlacklisted(id: string): Promise<boolean> {
-    return Object.keys(this.prisma.blacklist.findUnique({ where: { id } })).length !== 0;
+    return Object.keys((await this.prisma.blacklist.findUnique({ where: { id } }))!).length !== 0;
   }
 
   public async createCommand(guildId: string, commandId: string, response: string): Promise<void> {
