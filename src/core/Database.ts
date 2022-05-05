@@ -26,11 +26,6 @@ export class Database {
       const key = params.args.where.id;
       const cached = await this.redis.get(`blacklist:${key}`);
 
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`key: blacklist:${key}`);
-        console.log(`Cached result: ${cached}`);
-      }
-
       if (cached) return JSON.parse(cached);
 
       const res = (await next(params)) ?? {};
