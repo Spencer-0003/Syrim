@@ -28,7 +28,7 @@ jobs:
 
       - name: Extract Metadata
         id: metadata
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           images: spencer0003/syrim
       
