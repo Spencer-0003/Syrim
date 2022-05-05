@@ -22,7 +22,7 @@ export class Database {
 
     this.prisma.$use(async (params, next) => {
       if (params.model !== 'Blacklist' || params.action !== 'findUnique') return next(params);
-      console.log(params);
+      console.log(Object.keys(params.args));
 
       const key = Object.keys(params.args.select)[0];
       const cached = await this.redis.get(`blacklist:${key}`);
