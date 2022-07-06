@@ -22,7 +22,7 @@
     "graphql-request": "4.3.0",
     "ioredis": "5.1.0",
     "module-alias": "2.2.2",
-    "moment": "2.29.3",
+    "moment": "2.29.4",
     "nekobot-api": "2.1.0",
     "statcord-eris": "1.1.4"
   },
