@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "4.0.0",
-    "@sentry/node": "7.6.0",
+    "@sentry/node": "7.7.0",
     "eris": "Spencer-0003/eris#everything",
     "graphql": "16.5.0",
     "graphql-request": "4.3.0",
